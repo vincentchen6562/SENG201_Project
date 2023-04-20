@@ -3,18 +3,13 @@ import java.util.*;
 public class Inventory {
     private int numberOfItems;
     private int money;
-    private ArrayList<Coach> coachList;
+    private ArrayList<Item> itemList;
 
     public int getNumberOfItems() {
         return numberOfItems;
     }
 
-    public String getCoachName() { // could potentially require parameters that specify the name of the desired
-                                   // item
-        return coach.getName();
-    }
-
-    public int getEquipmentBoost() {
+    public int getItemBoost() {
         return equipment.boost;
     }
 
@@ -27,3 +22,7 @@ public class Inventory {
     }
 
 }
+
+// could potentially require parameters (getName) that specify the type of the
+// desired
+// item
