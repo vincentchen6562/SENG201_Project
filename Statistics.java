@@ -30,6 +30,19 @@ public class Statistics {
     public void updateOverallStat(){
         overallStat = offence + defence + agility;
     }
+
+    public void alterStat(String stat, int amount){
+        if (stat == "offence"){
+            this.offence = amount;
+        }
+        else if (stat == "defence"){
+            this.defence = amount;
+        }
+        else if (stat == "agility"){
+            this.agility = amount;
+        }
+        updateOverallStat();
+    }
 }
 
 
