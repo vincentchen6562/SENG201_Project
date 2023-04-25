@@ -33,13 +33,26 @@ public class Statistics {
 
     public void alterStat(String stat, int amount){
         if (stat == "offence"){
-            this.offence = amount;
+            offence += amount;
         }
         else if (stat == "defence"){
-            this.defence = amount;
+            defence += amount;
         }
         else if (stat == "agility"){
-            this.agility = amount;
+            agility += amount;
+        }
+        updateOverallStat();
+    }
+
+    public void setStat(String stat, int value){
+        if (stat == "offence"){
+            offence = value;
+        }
+        else if (stat == "defence"){
+            defence = value;
+        }
+        else if (stat == "agility"){
+            agility = value;
         }
         updateOverallStat();
     }
