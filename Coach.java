@@ -1,24 +1,15 @@
-public class Coach {
-    private String name;
-    private int specialisation; // idea: maybe add interface for the stats of the athlete
-                                // and this vairiable can be related to the stats
-    private int salary;
+public class Coach extends Item {
+    private int coachSalary;
 
-    public Coach(String coachName, int price, int boost) {
-        name = coachName;
-        specialisation = boost;
-        salary = price;
+    public Coach(String name, int boost, int salary) {
+        super(name, boost, salary);
     }
 
-    public String getCoachName() {
-        return name;
+    public int getPrice() {
+        return coachSalary;
     }
 
-    public int getBoost() {
-        return specialisation;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
 }
+
+// idea: maybe add interface for the stats of the athlete
+// and this vairiable can be related to the stats
