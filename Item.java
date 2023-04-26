@@ -6,9 +6,9 @@ public abstract class Item {
     public abstract int getPrice();
 
     public Item(String name, int boost, int price) {
-        name = itemName;
-        boost = itemBoost;
-        price = itemPrice;
+        itemName = name;
+        itemBoost = boost;
+        itemPrice = price;
     }
 
     public String getName() {
@@ -20,7 +20,8 @@ public abstract class Item {
     }
 
     public void info() {
-        System.out.println("This is " + itemName + " and it costs " + itemPrice + ".");
+        System.out.println("This is " + itemName + " and it costs " + itemPrice + "." + "\n" + "This gives " + itemBoost
+                + " boost.");
     }
 
     public static void main(String[] args) {
