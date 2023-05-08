@@ -9,9 +9,9 @@ public class Inventory {
         return numberOfItems;
     }
 
-    public int getItemBoost() {
-        return equipment.boost;
-    }
+    // public int getItemBoost() {
+    // return equipment.boost;
+    // }
 
     public void setMoney(int amount) {
         money = amount;
