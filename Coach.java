@@ -13,3 +13,4 @@ public class Coach extends Item {
 
 // idea: maybe add interface for the stats of the athlete
 // and this vairiable can be related to the stats
+// random comment to test merging
