@@ -24,8 +24,8 @@ public abstract class Item {
                 + " boost.");
     }
 
-    public static void main(String[] args) {
-        Item steve = new Coach("Steve Johnson", 60, 4000);
-        steve.info();
-    }
+    // public static void main(String[] args) {
+    // Item steve = new Coach("Steve Johnson", 60, 4000);
+    // steve.info();
+    // }
 }
