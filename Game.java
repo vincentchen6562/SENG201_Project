@@ -32,3 +32,10 @@ public class Game {
     }
 
 }
+
+
+// TODO
+// - Need to determine how the player can win or lose a game
+// - Need to update the UML diagram (classes added: Item, Coach, Equipment)
+// - Need to add price to Athlete. Potential solution: add athlete into item class?
+

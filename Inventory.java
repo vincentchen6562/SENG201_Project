@@ -4,29 +4,47 @@ public class Inventory {
     private ArrayList<Item> itemList;
     private int bank; // the amount of money the player currently holds
 
-    public Inventory(int size, int initial_bank) { // size of inventory could depend on the difficulty
-        itemList = new ArrayList<Item>(size);
-        bank = initial_bank;
+    public Inventory(Difficulty difficulty) { // the starting amoutn of money depends on the difficulty
+        itemList = new ArrayList<Item>();
+        if (difficulty.getDifficulty() == "Hard") {
+            bank = 1000;
+        } else {
+            bank = 5000;
+        }
     }
 
     public int getNumberOfItems() {
         return itemList.size();
     }
 
-    public ArrayList<Item> getAllItems() {
-        return itemList;
+    public ArrayList<String> getAllItems() { // returns the given given parameter of all of the items in the list
+        ArrayList<String> allItemNames = new ArrayList<String>();
+        for (Item item : itemList) {
+            allItemNames.add(item.getName());
+        }
+        return allItemNames;
     }
 
-    public void addItem(Item item) { // need to add exception: cannot item when inventory is full
-        itemList.add(item);
+    public void addItem(Item item) { // need to add exception: cannot add the same item more than once
+        if(itemList.contains(item)) {
+            System.out.println("Item has already been added");
+        } else {
+            itemList.add(item);
+        }
+       
     }
 
     public int getBank() {
         return bank;
     }
 
-}
+//     public static void main(String[] args) {
+//         Difficulty diff = new Difficulty("Hard");
+//         Inventory inventory = new Inventory(diff);
+//         Item Steve = new Coach("Steve Johnson", 60, 4000);
+//         inventory.addItem(Steve);
+//         System.out.println("The inventory currently has items " + inventory.getAllItems() + 
+//         ". and inventory currently has " + inventory.getNumberOfItems() + " items");
+//     }
 
-// could potentially require parameters (getName) that specify the type of the
-// desired
-// item
+}

@@ -1,11 +1,16 @@
 public class Difficulty {
-    private int difficulty;
+    private String difficulty; // difficulty is displayed as a string - "Normal" and "Hard"
 
-    public void setDifficulty(int new_difficulty) {
+    public Difficulty(String new_difficulty) {
         difficulty = new_difficulty;
     }
 
-    public int getDifficulty() {
+    public String getDifficulty() {
         return difficulty;
     }
+
+    // public static void main(String[] args) {
+    //     Difficulty difficulty = new Difficulty("Hard");
+    //     System.out.println(difficulty.getDifficulty());
+    // }
 }
