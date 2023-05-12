@@ -24,4 +24,4 @@ public class Team {
     public ArrayList<Athlete> viewTeam(){
         return members;
     }
-}
+}   
