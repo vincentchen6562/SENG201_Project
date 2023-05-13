@@ -47,21 +47,21 @@ public class SENG201_Project_kch199 {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(10, 137, 201, -122);
 		frame.getContentPane().add(tabbedPane);
-		
+
 		JTabbedPane tabbedPane_1 = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane_1.setBounds(0, 0, 434, 83);
 		frame.getContentPane().add(tabbedPane_1);
-		
+
 		JButton btnNewButton = new JButton("New button");
 		tabbedPane_1.addTab("New tab", null, btnNewButton, null);
-		
+
 		JPanel panel = new JPanel();
 		tabbedPane_1.addTab("New tab", null, panel, null);
-		
+
 		JButton btnNewButton_1 = new JButton("Random Button");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
