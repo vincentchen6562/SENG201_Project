@@ -7,8 +7,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JSlider;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
 
-public class setup_page {
+public class SetupPage {
 
 	private JFrame frame;
 	private JTextField txtTeamNameHere;
@@ -20,7 +24,7 @@ public class setup_page {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					setup_page window = new setup_page();
+					SetupPage window = new SetupPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +36,7 @@ public class setup_page {
 	/**
 	 * Create the application.
 	 */
-	public setup_page() {
+	public SetupPage() {
 		initialize();
 	}
 
@@ -43,16 +47,25 @@ public class setup_page {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+				ColumnSpec.decode("114px"),
+				ColumnSpec.decode("147px"),},
+			new RowSpec[] {
+				FormSpecs.UNRELATED_GAP_ROWSPEC,
+				RowSpec.decode("14px"),
+				RowSpec.decode("53px"),
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("26px"),
+				RowSpec.decode("58px"),
+				RowSpec.decode("23px"),}));
 
 		JLabel lblNewLabel = new JLabel("Game Setup");
-		lblNewLabel.setBounds(175, 11, 58, 14);
-		frame.getContentPane().add(lblNewLabel);
+		frame.getContentPane().add(lblNewLabel, "2, 2, center, top");
 
 		txtTeamNameHere = new JTextField();
 		txtTeamNameHere.setText("team name here");
-		txtTeamNameHere.setBounds(114, 78, 147, 20);
-		frame.getContentPane().add(txtTeamNameHere);
+		frame.getContentPane().add(txtTeamNameHere, "2, 4, fill, top");
 		txtTeamNameHere.setColumns(10);
 
 		JButton btnNewButton = new JButton("Submit");
@@ -60,12 +73,10 @@ public class setup_page {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(161, 188, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		frame.getContentPane().add(btnNewButton, "2, 8, center, top");
 
 		JSlider slider = new JSlider();
 		slider.setMaximum(25);
-		slider.setBounds(114, 104, 147, 26);
-		frame.getContentPane().add(slider);
+		frame.getContentPane().add(slider, "2, 6, fill, top");
 	}
 }

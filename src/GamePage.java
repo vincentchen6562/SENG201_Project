@@ -5,8 +5,12 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
 
-public class game_page {
+public class GamePage {
 
 	private JFrame frame;
 
@@ -17,7 +21,7 @@ public class game_page {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					game_page window = new game_page();
+					GamePage window = new GamePage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -29,7 +33,7 @@ public class game_page {
 	/**
 	 * Create the application.
 	 */
-	public game_page() {
+	public GamePage() {
 		initialize();
 	}
 
@@ -40,38 +44,47 @@ public class game_page {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+				FormSpecs.UNRELATED_GAP_COLSPEC,
+				ColumnSpec.decode("131px"),
+				ColumnSpec.decode("91px"),
+				ColumnSpec.decode("89px"),
+				ColumnSpec.decode("57px"),
+				ColumnSpec.decode("46px"),},
+			new RowSpec[] {
+				FormSpecs.UNRELATED_GAP_ROWSPEC,
+				RowSpec.decode("14px"),
+				RowSpec.decode("51px"),
+				RowSpec.decode("23px"),
+				FormSpecs.UNRELATED_GAP_ROWSPEC,
+				RowSpec.decode("23px"),
+				FormSpecs.UNRELATED_GAP_ROWSPEC,
+				RowSpec.decode("23px"),}));
 		
 		JLabel lblNewLabel = new JLabel("Money:");
-		lblNewLabel.setBounds(378, 11, 46, 14);
-		frame.getContentPane().add(lblNewLabel);
+		frame.getContentPane().add(lblNewLabel, "6, 2, fill, top");
 		
 		JLabel lblNewLabel_1 = new JLabel("Season:");
-		lblNewLabel_1.setBounds(10, 11, 46, 14);
-		frame.getContentPane().add(lblNewLabel_1);
+		frame.getContentPane().add(lblNewLabel_1, "2, 2, left, top");
 		
 		JButton btnNewButton = new JButton("Market");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(52, 76, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		frame.getContentPane().add(btnNewButton, "2, 4, right, top");
 		
 		JButton btnNewButton_1 = new JButton("Stadium");
-		btnNewButton_1.setBounds(52, 110, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		frame.getContentPane().add(btnNewButton_1, "2, 6, right, top");
 		
 		JButton btnNewButton_2 = new JButton("Team/Inventory");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton_2.setBounds(52, 144, 99, 23);
-		frame.getContentPane().add(btnNewButton_2);
+		frame.getContentPane().add(btnNewButton_2, "2, 8, right, top");
 		
 		JButton btnNewButton_3 = new JButton("Rest");
-		btnNewButton_3.setBounds(232, 76, 89, 23);
-		frame.getContentPane().add(btnNewButton_3);
+		frame.getContentPane().add(btnNewButton_3, "4, 4, fill, top");
 	}
 }
