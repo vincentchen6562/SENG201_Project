@@ -58,8 +58,14 @@ public class Game {
 
 }
 
-// TODO
+// TODO:
 // - Need to determine how the player can win or lose a game
 // - Need to update the UML diagram (classes added: Item, Coach, Equipment)
-// - Need to add price to Athlete. Potential solution: add athlete into item
-// class?
+// - Need to implement behaviours in this class's run function when a certain
+// button
+// is clicked, e.g. when the player purchases an athlete, the Team class adds an
+// athlete, the athlete is removed from the market, the bank variable in
+// inventory
+// is accordingly decreased.
+
+// DONE
