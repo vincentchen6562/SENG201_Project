@@ -10,10 +10,9 @@ public class Athlete extends Statistics {
 
 
 
-    public Athlete(String name, String nickName, String position, int stamina, boolean isInjured, int offence, int defence, int agility, int price){
+    public Athlete(String name, String position, int stamina, boolean isInjured, int offence, int defence, int agility, int price){
         super(offence, defence, agility);
         this.name = name;
-        this.nickName = nickName;
         this.position = position;
         this.stamina = stamina;
         this.isInjured = isInjured;
@@ -37,11 +36,15 @@ public class Athlete extends Statistics {
         stamina += amount;
     }
 
-    public void setIsInjured(boolean state){
+    public void setIsInjured(boolean state){ // need to set a random chance of this occurring
         isInjured = state;
     }
 
     public int getPrice() {
         return athleteSalary;
+    }
+
+    public void setNickName(String name) { // this allows the player to give an athlete a nickname
+        nickName = name;
     }
 }

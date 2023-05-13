@@ -12,6 +12,14 @@ public class Market {
         // use a similar method as above to generate athlete objects
     }
 
-    public void recruitAthlete(Athlete athlete, )
+    public void removeAthlete(Athlete athlete) {
+        allAthletes.remove(athlete);
+    }
 
+    public void removeItem(Item item) {
+        allItems.remove(item);
+    }
+    
 }
+
+

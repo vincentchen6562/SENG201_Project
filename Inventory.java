@@ -4,7 +4,7 @@ public class Inventory {
     private ArrayList<Item> itemList;
     private int bank; // the amount of money the player currently holds
 
-    public Inventory(Difficulty difficulty) { // the starting amoutn of money depends on the difficulty
+    public Inventory(Difficulty difficulty) { // the starting amount of money depends on the difficulty
         itemList = new ArrayList<Item>();
         if (difficulty.getDifficulty() == "Hard") {
             bank = 1000;
@@ -36,6 +36,14 @@ public class Inventory {
 
     public int getBank() {
         return bank;
+    }
+
+    public void pay(int amount) {
+        bank -= amount;
+    }
+
+    public void receive(int amount) {
+        bank += amount;
     }
 
 //     public static void main(String[] args) {
