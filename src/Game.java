@@ -8,7 +8,6 @@ public class Game {
     private JFrame frame;
 
     public Game(int seasonNumber, int weekNumber) {
-        initialize();
         this.seasonNumber = seasonNumber;
         this.weekNumber = weekNumber;
     }
@@ -35,25 +34,6 @@ public class Game {
 
     public int getWeek() {
         return weekNumber;
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Game window = new Game(0, 0);
-                    window.frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
-
-    public void initialize() {
-        frame = new JFrame();
-        frame.setBounds(100, 100, 450, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }
