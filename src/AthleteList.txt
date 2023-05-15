@@ -1,0 +1,21 @@
+id	Name	Offence	Defence	Agility	Stamina	Position
+1,Kyron Greer,3,7,3,9,Center,520
+2,Joshua Parrish,4,10,1,10,Point Guard,740
+3,Marvin Connolly,9,2,3,2,Point Guard,930
+4,Jodie Ray,8,2,4,3,Small Forward,1000
+5,Omer Downs,1,5,5,5,Power Forward,500
+6,Jacob Marshall,10,1,5,8,Small Forward,930
+7,Haider Neal,4,4,8,1,Power Forward,960
+8,Junior Logan,3,4,8,7,Small Forward,800
+9,Elliot Francis,2,1,2,9,Shooting Guard,870
+10,Owen Allen,7,10,6,10,Small Forward,800
+11,Callum Howell,8,7,2,6,Power Forward,740
+12,Daniel Levy,9,7,4,8,Shooting Guard,610
+13,Kye Berry,4,8,1,8,Shooting Guard,860
+14,Omar Coffey,5,8,7,9,Shooting Guard,590
+15,Saul Ibarra,7,2,3,5,Shooting Guard,620
+16,Cecil Bradshaw,5,4,10,3,Small Forward,560
+17,Monty Winters,6,5,7,10,Power Forward,710
+18,Khalil Carter,2,8,2,9,Shooting Guard,730
+19,Dafydd Santiago,8,2,9,10,Shooting Guard,810
+20,Lee Love,3,4,2,3,Power Forward,780

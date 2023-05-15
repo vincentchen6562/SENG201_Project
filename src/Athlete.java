@@ -20,7 +20,7 @@ public class Athlete extends Statistics {
     }
 
     public String getFullName() {
-        return name + nickName;
+        return name + " " + "(" + nickName + ")";
     }
 
     public String getPosition() {
