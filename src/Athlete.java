@@ -20,7 +20,7 @@ public class Athlete extends Statistics {
     }
 
     public String getFullName() {
-        return name + " " + "(" + nickName + ")";
+        return name + " (" + nickName + ")";
     }
 
     public String getPosition() {
@@ -47,7 +47,13 @@ public class Athlete extends Statistics {
         nickName = name;
     }
 
-    public void train(Athlete athlete) {
-
+    public boolean getIfInjured() {
+        return isInjured;
     }
+
+    // public void train(Athlete athlete, String stat, int days) {
+    // for (int i = 0; i < days; i++) {
+    // Athlete = super.alterStat(stat, 10);
+    // }
+    // }
 }

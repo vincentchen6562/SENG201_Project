@@ -1,11 +1,6 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-
 public class Game {
     private int seasonNumber;
     private int weekNumber;
-    private JFrame frame;
 
     public Game(int seasonNumber, int weekNumber) {
         this.seasonNumber = seasonNumber;
@@ -48,6 +43,7 @@ public class Game {
 // inventory
 // is accordingly decreased.
 // - Need to restructure the packages since it is assessed
-// - Need to comment properly (for Javadoc and final assessment), this includes the GUI classes, REMEMBER: no commented out code
+// - Need to comment properly (for Javadoc and final assessment), this includes
+// the GUI classes, REMEMBER: no commented out code
 
 // DONE

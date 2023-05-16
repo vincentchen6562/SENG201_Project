@@ -9,12 +9,14 @@ public class Market {
     private ArrayList<Athlete> athletesInMarket;
 
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
+
     }
 
     public void generateAthleteShop(Difficulty difficulty, int seasonNumber) {
         try {
+
             File athleteList = new File(
-                    "/Users/Administrator/Desktop/University/2023/SENG201_Project/src/AthleteList.txt");
+                    "/Users/Gotcha/Desktop/University/2023/SENG201_Project/src/AthleteList.txt");
             Scanner athletes = new Scanner(athleteList);
             athletes.useDelimiter(",");
             ArrayList<String> id_list = new ArrayList<>();
@@ -82,7 +84,10 @@ public class Market {
         Difficulty difficulty = new Difficulty("Normal");
         Market market = new Market();
         market.generateAthleteShop(difficulty, 1);
-        System.out.println(market.getAthletes());
+        ArrayList<Athlete> athletes = market.getAthletes();
+        for (Athlete athlete : athletes) {
+            System.out.println(athlete.getFullName());
+        }
     }
 
 }
