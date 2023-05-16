@@ -70,6 +70,8 @@ public class GamePage {
 		JButton btnNewButton = new JButton("Market");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				MarketPage.main(null);
+				frame.setVisible(false);
 			}
 		});
 		frame.getContentPane().add(btnNewButton, "2, 4, right, top");
