@@ -14,7 +14,7 @@ public class MarketPage {
 			public void run() {
 				try {
 					MarketPage window = new MarketPage();
-					window.frame.setVisible(true);
+					window.getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -34,8 +34,12 @@ public class MarketPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		getFrame().setBounds(100, 100, 450, 300);
+		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public JFrame getFrame() {
+		return frame;
 	}
 
 }
