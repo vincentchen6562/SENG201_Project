@@ -1,3 +1,5 @@
+package src;
+
 public class Match {
     private int scoreTotal;
     private int priceMoney;
