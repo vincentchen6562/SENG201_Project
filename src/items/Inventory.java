@@ -11,9 +11,9 @@ public class Inventory {
     	Bank bank = new Bank();
 
         if (difficulty.getDifficulty() == "Hard") {
-			bank.pay(1000);
+			bank.receive(1000);
         } else {
-            bank.pay(5000);
+            bank.receive(5000);
         }
     }
 
