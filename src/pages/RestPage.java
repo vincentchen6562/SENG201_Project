@@ -1,8 +1,12 @@
 package src.pages;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import net.miginfocom.swing.MigLayout;
 
 public class RestPage {
 
@@ -38,6 +42,17 @@ public class RestPage {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(new MigLayout("", "[1px]", "[1px]"));
+		
+		JButton backButton = new JButton("<-");
+		frame.getContentPane().add(backButton, "cell 0 0,grow");
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new GamePage();
+				GamePage.main(null);
+				frame.setVisible(false);
+			}
+		});
 	}
 
 }
