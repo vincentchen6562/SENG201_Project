@@ -14,79 +14,136 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.JSlider;
 import src.*;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class SetupPage {
 
-	private JFrame frame;
+	private JFrame frmWelcome;
 	private JTextField txtTeamName;
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SetupPage window = new SetupPage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SetupPage window = new SetupPage();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public SetupPage() {
+	public SetupPage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frmWelcome.setVisible(true);
 	}
+	
+	public void closeWindow() {
+		frmWelcome.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeSetupPage(this);
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[][][][][][][grow]", "[][][][][][][][][]"));
+		frmWelcome = new JFrame();
+		frmWelcome.setTitle("Welcome");
+		frmWelcome.setBounds(100, 100, 450, 300);
+		frmWelcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel setupLabel = new JLabel("Setup");
-		frame.getContentPane().add(setupLabel, "cell 5 0");
 		
 		JLabel teamInput = new JLabel("Team Name");
-		frame.getContentPane().add(teamInput, "cell 4 2,alignx trailing");
 		String teamName = teamInput.getText();
 		
 		txtTeamName = new JTextField();
-		frame.getContentPane().add(txtTeamName, "cell 5 2,alignx left");
 		txtTeamName.setColumns(10);
 		
 		JLabel difficultyLabel = new JLabel("Difficulty");
-		frame.getContentPane().add(difficultyLabel, "cell 4 3");
 		
 		JSpinner difficultySpinner = new JSpinner();
 		difficultySpinner.setModel(new SpinnerListModel(new String[] {"Easy", "Medium", "Hard"}));
-		frame.getContentPane().add(difficultySpinner, "cell 5 3");
 		String difficulty = (String) difficultySpinner.getValue();
 
 		
 		JLabel weekLabel = new JLabel("Week No.");
-		frame.getContentPane().add(weekLabel, "cell 4 4");
 		
 		JSlider weekSlider = new JSlider();
-		frame.getContentPane().add(weekSlider, "cell 5 4");
 		int weekNum = weekSlider.getValue();
 		
 		JButton finishSetup = new JButton("Finish Setup");
-		frame.getContentPane().add(finishSetup, "cell 5 5,alignx left");
+		GroupLayout groupLayout = new GroupLayout(frmWelcome.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(183)
+					.addComponent(setupLabel))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(123)
+					.addComponent(teamInput)
+					.addGap(4)
+					.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(123)
+					.addComponent(difficultyLabel)
+					.addGap(18)
+					.addComponent(difficultySpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(123)
+					.addComponent(weekLabel)
+					.addGap(13)
+					.addComponent(weekSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(183)
+					.addComponent(finishSetup))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(7)
+					.addComponent(setupLabel)
+					.addGap(33)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(teamInput))
+						.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addComponent(difficultyLabel))
+						.addComponent(difficultySpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(6)
+							.addComponent(weekLabel))
+						.addComponent(weekSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(4)
+					.addComponent(finishSetup))
+		);
+		frmWelcome.getContentPane().setLayout(groupLayout);
 		
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
-				frame.setVisible(false);
+				finishedWindow();
+				frmWelcome.setVisible(false);
 			}
 		});
 		

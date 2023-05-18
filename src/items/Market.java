@@ -17,7 +17,7 @@ public class Market {
     }
 
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
-
+    	
     }
 
     public void generateAthleteShop(Difficulty difficulty, int seasonNumber) {

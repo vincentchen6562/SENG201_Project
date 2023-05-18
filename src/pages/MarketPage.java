@@ -1,4 +1,5 @@
 package src.pages;
+import src.*;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,61 +10,63 @@ import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-
-import src.items.*;
-import src.team.Athlete;
-import javax.swing.JRadioButton;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
 import java.awt.Font;
 
 public class MarketPage {
 
-	private JFrame frame;
+	private JFrame frmMarket;
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MarketPage window = new MarketPage();
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MarketPage window = new MarketPage();
+//					window.getFrame().setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public MarketPage() {
+	public MarketPage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frmMarket.setVisible(true);
 	}
+	
+	public void closeWindow() {
+		frmMarket.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeMarketPage(this);
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frmMarket = new JFrame();
+		frmMarket.setTitle("Market");
 		getFrame().setBounds(100, 100, 450, 300);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[45px][12px][25px][55px]", "[23px][11px][11px][11px][21px]"));
+		frmMarket.getContentPane().setLayout(new MigLayout("", "[]", "[]"));
 		
-		JButton backButton = new JButton("<-");
-		frame.getContentPane().add(backButton, "cell 0 0,alignx left,aligny top");
-	
+		JButton backButton = new JButton("<");
+		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		frmMarket.getContentPane().add(backButton, "cell 0 0");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
-				frame.setVisible(false);
+				finishedWindow();
 			}
 		});
 		
@@ -203,7 +206,7 @@ public class MarketPage {
 	}
 
 	public JFrame getFrame() {
-		return frame;
+		return frmMarket;
 	}
 
 }
