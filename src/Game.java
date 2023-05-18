@@ -9,7 +9,7 @@ public class Game {
         this.weekNumber = weekNumber;
     }
 
-    public void setSeason(int seasonNum) {
+    public void setSeason(int seasonNum) { 
         seasonNumber = seasonNum;
     }
 
@@ -32,6 +32,8 @@ public class Game {
     public int getWeek() {
         return weekNumber;
     }
+
+    
 
 }
 

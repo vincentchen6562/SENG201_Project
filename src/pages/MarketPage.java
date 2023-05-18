@@ -1,4 +1,5 @@
 package src.pages;
+import src.*
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,28 +11,39 @@ import javax.swing.JButton;
 public class MarketPage {
 
 	private JFrame frame;
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MarketPage window = new MarketPage();
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MarketPage window = new MarketPage();
+//					window.getFrame().setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public MarketPage() {
+	public MarketPage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeMarketPage(this);
 	}
 
 	/**
@@ -47,8 +59,7 @@ public class MarketPage {
 		frame.getContentPane().add(backButton, "cell 0 0");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
+				finishedWindow();
 				frame.setVisible(false);
 			}
 		});

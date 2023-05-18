@@ -14,30 +14,42 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 public class GamePage {
 
 	private JFrame frame;
+	private GameEnvironment environment;
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-//		int week = Game.getWeek();
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GamePage window = new GamePage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+////		int week = Game.getWeek();
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					GamePage window = new GamePage();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public GamePage() {
+	public GamePage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frame.setVisible(true);
 	}
-
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeGamePage(this);
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -76,7 +88,7 @@ public class GamePage {
 		});
 		frame.getContentPane().add(teamButton, "cell 6 3");
 
-		JButton stadiumButton = new JButton("Stadium");
+		JButton stadiumButton = new JButton("Stadium"); 
 		frame.getContentPane().add(stadiumButton, "cell 6 4");
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

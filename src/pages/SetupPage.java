@@ -19,28 +19,39 @@ public class SetupPage {
 
 	private JFrame frame;
 	private JTextField txtTeamName;
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SetupPage window = new SetupPage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SetupPage window = new SetupPage();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public SetupPage() {
+	public SetupPage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeSetupPage(this);
 	}
 
 	/**
@@ -84,8 +95,7 @@ public class SetupPage {
 		
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
+				finishedWindow();
 				frame.setVisible(false);
 			}
 		});
