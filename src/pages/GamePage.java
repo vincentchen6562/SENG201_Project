@@ -88,7 +88,7 @@ public class GamePage {
 		});
 		frame.getContentPane().add(teamButton, "cell 6 3");
 
-		JButton stadiumButton = new JButton("Stadium");
+		JButton stadiumButton = new JButton("Stadium"); 
 		frame.getContentPane().add(stadiumButton, "cell 6 4");
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -20,8 +20,20 @@ public class GameEnvironment {
     	mainPage.closeWindow();
     }
     
+    public void launchMarketPage() {
+    	MarketPage marketPage = new MarketPage(this);
+    }
+    
+    public void closeMarketPage(MarketPage marketPage) {
+    	marketPage.closeWindow();
+    	launchGamePage();
+    }
+    
+    
+    
     public static void main(String [] args) {
     	GameEnvironment game = new GameEnvironment();
     	game.launchSetupPage();
     }
+    
 }

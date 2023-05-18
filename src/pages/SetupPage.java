@@ -96,7 +96,6 @@ public class SetupPage {
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
-//				GamePage.main(null);
 				frame.setVisible(false);
 			}
 		});
