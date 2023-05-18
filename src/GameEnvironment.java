@@ -30,7 +30,7 @@ public class GameEnvironment {
     }
     
     public void launchRestPage() {
-    	RestPage restPage = new RestPage(this);
+    	RestPage restPage = new RestPage(this); 
     }
     
     public void closeRestPage(RestPage restPage) {
@@ -44,6 +44,15 @@ public class GameEnvironment {
     
     public void closeStadiumPage(StadiumPage stadiumPage) {
     	stadiumPage.closeWindow();
+    	launchGamePage();
+    }
+    
+    public void launchTeamPage() {
+    	TeamPage teamPage = new TeamPage(this);
+    }
+    
+    public void closeTeamPage(TeamPage teamPage) {
+    	teamPage.closeWindow();
     	launchGamePage();
     }
     

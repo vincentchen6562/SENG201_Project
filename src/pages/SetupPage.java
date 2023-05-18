@@ -19,7 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 
 public class SetupPage {
 
-	private JFrame frame;
+	private JFrame frmWelcome;
 	private JTextField txtTeamName;
 	private GameEnvironment environment;
 
@@ -45,11 +45,11 @@ public class SetupPage {
 	public SetupPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmWelcome.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmWelcome.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -61,9 +61,10 @@ public class SetupPage {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmWelcome = new JFrame();
+		frmWelcome.setTitle("Welcome");
+		frmWelcome.setBounds(100, 100, 450, 300);
+		frmWelcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JLabel setupLabel = new JLabel("Setup");
 		
@@ -86,7 +87,7 @@ public class SetupPage {
 		int weekNum = weekSlider.getValue();
 		
 		JButton finishSetup = new JButton("Finish Setup");
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmWelcome.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -137,12 +138,12 @@ public class SetupPage {
 					.addGap(4)
 					.addComponent(finishSetup))
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		frmWelcome.getContentPane().setLayout(groupLayout);
 		
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
-				frame.setVisible(false);
+				frmWelcome.setVisible(false);
 			}
 		});
 		

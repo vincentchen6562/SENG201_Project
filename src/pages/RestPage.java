@@ -8,10 +8,12 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class RestPage {
 
-	private JFrame frame;
+	private JFrame frmTakeABye;
 	private GameEnvironment environment;
 
 	/**
@@ -36,11 +38,11 @@ public class RestPage {
 	public RestPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmTakeABye.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmTakeABye.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -51,13 +53,15 @@ public class RestPage {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[1px]", "[1px]"));
+		frmTakeABye = new JFrame();
+		frmTakeABye.setTitle("Take a Bye");
+		frmTakeABye.setBounds(100, 100, 450, 300);
+		frmTakeABye.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTakeABye.getContentPane().setLayout(new MigLayout("", "[1px]", "[1px]"));
 		
-		JButton backButton = new JButton("<-");
-		frame.getContentPane().add(backButton, "cell 0 0,grow");
+		JButton backButton = new JButton("<");
+		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		frmTakeABye.getContentPane().add(backButton, "cell 0 0,grow");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();

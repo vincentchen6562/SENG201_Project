@@ -7,10 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
+import java.awt.Font;
 
 public class MarketPage {
 
-	private JFrame frame;
+	private JFrame frmMarket;
 	private GameEnvironment environment;
 
 	/**
@@ -35,11 +36,11 @@ public class MarketPage {
 	public MarketPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmMarket.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmMarket.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -51,23 +52,24 @@ public class MarketPage {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
+		frmMarket = new JFrame();
+		frmMarket.setTitle("Market");
 		getFrame().setBounds(100, 100, 450, 300);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[]", "[]"));
+		frmMarket.getContentPane().setLayout(new MigLayout("", "[]", "[]"));
 		
-		JButton backButton = new JButton("<-");
-		frame.getContentPane().add(backButton, "cell 0 0");
+		JButton backButton = new JButton("<");
+		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		frmMarket.getContentPane().add(backButton, "cell 0 0");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
-				frame.setVisible(false);
 			}
 		});
 	}
 
 	public JFrame getFrame() {
-		return frame;
+		return frmMarket;
 	}
 
 }

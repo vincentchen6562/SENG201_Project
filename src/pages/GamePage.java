@@ -58,6 +58,10 @@ public class GamePage {
 		environment.launchStadiumPage();
 	}
 	
+	public void intoTeam() {
+		environment.launchTeamPage();
+	}
+	
 	public void finishedWindow() {
 		environment.closeGamePage(this);
 	}
@@ -68,7 +72,7 @@ public class GamePage {
 	 */
 	private void initialize() {
 		frmMainPage = new JFrame();
-		frmMainPage.setTitle("Main Page");
+		frmMainPage.setTitle("Home");
 		frmMainPage.setBounds(100, 100, 450, 300);
 		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainPage.getContentPane().setLayout(new MigLayout("", "[][][][][][][][][][][][][][][]", "[][][][][][][][][]"));
@@ -95,9 +99,8 @@ public class GamePage {
 		JButton teamButton = new JButton("Team");
 		teamButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new TeamPage();
-				TeamPage.main(null);
-				frmMainPage.setVisible(false);
+				closeWindow();
+				intoTeam();
 			}
 		});
 		frmMainPage.getContentPane().add(teamButton, "cell 6 3");
@@ -106,6 +109,7 @@ public class GamePage {
 		frmMainPage.getContentPane().add(stadiumButton, "cell 6 4");
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				closeWindow();
 				intoStadium();
 			}
 		});
@@ -115,6 +119,7 @@ public class GamePage {
 		frmMainPage.getContentPane().add(restButton, "cell 6 5");
 		restButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				closeWindow();
 				intoRest();
 			}
 		});

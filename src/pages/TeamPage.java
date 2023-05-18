@@ -1,5 +1,5 @@
 package src.pages;
-import src.*
+import src.*;
 import java.awt.EventQueue;
 
 import javax.swing.JButton;
@@ -10,10 +10,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import net.miginfocom.swing.MigLayout;
+import java.awt.Font;
 
 public class TeamPage {
 
 	private JFrame frame;
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
@@ -34,8 +36,18 @@ public class TeamPage {
 	/**
 	 * Create the application.
 	 */
-	public TeamPage() {
+	public TeamPage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frame.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeTeamPage(this);
 	}
 
 	/**
@@ -47,13 +59,12 @@ public class TeamPage {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new MigLayout("", "[46px][45px]", "[23px]"));
 		
-		JButton backButton = new JButton("<-");
+		JButton backButton = new JButton("<");
+		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
 		frame.getContentPane().add(backButton, "cell 0 0,alignx left,aligny top");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
-				frame.setVisible(false);
+				finishedWindow();
 			}
 		});
 	}

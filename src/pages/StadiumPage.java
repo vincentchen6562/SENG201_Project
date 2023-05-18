@@ -20,7 +20,7 @@ import java.awt.Font;
 
 public class StadiumPage {
 
-	private JFrame frame;
+	private JFrame frmStadium;
 	private GameEnvironment environment;
 
 	/**
@@ -45,11 +45,11 @@ public class StadiumPage {
 	public StadiumPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmStadium.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmStadium.dispose();
 	}
 	
 	public void finishedWindow() {
@@ -61,11 +61,13 @@ public class StadiumPage {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmStadium = new JFrame();
+		frmStadium.setTitle("Stadium");
+		frmStadium.setBounds(100, 100, 450, 300);
+		frmStadium.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton backButton = new JButton("<-");
+		JButton backButton = new JButton("<");
+		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
@@ -292,7 +294,7 @@ public class StadiumPage {
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		panel_2_1_1_1.setLayout(gl_panel_2_1_1_1);
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmStadium.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -417,7 +419,7 @@ public class StadiumPage {
 					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
 		);
 		panel.setLayout(gl_panel);
-		frame.getContentPane().setLayout(groupLayout);
+		frmStadium.getContentPane().setLayout(groupLayout);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
