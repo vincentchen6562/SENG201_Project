@@ -11,6 +11,10 @@ import java.util.Random;
 public class Market {
     private ArrayList<Item> allItems;
     private ArrayList<Athlete> athletesInMarket;
+    
+    public Market(){
+    	
+    }
 
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
 
@@ -20,7 +24,7 @@ public class Market {
         try {
 
             File athleteList = new File(
-                    "/Users/Gotcha/Desktop/University/2023/SENG201_Project/src/AthleteList.txt");
+                    "src/team/AthleteList.txt");
             Scanner athletes = new Scanner(athleteList);
             athletes.useDelimiter(",");
             ArrayList<String> id_list = new ArrayList<>();
@@ -64,12 +68,12 @@ public class Market {
                 }
 
             }
-
+          
             athletesInMarket = athletesInShop;
 
-            // for (Athlete athlete : athletesInShop) {
-            // System.out.println(athlete.getFullName());
-            // }
+//             for (Athlete athlete : athletesInShop) {
+//             System.out.println(athlete.getFullName());
+//             }
 
             athletes.close();
 
@@ -81,6 +85,8 @@ public class Market {
     }
 
     public ArrayList<Athlete> getAthletes() {
+    	Difficulty difficulty = new Difficulty("Normal"); // TODO difficulty proper implementation
+    	generateAthleteShop(difficulty, 1); // TODO proper ability to get week/season
         return athletesInMarket;
     }
 

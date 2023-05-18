@@ -2,7 +2,7 @@ package src.team;
 
 public class Athlete extends Statistics {
     private String name;
-    private String nickName;
+    private String nickName = "";
     private String position;
     private int stamina;
     private boolean isInjured;
@@ -20,7 +20,7 @@ public class Athlete extends Statistics {
     }
 
     public String getFullName() {
-        return name + " (" + nickName + ")";
+        return name + " " + nickName + "";
     }
 
     public String getPosition() {

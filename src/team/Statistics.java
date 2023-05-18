@@ -1,5 +1,7 @@
 package src.team;
 
+import java.util.ArrayList;
+
 public class Statistics {
     private int offence;
     private int defence;
@@ -23,6 +25,15 @@ public class Statistics {
 
     public int getAgility(){
         return agility;
+    }
+    
+    public ArrayList<Integer> getStatList(){
+    	ArrayList<Integer> StatList = new ArrayList<Integer>();
+    	StatList.add(getOffence());
+    	StatList.add(getDefence());
+    	StatList.add(getAgility());
+    	return StatList;
+    	
     }
 
     public int overallStat(){
