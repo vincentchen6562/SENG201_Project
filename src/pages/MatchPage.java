@@ -1,14 +1,10 @@
 package src.pages;
 
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JButton;
 
-public class StadiumPage {
+public class MatchPage {
 
 	private JFrame frame;
 
@@ -19,7 +15,7 @@ public class StadiumPage {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					StadiumPage window = new StadiumPage();
+					MatchPage window = new MatchPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -31,7 +27,7 @@ public class StadiumPage {
 	/**
 	 * Create the application.
 	 */
-	public StadiumPage() {
+	public MatchPage() {
 		initialize();
 	}
 
@@ -42,17 +38,6 @@ public class StadiumPage {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[45px]", "[23px]"));
-		
-		JButton backButton = new JButton("<-");
-		frame.getContentPane().add(backButton, "cell 0 0,grow");
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
-				frame.setVisible(false);
-			}
-		});
 	}
 
 }

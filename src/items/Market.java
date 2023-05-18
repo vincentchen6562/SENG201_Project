@@ -13,7 +13,7 @@ public class Market {
     private ArrayList<Athlete> athletesInMarket;
 
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
-
+    	
     }
 
     public void generateAthleteShop(Difficulty difficulty, int seasonNumber) {
