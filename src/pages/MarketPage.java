@@ -11,6 +11,9 @@ import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.Font;
+import javax.swing.*;
+import src.team.Athlete;
+import src.items.*;
 
 public class MarketPage {
 
