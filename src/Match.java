@@ -10,7 +10,7 @@ public class Match {
     public Match(int totalScore, int reward, int points) {
         scoreTotal = totalScore;
         priceMoney = reward;
-        pointsWorth = points; // this indicates how much points a match is worth depending on the stats of the
+        pointsWorth = points; //difference you win by from match // this indicates how much points a match is worth depending on the stats of the
                               // opponents
     }
 
