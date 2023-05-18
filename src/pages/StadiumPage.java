@@ -1,4 +1,5 @@
 package src.pages;
+import src.*;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -11,29 +12,41 @@ import javax.swing.JButton;
 public class StadiumPage {
 
 	private JFrame frame;
+	private GameEnvironment environment;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StadiumPage window = new StadiumPage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					StadiumPage window = new StadiumPage();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
-	public StadiumPage() {
+	public StadiumPage(GameEnvironment incomingEnvironment) {
+		environment = incomingEnvironment;
 		initialize();
+		frame.setVisible(true);
 	}
+	
+	public void closeWindow() {
+		frame.dispose();
+	}
+	
+	public void finishedWindow() {
+		environment.closeStadiumPage(this);
+	}
+	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -48,9 +61,7 @@ public class StadiumPage {
 		frame.getContentPane().add(backButton, "cell 0 0,grow");
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new GamePage();
-				GamePage.main(null);
-				frame.setVisible(false);
+				finishedWindow();
 			}
 		});
 	}

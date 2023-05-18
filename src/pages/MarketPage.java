@@ -1,5 +1,5 @@
 package src.pages;
-import src.*
+import src.*;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,6 +45,7 @@ public class MarketPage {
 	public void finishedWindow() {
 		environment.closeMarketPage(this);
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.

@@ -7,8 +7,8 @@ public class GameEnvironment {
     	SetupPage setupPage = new SetupPage(this);
     }
     
-    public void closeSetupPage(SetupPage setupWindow) {
-    	setupWindow.closeWindow();
+    public void closeSetupPage(SetupPage setupPage) {
+    	setupPage.closeWindow();
     	launchGamePage();
     }
     
@@ -29,7 +29,23 @@ public class GameEnvironment {
     	launchGamePage();
     }
     
+    public void launchRestPage() {
+    	RestPage restPage = new RestPage(this);
+    }
     
+    public void closeRestPage(RestPage restPage) {
+    	restPage.closeWindow();
+    	launchGamePage();
+    }
+    
+    public void launchStadiumPage() {
+    	StadiumPage stadiumPage = new StadiumPage(this);
+    }
+    
+    public void closeStadiumPage(StadiumPage stadiumPage) {
+    	stadiumPage.closeWindow();
+    	launchGamePage();
+    }
     
     public static void main(String [] args) {
     	GameEnvironment game = new GameEnvironment();

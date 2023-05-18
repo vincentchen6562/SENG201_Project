@@ -53,6 +53,7 @@ public class SetupPage {
 	public void finishedWindow() {
 		environment.closeSetupPage(this);
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.

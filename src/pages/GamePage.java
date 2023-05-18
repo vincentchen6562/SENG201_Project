@@ -13,7 +13,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class GamePage {
 
-	private JFrame frame;
+	private JFrame frmMainPage;
 	private GameEnvironment environment;
 	
 	/**
@@ -39,73 +39,83 @@ public class GamePage {
 	public GamePage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmMainPage.setVisible(true);
 	}
 	
 	public void closeWindow() {
-		frame.dispose();
+		frmMainPage.dispose();
+	}
+	
+	public void intoMarket() {
+		environment.launchMarketPage();
+	}
+	
+	public void intoRest() {
+		environment.launchRestPage();
+	}
+	
+	public void intoStadium() {
+		environment.launchStadiumPage();
 	}
 	
 	public void finishedWindow() {
 		environment.closeGamePage(this);
 	}
 	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new MigLayout("", "[][][][][][][][][][][][][][][]", "[][][][][][][][][]"));
+		frmMainPage = new JFrame();
+		frmMainPage.setTitle("Main Page");
+		frmMainPage.setBounds(100, 100, 450, 300);
+		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMainPage.getContentPane().setLayout(new MigLayout("", "[][][][][][][][][][][][][][][]", "[][][][][][][][][]"));
 		
 
 		Bank bank = new Bank();
 		JLabel lblNewLabel = new JLabel(String.format("Money: %d", bank.getBank()));
-		frame.getContentPane().add(lblNewLabel, "cell 0 0");
+		frmMainPage.getContentPane().add(lblNewLabel, "cell 0 0");
 		
 		Game game = new Game(0, 0);
 		JLabel lblNewLabel_1 = new JLabel(String.format("Week: %d",game.getSeason()));
-		frame.getContentPane().add(lblNewLabel_1, "cell 14 0");
+		frmMainPage.getContentPane().add(lblNewLabel_1, "cell 14 0");
 		
 		JButton marketButton = new JButton("Market");
 		marketButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MarketPage();
-				MarketPage.main(null);
-				frame.setVisible(false);
+				closeWindow();
+				intoMarket();
+				
 			}
 		});
-		frame.getContentPane().add(marketButton, "cell 6 2");
+		frmMainPage.getContentPane().add(marketButton, "cell 6 2");
 		
 		JButton teamButton = new JButton("Team");
 		teamButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new TeamPage();
 				TeamPage.main(null);
-				frame.setVisible(false);
+				frmMainPage.setVisible(false);
 			}
 		});
-		frame.getContentPane().add(teamButton, "cell 6 3");
+		frmMainPage.getContentPane().add(teamButton, "cell 6 3");
 
 		JButton stadiumButton = new JButton("Stadium"); 
-		frame.getContentPane().add(stadiumButton, "cell 6 4");
+		frmMainPage.getContentPane().add(stadiumButton, "cell 6 4");
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new StadiumPage();
-				StadiumPage.main(null);
-				frame.setVisible(false);
+				intoStadium();
 			}
 		});
 		
 		
 		JButton restButton = new JButton("Rest");
-		frame.getContentPane().add(restButton, "cell 6 5");
+		frmMainPage.getContentPane().add(restButton, "cell 6 5");
 		restButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new RestPage();
-				RestPage.main(null);
-				frame.setVisible(false);
+				intoRest();
 			}
 		});
 		
