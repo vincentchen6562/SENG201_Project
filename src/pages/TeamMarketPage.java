@@ -12,14 +12,14 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.*;
-import src.team.Athlete;
+import src.team.*;
 import src.items.*;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class MarketPage {
+public class TeamMarketPage {
 
 	private JFrame frmMarket;
 	private GameEnvironment environment;
@@ -43,7 +43,7 @@ public class MarketPage {
 	/**
 	 * Create the application.
 	 */
-	public MarketPage(GameEnvironment incomingEnvironment) {
+	public TeamMarketPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frmMarket.setVisible(true);
@@ -278,7 +278,7 @@ public class MarketPage {
 		buyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (athleteToBuy > 5) {
-					// add athlete to team
+					//Team.addAthlete(athletes.get(athleteToBuy)); TODO add universal team
 				}
 			}
 		});

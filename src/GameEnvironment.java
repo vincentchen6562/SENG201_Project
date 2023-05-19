@@ -21,10 +21,10 @@ public class GameEnvironment {
     }
     
     public void launchMarketPage() {
-    	MarketPage marketPage = new MarketPage(this);
+    	TeamMarketPage marketPage = new TeamMarketPage(this);
     }
     
-    public void closeMarketPage(MarketPage marketPage) {
+    public void closeMarketPage(TeamMarketPage marketPage) {
     	marketPage.closeWindow();
     	launchGamePage();
     }
