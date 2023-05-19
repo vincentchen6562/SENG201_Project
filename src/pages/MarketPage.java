@@ -14,6 +14,10 @@ import java.awt.Font;
 import javax.swing.*;
 import src.team.Athlete;
 import src.items.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MarketPage {
 
@@ -62,21 +66,73 @@ public class MarketPage {
 		frmMarket.setTitle("Market");
 		getFrame().setBounds(100, 100, 450, 300);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMarket.getContentPane().setLayout(new MigLayout("", "[]", "[]"));
 		
 		JButton backButton = new JButton("<");
 		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
-		frmMarket.getContentPane().add(backButton, "cell 0 0");
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
-			}
-		});
 		
+		JPanel statPanel = new JPanel();
+		statPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		
+		JLabel moneyLabel = new JLabel("Money: ");
+		moneyLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		
+		JLabel weekLabel = new JLabel("Week:");
+		weekLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		
+		JLabel pointsLabel = new JLabel("Points:");
+		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		
+		JLabel statsTotalLabel = new JLabel("StatTotal:");
+		statsTotalLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GroupLayout gl_statPanel = new GroupLayout(statPanel);
+		gl_statPanel.setHorizontalGroup(
+			gl_statPanel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 215, Short.MAX_VALUE)
+				.addGroup(gl_statPanel.createSequentialGroup()
+					.addComponent(moneyLabel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+					.addGap(4)
+					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(statsTotalLabel, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+					.addGap(8))
+		);
+		gl_statPanel.setVerticalGroup(
+			gl_statPanel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 26, Short.MAX_VALUE)
+				.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
+					.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addComponent(statsTotalLabel, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+		);
+		statPanel.setLayout(gl_statPanel);
+		
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		
+		JLabel lblWelcomeToThe = new JLabel("Welcome to the Market!");
+		lblWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GroupLayout gl_titlePanel = new GroupLayout(titlePanel);
+		gl_titlePanel.setHorizontalGroup(
+			gl_titlePanel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 168, Short.MAX_VALUE)
+				.addGroup(gl_titlePanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblWelcomeToThe)
+					.addContainerGap(12, Short.MAX_VALUE))
+		);
+		gl_titlePanel.setVerticalGroup(
+			gl_titlePanel.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 26, Short.MAX_VALUE)
+				.addComponent(lblWelcomeToThe, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+		);
+		titlePanel.setLayout(gl_titlePanel);
 		
 		
 		ArrayList<String> athletesNames = new ArrayList<String>();
-		ArrayList<String> athletesStats = new ArrayList<String>();
+		ArrayList<ArrayList<Integer>> athletesStats = new ArrayList<ArrayList<Integer>>();
 		ArrayList<String> athletesCosts = new ArrayList<String>();
 		
 		ArrayList<Athlete> athletes = new Market().getAthletes();
@@ -86,130 +142,194 @@ public class MarketPage {
 			
 			ArrayList<Integer> statList = athletes.get(i).getStatList();
 			statList.add(athletes.get(i).getStamina());
-			String statString = statList.stream()
-					.map(n -> String.valueOf(n))
-					.collect(Collectors.joining(",", "", ""));
-			athletesStats.add(statString);
+//			String statString = statList.stream()
+//					.map(n -> String.valueOf(n))
+//					.collect(Collectors.joining(",", "", ""));
+//			athletesStats.add(statString);
+			athletesStats.add(statList);
 			
 			athletesCosts.add(String.valueOf(athletes.get(i).getPrice()));
 			
 		}
 
 		
-		JLabel nameLabel = new JLabel("Name");
-		nameLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(nameLabel, "cell 1 1,alignx right,aligny top");
+		JPanel InfoPanel = new JPanel();
 		
-		JLabel statDescription = new JLabel("atk,def,agi,sta");
-		statDescription.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(statDescription, "cell 0 2 3 1,alignx right,aligny top");
+		JButton athlete1Button = new JButton(athletesNames.get(0));
+
+		JButton athlete2Button = new JButton(athletesNames.get(1));
+		
+		JButton athlete3Button = new JButton(athletesNames.get(2));
+		
+		JButton athlete4Button = new JButton(athletesNames.get(3));
+		
+		JButton buyButton = new JButton("Buy");
+		GroupLayout groupLayout = new GroupLayout(frmMarket.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(backButton)
+							.addGap(6)
+							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(athlete3Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(athlete1Button, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
+									.addGap(7)
+									.addComponent(athlete2Button, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)))
+							.addGap(4)))
+					.addGap(6)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(buyButton, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, groupLayout.createParallelGroup(Alignment.LEADING)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addComponent(InfoPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGap(10))
+							.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE))))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(backButton)
+						.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(athlete2Button, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(athlete1Button, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+								.addComponent(athlete3Button, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(InfoPanel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(buyButton, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		
+		JLabel nameLabel = new JLabel("Name:");
+		JLabel offenceLabel = new JLabel("Offence:");
+		JLabel defenceLabel = new JLabel("Defence:");
+		JLabel agilityLabel = new JLabel("Agility:");
+		JLabel staminaLabel = new JLabel("Stamina:");
+		JLabel costLabel = new JLabel("Cost:");
+		int athleteToBuy = 10;
+		
+		athlete1Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", athletesNames.get(0)));
+				offenceLabel.setText(String.format("Offence: %s", athletesStats.get(0).get(0)));
+				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(0).get(1)));
+				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(0).get(2)));
+				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(0).get(3)));	
+				costLabel.setText(String.format("Cost: %s", athletesCosts.get(0)));
+				int athleteToBuy = 0;
+			}
+		});
+		
+		athlete2Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", athletesNames.get(1)));
+				offenceLabel.setText(String.format("Offence: %s", athletesStats.get(1).get(0)));
+				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(1).get(1)));
+				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(1).get(2)));
+				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(1).get(3)));	
+				costLabel.setText(String.format("Cost: %s", athletesCosts.get(1)));
+				int athleteToBuy = 1;
+			}
+		});
+		
+		athlete3Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", athletesNames.get(2)));
+				offenceLabel.setText(String.format("Offence: %s", athletesStats.get(2).get(0)));
+				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(2).get(1)));
+				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(2).get(2)));
+				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(2).get(3)));	
+				costLabel.setText(String.format("Cost: %s", athletesCosts.get(2)));
+				int athleteToBuy = 2;
+			}
+		});
+		
+		athlete4Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", athletesNames.get(3)));
+				offenceLabel.setText(String.format("Offence: %s", athletesStats.get(3).get(0)));
+				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(3).get(1)));
+				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(3).get(2)));
+				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(3).get(3)));	
+				costLabel.setText(String.format("Cost: %s", athletesCosts.get(3)));
+				int athleteToBuy = 3;
+			}
+		});
+		
+		buyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (athleteToBuy > 5) {
+					// add athlete to team
+				}
+			}
+		});
+		
+
+		
+
+		
+		
+		GroupLayout gl_InfoPanel = new GroupLayout(InfoPanel);
+		gl_InfoPanel.setHorizontalGroup(
+			gl_InfoPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_InfoPanel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_InfoPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(nameLabel, GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+						.addComponent(offenceLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addComponent(defenceLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addComponent(agilityLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addComponent(staminaLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addComponent(costLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		gl_InfoPanel.setVerticalGroup(
+			gl_InfoPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_InfoPanel.createSequentialGroup()
+					.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addGap(5)
+					.addComponent(offenceLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(defenceLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(agilityLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(staminaLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(costLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE))
+		);
+		InfoPanel.setLayout(gl_InfoPanel);
+		frmMarket.getContentPane().setLayout(groupLayout);
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
+		
 	
 		
-		JLabel costLabel = new JLabel("Cost");
-		costLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(costLabel, "cell 2 3,alignx right,aligny top");
-		
-		JLabel buyPrompt = new JLabel("Buy");
-		buyPrompt.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(buyPrompt, "cell 2 4,alignx right,aligny center");
-		
-		
-		// One
-		JLabel athlete1Name = new JLabel(athletesNames.get(0));
-		athlete1Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete1Name, "cell 3 1,alignx left,aligny top");
-		
-		JLabel athlete1Stats = new JLabel(athletesStats.get(0));
-		athlete1Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete1Stats, "cell 3 2,alignx left,aligny top");	
-		
-		JLabel athlete1Cost = new JLabel(athletesCosts.get(0));
-		athlete1Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete1Cost, "cell 3 3,alignx left,aligny top");
-		
-		JRadioButton athlete1RadioButton = new JRadioButton("");
-		frame.getContentPane().add(athlete1RadioButton, "cell 3 4,alignx left,aligny top");
-		
-		// Two
-		JLabel athlete2Name = new JLabel(athletesNames.get(1));
-		athlete2Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete2Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete2Name, "cell 4 1,alignx left,aligny top");
-		
-		JLabel athlete2Stats = new JLabel(athletesStats.get(1));
-		athlete2Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete2Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete2Stats, "cell 4 2,alignx left,aligny top");	
-		
-		JLabel athlete2Cost = new JLabel(athletesCosts.get(1));
-		athlete2Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete2Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete2Cost, "cell 4 3,alignx left,aligny top");
-		
-		JRadioButton athlete2RadioButton = new JRadioButton("");
-		frame.getContentPane().add(athlete2RadioButton, "cell 4 4,alignx left,aligny top");
-		
-		// Three
-		JLabel athlete3Name = new JLabel(athletesNames.get(2));
-		athlete3Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete3Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete3Name, "cell 5 1,alignx left,aligny top");
-		
-		JLabel athlete3Stats = new JLabel(athletesStats.get(2));
-		athlete3Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete3Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete3Stats, "cell 5 2,alignx left,aligny top");	
-		
-		JLabel athlete3Cost = new JLabel(athletesCosts.get(2));
-		athlete3Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete3Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete3Cost, "cell 5 3,alignx left,aligny top");
-		
-		JRadioButton athlete3RadioButton = new JRadioButton("");
-		frame.getContentPane().add(athlete3RadioButton, "cell 5 4,alignx left,aligny top");
-		
-		// Four
-		JLabel athlete4Name = new JLabel(athletesNames.get(3));
-		athlete4Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete4Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete4Name, "cell 6 1,alignx left,aligny top");
-		
-		JLabel athlete4Stats = new JLabel(athletesStats.get(3));
-		athlete4Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete4Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete4Stats, "cell 6 2,alignx left,aligny top");	
-		
-		JLabel athlete4Cost = new JLabel(athletesCosts.get(3));
-		athlete4Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete4Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete4Cost, "cell 6 3,alignx left,aligny top");
-		
-		JRadioButton athlete4RadioButton = new JRadioButton("");
-		frame.getContentPane().add(athlete4RadioButton, "cell 6 4,alignx left,aligny top");
-		
-		// Five
-		
-		JLabel athlete5Name = new JLabel(athletesNames.get(4));
-		athlete5Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete5Name.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete5Name, "cell 7 1,alignx left,aligny top");
-		
-		JLabel athlete5Stats = new JLabel(athletesStats.get(4));
-		athlete5Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete5Stats.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete5Stats, "cell 7 2,alignx left,aligny top");	
-		
-		JLabel athlete5Cost = new JLabel(athletesCosts.get(4));
-		athlete5Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		athlete5Cost.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		frame.getContentPane().add(athlete5Cost, "cell 7 3,alignx left,aligny top");
-		
-		JRadioButton athlete5RadioButton = new JRadioButton("");
-		frame.getContentPane().add(athlete5RadioButton, "cell 7 4,alignx left,aligny top");
 	}
 
 	public JFrame getFrame() {
 		return frmMarket;
 	}
-
 }

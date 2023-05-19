@@ -69,231 +69,231 @@ public class StadiumPage {
 		JButton backButton = new JButton("<");
 		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
 		
-		JPanel panel = new JPanel();
-		panel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		JPanel statPanel = new JPanel();
+		statPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
+		JPanel titlePanel = new JPanel();
+		titlePanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		
-		JLabel lblWelcomeToThe = new JLabel("Welcome to the Stadium!");
-		lblWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
-		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_1.createSequentialGroup()
+		JLabel welcomeLabel = new JLabel("Welcome to the Stadium!");
+		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		GroupLayout gl_titlePanel = new GroupLayout(titlePanel);
+		gl_titlePanel.setHorizontalGroup(
+			gl_titlePanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_titlePanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblWelcomeToThe)
+					.addComponent(welcomeLabel)
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
-		gl_panel_1.setVerticalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblWelcomeToThe, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+		gl_titlePanel.setVerticalGroup(
+			gl_titlePanel.createParallelGroup(Alignment.LEADING)
+				.addComponent(welcomeLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
 		);
-		panel_1.setLayout(gl_panel_1);
+		titlePanel.setLayout(gl_titlePanel);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		JPanel match1Panel = new JPanel();
+		match1Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JPanel panel_2_1 = new JPanel();
-		panel_2_1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		JPanel match2Panel = new JPanel();
+		match2Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel lblNewLabel_8_1 = new JLabel("<outcome>");
+		JLabel team2Outcome = new JLabel("<outcome>");
 		
-		JButton btnNewButton_1 = new JButton("Start Match");
+		JButton team2StartButton = new JButton("Start Match");
 		
-		JLabel lblNewLabel_4_1 = new JLabel("Team Name");
-		lblNewLabel_4_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel team2NameTitle = new JLabel("Team Name");
+		team2NameTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_6_1 = new JLabel("<name>");
+		JLabel team2Name = new JLabel("<name>");
 		
-		JLabel lblNewLabel_7_1 = new JLabel("<reward>");
+		JLabel team2Reward = new JLabel("<reward>");
 		
-		JLabel lblNewLabel_5_1 = new JLabel("Reward");
-		lblNewLabel_5_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		GroupLayout gl_panel_2_1 = new GroupLayout(panel_2_1);
-		gl_panel_2_1.setHorizontalGroup(
-			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
+		JLabel team2RewardTitle = new JLabel("Reward");
+		team2RewardTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
+		GroupLayout gl_match2Panel = new GroupLayout(match2Panel);
+		gl_match2Panel.setHorizontalGroup(
+			gl_match2Panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 92, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(1)
-					.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addComponent(team2StartButton, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
 					.addGap(1))
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(18)
-					.addComponent(lblNewLabel_8_1)
+					.addComponent(team2Outcome)
 					.addContainerGap(17, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(21)
-					.addComponent(lblNewLabel_7_1)
+					.addComponent(team2Reward)
 					.addContainerGap(21, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_5_1)
+					.addComponent(team2RewardTitle)
 					.addContainerGap(24, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_6_1)
+					.addComponent(team2Name)
 					.addContainerGap(25, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(13)
-					.addComponent(lblNewLabel_4_1)
+					.addComponent(team2NameTitle)
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
-		gl_panel_2_1.setVerticalGroup(
-			gl_panel_2_1.createParallelGroup(Alignment.LEADING)
+		gl_match2Panel.setVerticalGroup(
+			gl_match2Panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 150, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_1.createSequentialGroup()
+				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_4_1)
+					.addComponent(team2NameTitle)
 					.addGap(8)
-					.addComponent(lblNewLabel_6_1)
+					.addComponent(team2Name)
 					.addGap(7)
-					.addComponent(lblNewLabel_5_1)
+					.addComponent(team2RewardTitle)
 					.addGap(4)
-					.addComponent(lblNewLabel_7_1)
+					.addComponent(team2Reward)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1)
+					.addComponent(team2StartButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_8_1)
+					.addComponent(team2Outcome)
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
-		panel_2_1.setLayout(gl_panel_2_1);
+		match2Panel.setLayout(gl_match2Panel);
 		
-		JPanel panel_2_1_1 = new JPanel();
-		panel_2_1_1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		JPanel match3Panel = new JPanel();
+		match3Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel lblNewLabel_8_1_1 = new JLabel("<outcome>");
+		JLabel team3Outcome = new JLabel("<outcome>");
 		
-		JButton btnNewButton_1_1 = new JButton("Start Match");
+		JButton team3StartButton = new JButton("Start Match");
 		
-		JLabel lblNewLabel_4_1_1 = new JLabel("Team Name");
-		lblNewLabel_4_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel team3NameTitle = new JLabel("Team Name");
+		team3NameTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_6_1_1 = new JLabel("<name>");
+		JLabel team3Name = new JLabel("<name>");
 		
-		JLabel lblNewLabel_7_1_1 = new JLabel("<reward>");
+		JLabel team3Reward = new JLabel("<reward>");
 		
-		JLabel lblNewLabel_5_1_1 = new JLabel("Reward");
-		lblNewLabel_5_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		GroupLayout gl_panel_2_1_1 = new GroupLayout(panel_2_1_1);
-		gl_panel_2_1_1.setHorizontalGroup(
-			gl_panel_2_1_1.createParallelGroup(Alignment.LEADING)
+		JLabel team3RewardTitle = new JLabel("Reward");
+		team3RewardTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
+		GroupLayout gl_match3Panel = new GroupLayout(match3Panel);
+		gl_match3Panel.setHorizontalGroup(
+			gl_match3Panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 92, Short.MAX_VALUE)
 				.addGap(0, 92, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(1)
-					.addComponent(btnNewButton_1_1, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addComponent(team3StartButton, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
 					.addGap(1))
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(18)
-					.addComponent(lblNewLabel_8_1_1)
+					.addComponent(team3Outcome)
 					.addContainerGap(17, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(21)
-					.addComponent(lblNewLabel_7_1_1)
+					.addComponent(team3Reward)
 					.addContainerGap(21, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_5_1_1)
+					.addComponent(team3RewardTitle)
 					.addContainerGap(24, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_6_1_1)
+					.addComponent(team3Name)
 					.addContainerGap(25, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(13)
-					.addComponent(lblNewLabel_4_1_1)
+					.addComponent(team3NameTitle)
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
-		gl_panel_2_1_1.setVerticalGroup(
-			gl_panel_2_1_1.createParallelGroup(Alignment.LEADING)
+		gl_match3Panel.setVerticalGroup(
+			gl_match3Panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 150, Short.MAX_VALUE)
 				.addGap(0, 150, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_1_1.createSequentialGroup()
+				.addGroup(gl_match3Panel.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_4_1_1)
+					.addComponent(team3NameTitle)
 					.addGap(8)
-					.addComponent(lblNewLabel_6_1_1)
+					.addComponent(team3Name)
 					.addGap(7)
-					.addComponent(lblNewLabel_5_1_1)
+					.addComponent(team3RewardTitle)
 					.addGap(4)
-					.addComponent(lblNewLabel_7_1_1)
+					.addComponent(team3Reward)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1_1)
+					.addComponent(team3StartButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_8_1_1)
+					.addComponent(team3Outcome)
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
-		panel_2_1_1.setLayout(gl_panel_2_1_1);
+		match3Panel.setLayout(gl_match3Panel);
 		
-		JPanel panel_2_1_1_1 = new JPanel();
-		panel_2_1_1_1.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		JPanel match4Panel = new JPanel();
+		match4Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel lblNewLabel_8_1_1_1 = new JLabel("<outcome>");
+		JLabel team4Outcome = new JLabel("<outcome>");
 		
-		JButton btnNewButton_1_1_1 = new JButton("Start Match");
+		JButton team4StartButton = new JButton("Start Match");
 		
-		JLabel lblNewLabel_4_1_1_1 = new JLabel("Team Name");
-		lblNewLabel_4_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel team4NameTitle = new JLabel("Team Name");
+		team4NameTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_6_1_1_1 = new JLabel("<name>");
+		JLabel team4Name = new JLabel("<name>");
 		
-		JLabel lblNewLabel_7_1_1_1 = new JLabel("<reward>");
+		JLabel team4Reward = new JLabel("<reward>");
 		
-		JLabel lblNewLabel_5_1_1_1 = new JLabel("Reward");
-		lblNewLabel_5_1_1_1.setFont(new Font("Tahoma", Font.BOLD, 11));
-		GroupLayout gl_panel_2_1_1_1 = new GroupLayout(panel_2_1_1_1);
-		gl_panel_2_1_1_1.setHorizontalGroup(
-			gl_panel_2_1_1_1.createParallelGroup(Alignment.LEADING)
+		JLabel team4RewardTitle = new JLabel("Reward");
+		team4RewardTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
+		GroupLayout gl_match4Panel = new GroupLayout(match4Panel);
+		gl_match4Panel.setHorizontalGroup(
+			gl_match4Panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 92, Short.MAX_VALUE)
 				.addGap(0, 92, Short.MAX_VALUE)
 				.addGap(0, 92, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(1)
-					.addComponent(btnNewButton_1_1_1, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+					.addComponent(team4StartButton, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
 					.addGap(1))
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(18)
-					.addComponent(lblNewLabel_8_1_1_1)
+					.addComponent(team4Outcome)
 					.addContainerGap(17, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(21)
-					.addComponent(lblNewLabel_7_1_1_1)
+					.addComponent(team4Reward)
 					.addContainerGap(21, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_5_1_1_1)
+					.addComponent(team4RewardTitle)
 					.addContainerGap(24, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(25)
-					.addComponent(lblNewLabel_6_1_1_1)
+					.addComponent(team4Name)
 					.addContainerGap(25, Short.MAX_VALUE))
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(13)
-					.addComponent(lblNewLabel_4_1_1_1)
+					.addComponent(team4NameTitle)
 					.addContainerGap(12, Short.MAX_VALUE))
 		);
-		gl_panel_2_1_1_1.setVerticalGroup(
-			gl_panel_2_1_1_1.createParallelGroup(Alignment.LEADING)
+		gl_match4Panel.setVerticalGroup(
+			gl_match4Panel.createParallelGroup(Alignment.LEADING)
 				.addGap(0, 150, Short.MAX_VALUE)
 				.addGap(0, 150, Short.MAX_VALUE)
 				.addGap(0, 150, Short.MAX_VALUE)
-				.addGroup(gl_panel_2_1_1_1.createSequentialGroup()
+				.addGroup(gl_match4Panel.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_4_1_1_1)
+					.addComponent(team4NameTitle)
 					.addGap(8)
-					.addComponent(lblNewLabel_6_1_1_1)
+					.addComponent(team4Name)
 					.addGap(7)
-					.addComponent(lblNewLabel_5_1_1_1)
+					.addComponent(team4RewardTitle)
 					.addGap(4)
-					.addComponent(lblNewLabel_7_1_1_1)
+					.addComponent(team4Reward)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton_1_1_1)
+					.addComponent(team4StartButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_8_1_1_1)
+					.addComponent(team4Outcome)
 					.addContainerGap(21, Short.MAX_VALUE))
 		);
-		panel_2_1_1_1.setLayout(gl_panel_2_1_1_1);
+		match4Panel.setLayout(gl_match4Panel);
 		GroupLayout groupLayout = new GroupLayout(frmStadium.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -302,17 +302,17 @@ public class StadiumPage {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(backButton)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
+							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 168, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+							.addComponent(statPanel, GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+							.addComponent(match1Panel, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+							.addComponent(match2Panel, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
 							.addGap(30)
-							.addComponent(panel_2_1_1, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
+							.addComponent(match3Panel, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(panel_2_1_1_1, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(match4Panel, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -320,105 +320,105 @@ public class StadiumPage {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(backButton)
-						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+						.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 					.addGap(29)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel_2_1, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2_1_1, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-						.addComponent(panel_2_1_1_1, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+						.addComponent(match2Panel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+						.addComponent(match1Panel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+						.addComponent(match3Panel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+						.addComponent(match4Panel, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(56, Short.MAX_VALUE))
 		);
 		
-		JLabel lblNewLabel_4 = new JLabel("Team Name");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel team1NameTitle = new JLabel("Team Name");
+		team1NameTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_5 = new JLabel("Reward");
-		lblNewLabel_5.setFont(new Font("Tahoma", Font.BOLD, 11));
+		JLabel team1RewardTitle = new JLabel("Reward");
+		team1RewardTitle.setFont(new Font("Tahoma", Font.BOLD, 11));
 		
-		JLabel lblNewLabel_6 = new JLabel("<name>");
+		JLabel team1Name = new JLabel("<name>");
 		
-		JLabel lblNewLabel_7 = new JLabel("<reward>");
+		JLabel team1Reward = new JLabel("<reward>");
 		
-		JButton btnNewButton = new JButton("Start Match");
+		JButton team1StartButton = new JButton("Start Match");
 		
-		JLabel lblNewLabel_8 = new JLabel("<outcome>");
-		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
-		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_panel_2.createSequentialGroup()
+		JLabel team1Outcome = new JLabel("<outcome>");
+		GroupLayout gl_match1Panel = new GroupLayout(match1Panel);
+		gl_match1Panel.setHorizontalGroup(
+			gl_match1Panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_match1Panel.createSequentialGroup()
+					.addGroup(gl_match1Panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_match1Panel.createSequentialGroup()
 							.addGap(18)
-							.addComponent(lblNewLabel_8))
-						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(team1Outcome))
+						.addGroup(gl_match1Panel.createSequentialGroup()
 							.addGap(21)
-							.addComponent(lblNewLabel_7))
-						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(team1Reward))
+						.addGroup(gl_match1Panel.createSequentialGroup()
 							.addGap(25)
-							.addComponent(lblNewLabel_5))
-						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(team1RewardTitle))
+						.addGroup(gl_match1Panel.createSequentialGroup()
 							.addGap(25)
-							.addComponent(lblNewLabel_6))
-						.addGroup(gl_panel_2.createSequentialGroup()
+							.addComponent(team1Name))
+						.addGroup(gl_match1Panel.createSequentialGroup()
 							.addGap(13)
-							.addComponent(lblNewLabel_4))
-						.addComponent(btnNewButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
+							.addComponent(team1NameTitle))
+						.addComponent(team1StartButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
 					.addContainerGap())
 		);
-		gl_panel_2.setVerticalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel_2.createSequentialGroup()
+		gl_match1Panel.setVerticalGroup(
+			gl_match1Panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_match1Panel.createSequentialGroup()
 					.addGap(5)
-					.addComponent(lblNewLabel_4)
+					.addComponent(team1NameTitle)
 					.addGap(8)
-					.addComponent(lblNewLabel_6)
+					.addComponent(team1Name)
 					.addGap(7)
-					.addComponent(lblNewLabel_5)
+					.addComponent(team1RewardTitle)
 					.addGap(4)
-					.addComponent(lblNewLabel_7)
+					.addComponent(team1Reward)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnNewButton)
+					.addComponent(team1StartButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_8)
+					.addComponent(team1Outcome)
 					.addContainerGap(19, Short.MAX_VALUE))
 		);
-		panel_2.setLayout(gl_panel_2);
+		match1Panel.setLayout(gl_match1Panel);
 		
-		JLabel lblNewLabel = new JLabel("Money: ");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		JLabel moneyLabel = new JLabel("Money: ");
+		moneyLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel lblNewLabel_1 = new JLabel("Week:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		JLabel weekLabel = new JLabel("Week:");
+		weekLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel lblNewLabel_2 = new JLabel("Points:");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		JLabel pointsLabel = new JLabel("Points:");
+		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel lblNewLabel_3 = new JLabel("StatTotal:");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createSequentialGroup()
-					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
+		JLabel statsTotalLabel = new JLabel("StatTotal:");
+		statsTotalLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		GroupLayout gl_statPanel = new GroupLayout(statPanel);
+		gl_statPanel.setHorizontalGroup(
+			gl_statPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_statPanel.createSequentialGroup()
+					.addComponent(moneyLabel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
+					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 					.addGap(4)
-					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
+					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+					.addComponent(statsTotalLabel, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
 					.addGap(8))
 		);
-		gl_panel.setVerticalGroup(
-			gl_panel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+		gl_statPanel.setVerticalGroup(
+			gl_statPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
+					.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
+					.addComponent(statsTotalLabel, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
 		);
-		panel.setLayout(gl_panel);
+		statPanel.setLayout(gl_statPanel);
 		frmStadium.getContentPane().setLayout(groupLayout);
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

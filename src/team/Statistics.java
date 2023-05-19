@@ -28,11 +28,11 @@ public class Statistics {
     }
     
     public ArrayList<Integer> getStatList(){
-    	ArrayList<Integer> StatList = new ArrayList<Integer>();
-    	StatList.add(getOffence());
-    	StatList.add(getDefence());
-    	StatList.add(getAgility());
-    	return StatList;
+    	ArrayList<Integer> statList = new ArrayList<Integer>();
+    	statList.add(getOffence());
+    	statList.add(getDefence());
+    	statList.add(getAgility());
+    	return statList;
     	
     }
 
