@@ -10,6 +10,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JPanel;
+import java.awt.Font;
 
 public class GamePage {
 
@@ -73,20 +78,18 @@ public class GamePage {
 	private void initialize() {
 		frmMainPage = new JFrame();
 		frmMainPage.setTitle("Home");
-		frmMainPage.setBounds(100, 100, 450, 300);
+		frmMainPage.setBounds(100, 100, 600, 400);
 		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmMainPage.getContentPane().setLayout(new MigLayout("", "[][][][][][][][][][][][][][][]", "[][][][][][][][][]"));
 		
 
 		Bank bank = new Bank();
 		JLabel lblNewLabel = new JLabel(String.format("Money: %d", bank.getBank()));
-		frmMainPage.getContentPane().add(lblNewLabel, "cell 0 0");
 		
 		Game game = new Game(0, 0);
 		JLabel lblNewLabel_1 = new JLabel(String.format("Week: %d",game.getSeason()));
-		frmMainPage.getContentPane().add(lblNewLabel_1, "cell 14 0");
 		
 		JButton marketButton = new JButton("Market");
+		marketButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		marketButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
@@ -94,19 +97,18 @@ public class GamePage {
 				
 			}
 		});
-		frmMainPage.getContentPane().add(marketButton, "cell 6 2");
 		
 		JButton teamButton = new JButton("Team");
+		teamButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		teamButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
 				intoTeam();
 			}
 		});
-		frmMainPage.getContentPane().add(teamButton, "cell 6 3");
 
-		JButton stadiumButton = new JButton("Stadium"); 
-		frmMainPage.getContentPane().add(stadiumButton, "cell 6 4");
+		JButton stadiumButton = new JButton("Stadium");
+		stadiumButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		stadiumButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
@@ -116,7 +118,56 @@ public class GamePage {
 		
 		
 		JButton restButton = new JButton("Rest");
-		frmMainPage.getContentPane().add(restButton, "cell 6 5");
+		restButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JPanel GreetingPanel = new JPanel();
+		GroupLayout groupLayout = new GroupLayout(frmMainPage.getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addGap(7)
+							.addComponent(lblNewLabel)
+							.addGap(431)
+							.addComponent(lblNewLabel_1)
+							.addGap(46))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(GreetingPanel, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(7)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel)
+						.addComponent(lblNewLabel_1))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(GreetingPanel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+						.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+						.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+						.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
+					.addContainerGap())
+		);
+		
+		JLabel GreetingMessage = new JLabel("Hello <team name>'s Manager!");
+		GreetingMessage.setFont(new Font("Orbitron", Font.BOLD, 26));
+		GreetingPanel.add(GreetingMessage);
+		frmMainPage.getContentPane().setLayout(groupLayout);
 		restButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
@@ -125,5 +176,4 @@ public class GamePage {
 		});
 		
 	}
-
 }

@@ -16,6 +16,8 @@ import javax.swing.JSlider;
 import src.*;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import java.awt.Font;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class SetupPage {
 
@@ -66,77 +68,82 @@ public class SetupPage {
 		frmWelcome.setBounds(100, 100, 450, 300);
 		frmWelcome.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JLabel setupLabel = new JLabel("Setup");
+		JLabel setupLabel = new JLabel("Welcome to Basketball League!");
+		setupLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
 		
 		JLabel teamInput = new JLabel("Team Name");
+		teamInput.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		String teamName = teamInput.getText();
 		
 		txtTeamName = new JTextField();
 		txtTeamName.setColumns(10);
 		
 		JLabel difficultyLabel = new JLabel("Difficulty");
+		difficultyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JSpinner difficultySpinner = new JSpinner();
-		difficultySpinner.setModel(new SpinnerListModel(new String[] {"Easy", "Medium", "Hard"}));
+		difficultySpinner.setModel(new SpinnerListModel(new String[] {"Normal", "Hard"}));
 		String difficulty = (String) difficultySpinner.getValue();
 
 		
 		JLabel weekLabel = new JLabel("Week No.");
+		weekLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JSlider weekSlider = new JSlider();
+		weekSlider.setValue(10);
 		int weekNum = weekSlider.getValue();
 		
 		JButton finishSetup = new JButton("Finish Setup");
+		finishSetup.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		GroupLayout groupLayout = new GroupLayout(frmWelcome.getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(183)
-					.addComponent(setupLabel))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(123)
-					.addComponent(teamInput)
-					.addGap(4)
-					.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(123)
-					.addComponent(difficultyLabel)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(109)
+							.addComponent(teamInput))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(123)
+							.addComponent(difficultyLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(120)
+							.addComponent(weekLabel)))
 					.addGap(18)
-					.addComponent(difficultySpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(difficultySpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(weekSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(28, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(123)
-					.addComponent(weekLabel)
-					.addGap(13)
-					.addComponent(weekSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(183)
-					.addComponent(finishSetup))
+					.addGap(37)
+					.addComponent(setupLabel, GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+					.addGap(31))
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(150)
+					.addComponent(finishSetup)
+					.addContainerGap(169, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(7)
-					.addComponent(setupLabel)
-					.addGap(33)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(teamInput))
-						.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGap(25)
+					.addComponent(setupLabel, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE, false)
+						.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(teamInput))
 					.addGap(4)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(difficultyLabel))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE, false)
+						.addComponent(difficultyLabel)
 						.addComponent(difficultySpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(4)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(6)
-							.addComponent(weekLabel))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 						.addComponent(weekSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(4)
-					.addComponent(finishSetup))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(finishSetup)
+					.addContainerGap(88, Short.MAX_VALUE))
 		);
 		frmWelcome.getContentPane().setLayout(groupLayout);
 		
