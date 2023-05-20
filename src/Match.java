@@ -1,4 +1,9 @@
 package src;
+import java.util.ArrayList;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.Random;
 
 public class Match {
     private int scoreTotal;
@@ -41,6 +46,7 @@ public class Match {
     public void incrementOppScore(int score) {
         opponentScore += score;
     }
+    
 
     public String resultMessage() {
         if (playerScore > opponentScore) {
@@ -49,5 +55,56 @@ public class Match {
             return "Better luck next time!";
         }
     }
+    
+    public String generateOpponentTeamName() {
+
+        ArrayList<String> nameList = new ArrayList<>();
+
+        try {
+            File OppTeamNamesList = new File(
+                    "src/OpponentTName.txt");
+            Scanner OppTeamNames = new Scanner(OppTeamNamesList);
+            
+            while (OppTeamNames.hasNextLine()) {
+                nameList.add(OppTeamNames.nextLine());
+            }
+
+            OppTeamNames.close();
+
+            Random rng = new Random(); // need to put seed here (e.g. 201) for randomness testing
+            int randInt = rng.nextInt(1, 20);
+            return nameList.get(randInt);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        Random rng = new Random(); // need to put seed here (e.g. 201) for randomness testing
+        int randInt = rng.nextInt(1, 20);
+        return nameList.get(randInt);
+    }
+
+    public ArrayList<String> getOpponentTNames() {
+        ArrayList<String> names = new ArrayList<>();
+
+        while(names.size() < 4) {
+            String name = generateOpponentTeamName();
+
+            if(names.contains(name)){
+            } else {
+                names.add(name);
+            }
+            
+        }
+
+        return names;
+    }
+
+    // public static void main(String[] args) {
+    //     Match match1 = new Match(10, 500, 6);
+    //     System.out.println(match1.getOpponentTNames());
+    // }
+
 
 }
