@@ -13,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class MarketChoicePage {
 
@@ -22,18 +24,18 @@ public class MarketChoicePage {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MarketChoicePage window = new MarketChoicePage();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					MarketChoicePage window = new MarketChoicePage();
+//					window.frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
@@ -65,12 +67,24 @@ public class MarketChoicePage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 600, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		JButton btnNewButton = new JButton("Item Market");
+		JButton itemButton = new JButton("Item Market");
+		itemButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.launchItemMarketPage();
+			}
+		});
 		
-		JButton btnNewButton_1 = new JButton("Player Market");
+		JButton athleteButton = new JButton("Athlete Market");
+		athleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				environment.launchAthleteMarketPage();
+			}
+		});
+		
+		
 		
 		JButton backButton = new JButton("<");
 		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
@@ -126,25 +140,27 @@ public class MarketChoicePage {
 		);
 		statPanel.setLayout(gl_statPanel);
 		
-		JLabel lblWelcomeToThe = new JLabel("Welcome to the Market!");
-		lblWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		JLabel welcomeLabel = new JLabel("Welcome to the Market!");
+		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(lblWelcomeToThe, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)))
-					.addGap(18)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(statPanel, GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE))
-					.addGap(29)
-					.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE)
-					.addGap(308))
+							.addComponent(welcomeLabel, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
+						.addComponent(itemButton, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE))
+					.addGap(10)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
+							.addGap(29)
+							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(137)
+							.addComponent(athleteButton, GroupLayout.PREFERRED_SIZE, 227, GroupLayout.PREFERRED_SIZE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -154,13 +170,13 @@ public class MarketChoicePage {
 							.addGap(3)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(backButton)
-								.addComponent(lblWelcomeToThe, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(welcomeLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))
 						.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(btnNewButton, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 232, GroupLayout.PREFERRED_SIZE)))
+					.addGap(53)
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(athleteButton, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+						.addComponent(itemButton, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)))
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}
