@@ -111,7 +111,7 @@ public class AthleteMarketPage {
 		
 		JPanel titlePanel = new JPanel();
 		
-		JLabel lblWelcomeToThe = new JLabel("Welcome to the Player Market!");
+		JLabel lblWelcomeToThe = new JLabel("Welcome to the Athlete Market!");
 		lblWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout gl_titlePanel = new GroupLayout(titlePanel);
 		gl_titlePanel.setHorizontalGroup(
