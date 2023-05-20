@@ -52,7 +52,7 @@ public class GamePage {
 	}
 	
 	public void intoMarket() {
-		environment.launchMarketPage();
+		environment.launchMarketChoicePage();
 	}
 	
 	public void intoRest() {

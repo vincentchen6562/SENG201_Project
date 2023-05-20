@@ -1,5 +1,5 @@
-type,itemBoost,BoostType,price
-Coach,4
+type,name,itemBoost,BoostType,price
+Coach,Kush,4,All,900
 Coach,1
 Coach,6
 Coach,8

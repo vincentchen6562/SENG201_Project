@@ -50,5 +50,6 @@ public class Game {
 // - Need to restructure the packages since it is assessed
 // - Need to comment properly (for Javadoc and final assessment), this includes
 // the GUI classes, REMEMBER: no commented out code
-
+// JUnit testing
+// Javadoc
 // DONE

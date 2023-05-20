@@ -20,13 +20,31 @@ public class GameEnvironment {
     	mainPage.closeWindow();
     }
     
-    public void launchMarketPage() {
-    	TeamMarketPage marketPage = new TeamMarketPage(this);
+    public void launchMarketChoicePage() {
+    	MarketChoicePage marketChoicePage = new MarketChoicePage(this);
     }
     
-    public void closeMarketPage(TeamMarketPage marketPage) {
-    	marketPage.closeWindow();
+    public void closeMarketChoicePage(MarketChoicePage marketChoicePage) {
+    	marketChoicePage.closeWindow();
     	launchGamePage();
+    }
+    
+    public void launchItemMarketPage() {
+    	ItemMarketPage itemMarketPage = new ItemMarketPage(this);
+    }
+    
+    public void closeItemMarketPage(ItemMarketPage itemMarketPage) {
+    	itemMarketPage.closeWindow();
+    	launchMarketChoicePage();
+    }
+    
+    public void launchAthleteMarketPage() {
+    	AthleteMarketPage athleteMarketPage = new AthleteMarketPage(this);
+    }
+    
+    public void closeAthleteMarketPage(AthleteMarketPage athleteMarketPage) {
+    	athleteMarketPage.closeWindow();
+    	launchMarketChoicePage();
     }
     
     public void launchRestPage() {

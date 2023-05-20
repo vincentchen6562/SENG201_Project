@@ -19,7 +19,7 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class TeamMarketPage {
+public class AthleteMarketPage {
 
 	private JFrame frmMarket;
 	private GameEnvironment environment;
@@ -43,7 +43,7 @@ public class TeamMarketPage {
 	/**
 	 * Create the application.
 	 */
-	public TeamMarketPage(GameEnvironment incomingEnvironment) {
+	public AthleteMarketPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frmMarket.setVisible(true);
@@ -54,7 +54,7 @@ public class TeamMarketPage {
 	}
 	
 	public void finishedWindow() {
-		environment.closeMarketPage(this);
+		environment.closeAthleteMarketPage(this);
 	}
 	
 
@@ -111,21 +111,19 @@ public class TeamMarketPage {
 		
 		JPanel titlePanel = new JPanel();
 		
-		JLabel lblWelcomeToThe = new JLabel("Welcome to the Market!");
+		JLabel lblWelcomeToThe = new JLabel("Welcome to the Player Market!");
 		lblWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		GroupLayout gl_titlePanel = new GroupLayout(titlePanel);
 		gl_titlePanel.setHorizontalGroup(
 			gl_titlePanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 168, Short.MAX_VALUE)
 				.addGroup(gl_titlePanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblWelcomeToThe)
-					.addContainerGap(12, Short.MAX_VALUE))
+					.addComponent(lblWelcomeToThe, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_titlePanel.setVerticalGroup(
 			gl_titlePanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 26, Short.MAX_VALUE)
-				.addComponent(lblWelcomeToThe, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+				.addComponent(lblWelcomeToThe, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
 		);
 		titlePanel.setLayout(gl_titlePanel);
 		
@@ -168,21 +166,20 @@ public class TeamMarketPage {
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(backButton, Alignment.LEADING)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(backButton)
+							.addGap(49)
+							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(athlete3Button, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-								.addComponent(athlete1Button, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE))
+								.addComponent(athlete3Button, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+								.addComponent(athlete1Button, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(athlete2Button, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(athlete4Button, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
-							.addGap(4))
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
-							.addGap(135)
-							.addComponent(titlePanel, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-							.addGap(57)))
+								.addComponent(athlete2Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+								.addComponent(athlete4Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+							.addGap(4)))
 					.addGap(6)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -194,12 +191,15 @@ public class TeamMarketPage {
 						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(backButton)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGap(3)
+								.addComponent(backButton)))
 						.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)

@@ -1,8 +1,10 @@
 package src.items;
 
 public abstract class Item {
+	String itemType;
     protected String itemName;
     protected int itemBoost;
+    String boostType;
     protected int itemPrice;
 
     public abstract int getPrice();

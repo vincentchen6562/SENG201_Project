@@ -17,7 +17,26 @@ public class Market {
     }
 
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
-    	
+    	try {
+        	File itemList = new File(
+        			"src/items/ItemList.txt");
+	        Scanner items = new Scanner(itemList);
+	        items.useDelimiter(",");
+	        ArrayList<String> id_list = new ArrayList<>();
+	        while (items.hasNextLine()) {
+	        	id_list.add(items.nextLine());
+	        }
+	        
+	        ArrayList<Item> allItems = new ArrayList<Item>();
+	        
+	        for (int i = 0; i < id_list.size(); i++) {
+	        	
+	        }
+    	} catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
     }
 
     public void generateAthleteShop(Difficulty difficulty, int seasonNumber) {
