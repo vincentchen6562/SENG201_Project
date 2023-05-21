@@ -50,6 +50,7 @@ public class Athlete extends Statistics {
     public boolean getIfInjured() {
         return isInjured;
     }
+    
 
     // public void train(Athlete athlete, String stat, int days) {
     // for (int i = 0; i < days; i++) {

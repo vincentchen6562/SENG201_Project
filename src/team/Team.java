@@ -28,6 +28,13 @@ public class Team {
         return members;
     }
     
- 
+    public int getStatTotal() {
+    	int statTotal = 0;
+    	for (Athlete athlete: members) {
+    		statTotal += athlete.getOverallStat();
+    	}
+    	
+    	return statTotal;
+    }
     
 }   

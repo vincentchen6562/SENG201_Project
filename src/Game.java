@@ -8,6 +8,7 @@ public class Game {
     private Team team;
     private Bank bank;
     private Difficulty difficulty;
+    private int points;
 
     public Game(int seasonNumber, int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.seasonNumber = seasonNumber;
@@ -15,6 +16,7 @@ public class Game {
         this.team = team;
         this.bank = bank;
         this.difficulty = difficulty;
+        this.points = 0;
     }
 
     public void setSeason(int seasonNum) { 
@@ -49,6 +51,13 @@ public class Game {
     	return team;
     }
     
+    public void alterPoints(int amount) {
+    	points += amount;
+    }
+    
+    public int getPoints() {
+    	return points;
+    }
 
 
     

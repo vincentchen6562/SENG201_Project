@@ -104,16 +104,16 @@ public class MarketChoicePage {
 		JPanel statPanel = new JPanel();
 		statPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		
-		JLabel moneyLabel = new JLabel("Money: ");
+		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
 		moneyLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel weekLabel = new JLabel("Week:");
+		JLabel weekLabel = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
 		weekLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel pointsLabel = new JLabel("Points:");
+		JLabel pointsLabel = new JLabel(String.format("Points: %d", environment.getGame().getPoints()));
 		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel statsTotalLabel = new JLabel("StatTotal:");
+		JLabel statsTotalLabel = new JLabel(String.format("Stat Total: %d", environment.getGame().getTeam().getStatTotal()));
 		statsTotalLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(

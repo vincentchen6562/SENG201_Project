@@ -81,10 +81,10 @@ public class GamePage {
 		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		JLabel lblNewLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
+		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
 		
 		
-		JLabel lblNewLabel_1 = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
+		JLabel weekLabel = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
 		
 		JButton marketButton = new JButton("Market");
 		marketButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
@@ -122,13 +122,12 @@ public class GamePage {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(7)
-							.addComponent(lblNewLabel)
-							.addGap(431)
-							.addComponent(lblNewLabel_1)
-							.addGap(46))
+							.addComponent(moneyLabel)
+							.addGap(477)
+							.addComponent(weekLabel))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
@@ -147,9 +146,9 @@ public class GamePage {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(7)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel)
-						.addComponent(lblNewLabel_1))
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(moneyLabel)
+						.addComponent(weekLabel))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(GreetingPanel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
