@@ -11,11 +11,7 @@ public class Bank {
         return money;
     }
     
-    public void pay(int amount) {
-        money -= amount;
-    }
-
-    public void receive(int amount) {
-        money += amount;
+    public void alterMoney(int amount) {
+    	money += amount;
     }
 }

@@ -82,11 +82,11 @@ public class TeamPage {
 		
 		JButton sellButton = new JButton("Sell");
 		
-		JButton athlete1Button = new JButton(equippedAthletes.get(0).getFullName());
-		JButton athlete2Button = new JButton(equippedAthletes.get(1).getFullName());
-		JButton athlete3Button = new JButton(equippedAthletes.get(2).getFullName());
-		JButton athlete4Button = new JButton(equippedAthletes.get(3).getFullName());
-		JButton athlete5Button = new JButton(equippedAthletes.get(4).getFullName());
+		JButton athlete1Button = new JButton();
+		JButton athlete2Button = new JButton();
+		JButton athlete3Button = new JButton();
+		JButton athlete4Button = new JButton();
+		JButton athlete5Button = new JButton();
 		JButton excessAthleteButton = new JButton();
 		
 		excessAthleteButton.setForeground(Color.BLACK);
@@ -168,96 +168,149 @@ public class TeamPage {
 		swapButton.setEnabled(false);
 		swapLabel.setEnabled(false);
 		
-		athlete1Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(false);
-				swapButton.setEnabled(false);
-				swapLabel.setEnabled(false);
-				nameLabel.setText(String.format("Name: %s", equippedAthletes.get(0).getFullName()));
-				offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(0).getOffence()));
-				defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(0).getDefence()));
-				agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(0).getAgility()));
-				staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(0).getStamina()));
-				if (equippedAthletes.get(0).getIsInjured()) {
-					healthLabel.setText("Health: Injured");
-				} else {
-					healthLabel.setText("Health: Good-Condition");
+		if (equippedAthletes.size() > 0) {
+			athlete1Button.setText(equippedAthletes.get(0).getFullName());
+			athlete1Button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					comboBox.setEnabled(false);
+					swapButton.setEnabled(false);
+					swapLabel.setEnabled(false);
+					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(0).getFullName()));
+					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(0).getOffence()));
+					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(0).getDefence()));
+					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(0).getAgility()));
+					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(0).getStamina()));
+					if (equippedAthletes.get(0).getIsInjured()) {
+						healthLabel.setText("Health: Injured");
+					} else {
+						healthLabel.setText("Health: Good-Condition");
+					}
+					
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(0).getPrice()/2);
+							environment.getGame().getTeam().getEquippedAthletes().remove(0);
+							finishedWindow();
+						}
+					});
 				}
-			}
-		});
+			});
+		}
 		
-		athlete2Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(false);
-				swapButton.setEnabled(false);
-				swapLabel.setEnabled(false);
-				nameLabel.setText(String.format("Name: %s", equippedAthletes.get(1).getFullName()));
-				offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(1).getOffence()));
-				defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(1).getDefence()));
-				agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(1).getAgility()));
-				staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(1).getStamina()));
-				if (equippedAthletes.get(1).getIsInjured()) {
-					healthLabel.setText("Health: Injured");
-				} else {
-					healthLabel.setText("Health: Good-Condition");
+		if (equippedAthletes.size() > 1) {
+			athlete2Button.setText(equippedAthletes.get(1).getFullName());
+			athlete2Button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					comboBox.setEnabled(false);
+					swapButton.setEnabled(false);
+					swapLabel.setEnabled(false);
+					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(1).getFullName()));
+					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(1).getOffence()));
+					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(1).getDefence()));
+					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(1).getAgility()));
+					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(1).getStamina()));
+					if (equippedAthletes.get(1).getIsInjured()) {
+						healthLabel.setText("Health: Injured");
+					} else {
+						healthLabel.setText("Health: Good-Condition");
+					}
+					
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(1).getPrice()/2);
+							environment.getGame().getTeam().getEquippedAthletes().remove(1);
+							finishedWindow();
+						}
+					});
 				}
-			}
-		});
+			});
+		}
 		
-		athlete3Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(false);
-				swapButton.setEnabled(false);
-				swapLabel.setEnabled(false);
-				nameLabel.setText(String.format("Name: %s", equippedAthletes.get(2).getFullName()));
-				offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(2).getOffence()));
-				defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(2).getDefence()));
-				agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(2).getAgility()));
-				staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(2).getStamina()));
-				if (equippedAthletes.get(2).getIsInjured()) {
-					healthLabel.setText("Health: Injured");
-				} else {
-					healthLabel.setText("Health: Good-Condition");
+		if (equippedAthletes.size() > 2) {
+			athlete3Button.setText(equippedAthletes.get(2).getFullName());
+			athlete3Button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					comboBox.setEnabled(false);
+					swapButton.setEnabled(false);
+					swapLabel.setEnabled(false);
+					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(2).getFullName()));
+					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(2).getOffence()));
+					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(2).getDefence()));
+					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(2).getAgility()));
+					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(2).getStamina()));
+					if (equippedAthletes.get(2).getIsInjured()) {
+						healthLabel.setText("Health: Injured");
+					} else {
+						healthLabel.setText("Health: Good-Condition");
+					}
+					
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(2).getPrice()/2);
+							environment.getGame().getTeam().getEquippedAthletes().remove(2);
+							finishedWindow();
+						}
+					});
 				}
-			}
-		});
+			});	
+		}	
 		
-		athlete4Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(false);
-				swapButton.setEnabled(false);
-				swapLabel.setEnabled(false);
-				nameLabel.setText(String.format("Name: %s", equippedAthletes.get(3).getFullName()));
-				offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(3).getOffence()));
-				defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(3).getDefence()));
-				agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(3).getAgility()));
-				staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(3).getStamina()));
-				if (equippedAthletes.get(3).getIsInjured()) {
-					healthLabel.setText("Health: Injured");
-				} else {
-					healthLabel.setText("Health: Good-Condition");
+		if (equippedAthletes.size() > 3) {
+			athlete4Button.setText(equippedAthletes.get(3).getFullName());
+			athlete4Button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					comboBox.setEnabled(false);
+					swapButton.setEnabled(false);
+					swapLabel.setEnabled(false);
+					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(3).getFullName()));
+					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(3).getOffence()));
+					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(3).getDefence()));
+					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(3).getAgility()));
+					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(3).getStamina()));
+					if (equippedAthletes.get(3).getIsInjured()) {
+						healthLabel.setText("Health: Injured");
+					} else {
+						healthLabel.setText("Health: Good-Condition");
+					}
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(3).getPrice()/2);
+							environment.getGame().getTeam().getEquippedAthletes().remove(3);
+							finishedWindow();
+						}
+					});
 				}
-			}
-		});
+			});
+			
+		}
 		
-		athlete5Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(false);
-				swapButton.setEnabled(false);
-				swapLabel.setEnabled(false);
-				nameLabel.setText(String.format("Name: %s", equippedAthletes.get(4).getFullName()));
-				offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(4).getOffence()));
-				defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(4).getDefence()));
-				agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(4).getAgility()));
-				staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(4).getStamina()));
-				if (equippedAthletes.get(4).getIsInjured()) {
-					healthLabel.setText("Health: Injured");
-				} else {
-					healthLabel.setText("Health: Good-Condition");
+		if (equippedAthletes.size() > 4) {
+			athlete5Button.setText(equippedAthletes.get(4).getFullName());
+			athlete5Button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					comboBox.setEnabled(false);
+					swapButton.setEnabled(false);
+					swapLabel.setEnabled(false);
+					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(4).getFullName()));
+					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(4).getOffence()));
+					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(4).getDefence()));
+					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(4).getAgility()));
+					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(4).getStamina()));
+					if (equippedAthletes.get(4).getIsInjured()) {
+						healthLabel.setText("Health: Injured");
+					} else {
+						healthLabel.setText("Health: Good-Condition");
+					}
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(4).getPrice()/2);
+							environment.getGame().getTeam().getEquippedAthletes().remove(4);
+							finishedWindow();
+						}
+					});
 				}
-			}
-		});
-		
+			});
+		}
 
 		if (excessAthlete != null) {
 			excessAthleteButton.addActionListener(new ActionListener() {
@@ -289,12 +342,10 @@ public class TeamPage {
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex());
-				environment.launchTeamPage();
 				finishedWindow();
 			}
 		});
 				
-		
 		
 		GroupLayout gl_infoPanel = new GroupLayout(infoPanel);
 		gl_infoPanel.setHorizontalGroup(

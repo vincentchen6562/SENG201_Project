@@ -144,7 +144,7 @@ public class AthleteMarketPage {
 //			athletesStats.add(statString);
 			athletesStats.add(statList);
 			
-			athletesCosts.add(String.valueOf(athletes.get(i).getPrice()));
+			athletesCosts.add(String.valueOf(athletes.get(i).getValue()));
 			
 		}
 

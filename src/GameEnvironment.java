@@ -80,7 +80,7 @@ public class GameEnvironment {
     
     public void closeTeamPage(TeamPage teamPage) {
     	teamPage.closeWindow();
-//    	launchGamePage();
+    	launchGamePage();
     }
     
     public void launchMatchPage() {
