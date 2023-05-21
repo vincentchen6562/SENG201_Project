@@ -9,9 +9,11 @@ public abstract class Item {
 
     public abstract int getPrice();
 
-    public Item(String name, int boost, int price) {
-        itemName = name;
+    public Item(String itemType,String name, int boost, String boostType, int price) {
+        this.itemType = itemType;
+    	itemName = name;
         itemBoost = boost;
+        this.boostType = boostType;
         itemPrice = price;
     }
 

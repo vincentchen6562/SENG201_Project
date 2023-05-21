@@ -52,4 +52,5 @@ public class Game {
 // the GUI classes, REMEMBER: no commented out code
 // JUnit testing
 // Javadoc
+// Difficulty/week scaling prices and difficulty of matches
 // DONE

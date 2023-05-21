@@ -1,27 +1,20 @@
-type,name,itemBoost,BoostType,price
-Coach,Kush,4,All,900
-Coach,1
-Coach,6
-Coach,8
-Coach,9
-Coach,9
-Coach,7
-Coach,10
-Equipment,5
-Equipment,6
-Equipment,8
-Equipment,3
-Equipment,4
-Equipment,3
-Equipment,2
-Equipment,8
-Equipment,3
-Equipment,9
-Equipment,4
-
-
-
-
-
-
-
+id,type,name,itemBoost,boostType
+1,Coach,Kush,4,all
+2,Coach,Vincent,7,agi
+3,Coach,Yunu,6,atk
+4,Coach,Kevin,8,agi
+5,Coach,Johnathan,9,atk
+6,Coach,James,9,def
+7,Coach,Kelso,7,def
+8,Coach,Sarah,10,agi
+9,Equipment,shoes,5,agi
+10,Equipment,pants,6,def
+11,Equipment,more shoes,8,agi
+12,Equipment,more pants,8,def
+13,Equipment,towel,4,atk
+14,Equipment,gun,3,atk
+15,Equipment,big gun,5,atk
+16,Equipment,headband,8
+17,Equipment,weighted ball,3
+18,Equipment,Friends with Ref,10
+19,Equipment,even more shoes,6

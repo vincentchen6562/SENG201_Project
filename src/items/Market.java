@@ -30,7 +30,20 @@ public class Market {
 	        ArrayList<Item> allItems = new ArrayList<Item>();
 	        
 	        for (int i = 0; i < id_list.size(); i++) {
+	        	String info = id_list.get(i);
+	        	String[] s2 = info.split(",");
 	        	
+	        	if (i != 0) {
+	        		String type = s2[1];
+	        	}
+	        }
+	        
+	        
+	        ArrayList<Item> itemsInShop = new ArrayList<Item>(); 	  
+	        
+	        while(itemsInShop.size() < 5) {
+	        	Randow rng = new Random();
+	        	int randInt = rng.
 	        }
     	} catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
