@@ -98,7 +98,7 @@ public class StadiumPage {
 		String oppTeam4Name = opponentTeamNames.get(3);
 		
 		JButton backButton = new JButton("<");
-		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		backButton.setFont(new Font("Orbitron", Font.BOLD, 12));
 		
 		JPanel statPanel = new JPanel();
 		statPanel.setBorder(new CompoundBorder());

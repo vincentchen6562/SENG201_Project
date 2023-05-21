@@ -165,16 +165,9 @@ public class Match {
 
     }
 
-    public ArrayList<String> getOpponentAthletes() {
-
-        generateOpponentAthletes();
-        ArrayList<String> athleteNames = new ArrayList<>(20);
-
-        for (Athlete athlete : opposingAthletes) {
-            athleteNames.add(athlete.getFullName());
-        }
-
-        return athleteNames;
+    public ArrayList<Athlete> getOpponentAthletes() {
+    	generateOpponentAthletes();
+        return opposingAthletes;
     }
 
 }

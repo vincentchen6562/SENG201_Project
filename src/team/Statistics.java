@@ -8,72 +8,65 @@ public class Statistics {
     private int agility;
     private int overallStat;
 
-    public Statistics(int offence, int defence, int agility){
+    public Statistics(int offence, int defence, int agility) {
         this.offence = offence;
         this.defence = defence;
         this.agility = agility;
         this.overallStat = offence + defence + agility;
     }
 
-    public int getOffence(){
+    public int getOffence() {
         return offence;
     }
 
-    public int getDefence(){
+    public int getDefence() {
         return defence;
     }
 
-    public int getAgility(){
+    public int getAgility() {
         return agility;
     }
-    
-    public int getOverallStat() {
-    	return overallStat;
-    }
-    
-    public ArrayList<Integer> getStatList(){
-    	ArrayList<Integer> statList = new ArrayList<Integer>();
-    	statList.add(getOffence());
-    	statList.add(getDefence());
-    	statList.add(getAgility());
-    	return statList;
-    	
-    }
 
-    public int overallStat(){
+    public int getOverallStat() {
         return overallStat;
     }
 
-    public void updateOverallStat(){
+    public ArrayList<Integer> getStatList() {
+        ArrayList<Integer> statList = new ArrayList<Integer>();
+        statList.add(getOffence());
+        statList.add(getDefence());
+        statList.add(getAgility());
+        return statList;
+
+    }
+
+    public int overallStat() {
+        return overallStat;
+    }
+
+    public void updateOverallStat() {
         overallStat = offence + defence + agility;
     }
 
-    public void alterStat(String stat, int amount){
-        if (stat == "offence"){
+    public void alterStat(String stat, int amount) {
+        if (stat == "offence") {
             offence += amount;
-        }
-        else if (stat == "defence"){
+        } else if (stat == "defence") {
             defence += amount;
-        }
-        else if (stat == "agility"){
+        } else if (stat == "agility") {
             agility += amount;
         }
         updateOverallStat();
     }
 
-    public void setStat(String stat, int value){
-        if (stat == "offence"){
+    public void setStat(String stat, int value) {
+        if (stat == "offence") {
             offence = value;
-        }
-        else if (stat == "defence"){
+        } else if (stat == "defence") {
             defence = value;
-        }
-        else if (stat == "agility"){
+        } else if (stat == "agility") {
             agility = value;
         }
         updateOverallStat();
     }
 }
-
-
-
