@@ -7,7 +7,7 @@ public class Bank {
 		this.money = startingMoney;
 	}
 	
-    public int getBank() {
+    public int getMoney() {
         return money;
     }
     

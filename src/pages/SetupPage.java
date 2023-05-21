@@ -155,7 +155,6 @@ public class SetupPage {
 			public void actionPerformed(ActionEvent e) {
 				
 				ArrayList<Athlete> startingTeam = new Market().getAthletes();			
-				finishedWindow();
 				Team team = new Team(teamName, startingTeam);
 				Bank bank = new Bank(1);
 				Game game = new Game(1, 1, team, bank, difficulty); // TODO implement difficulty
