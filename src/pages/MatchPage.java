@@ -61,6 +61,8 @@ public class MatchPage {
 	 */
 	private void initialize() {
 		frmMatchPage = new JFrame();
+		frmMatchPage.setTitle("Match");
+		frmMatchPage.setResizable(false);
 		frmMatchPage.setBounds(100, 100, 450, 630);
 		frmMatchPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
