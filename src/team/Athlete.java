@@ -9,8 +9,8 @@ public class Athlete extends Statistics {
     private int athleteSalary; // this needs to be zero for the initial TODO remove?
     private int value;
 
-    public Athlete(String name, String position, int stamina, boolean isInjured, int offence, int defence, 
-    		int agility, int price) {
+    public Athlete(String name, String position, int stamina, boolean isInjured, int offence, int defence,
+            int agility, int price) {
         super(offence, defence, agility);
         this.name = name;
         this.position = position;
@@ -51,11 +51,10 @@ public class Athlete extends Statistics {
     public boolean getIsInjured() {
         return isInjured;
     }
-    
+
     public int getValue() {
-    	return value;
+        return value;
     }
-    
 
     // public void train(Athlete athlete, String stat, int days) {
     // for (int i = 0; i < days; i++) {
