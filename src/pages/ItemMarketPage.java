@@ -218,19 +218,48 @@ public class ItemMarketPage {
 		JLabel costLabel = new JLabel("Cost:");
 		JLabel boostLabel = new JLabel("Boost: +2 atk, etc.");
 		JLabel lblNewLabel = new JLabel("Equip To:");
-		int itemToBuy = 10;
+		
+		ArrayList<Athlete> equippedAthletes = environment
+				.getGame().getTeam().getEquippedAthletes();
+		
+		Athlete excessAthlete = environment
+				.getGame().getTeam().getExcessAthlete();
+				
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.addItem(equippedAthletes.get(0).getFullName());
+		comboBox.addItem(equippedAthletes.get(1).getFullName());
+		comboBox.addItem(equippedAthletes.get(2).getFullName());
+		comboBox.addItem(equippedAthletes.get(3).getFullName());
+		comboBox.addItem(equippedAthletes.get(4).getFullName());
+		if (excessAthlete != null) {
+			comboBox.addItem(excessAthlete.getFullName());
+		}
+		comboBox.setEnabled(false);
+		buyButton.setEnabled(false);
 		
 		item1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				comboBox.setEnabled(true);
+				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(0)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(0)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(0)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(0), itemBoostTypes.get(0)));
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						int athleteIndex = comboBox.getSelectedIndex();
+						environment.getGame().getBank().alterMoney(-itemCosts.get(0));
+						environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(0));
+					}
+				});
 			}
 		});
 
 		item2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				comboBox.setEnabled(true);
+				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(1)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(1)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(1)));
@@ -240,6 +269,8 @@ public class ItemMarketPage {
 		
 		item3Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				comboBox.setEnabled(true);
+				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(2)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(2)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(2)));
@@ -249,27 +280,17 @@ public class ItemMarketPage {
 		
 		item4Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				comboBox.setEnabled(true);
+				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(3)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(3)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(3)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(3), itemBoostTypes.get(3)));
 			}
 		});
-		buyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-			}
-		});
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setToolTipText("Athlete");
-		
 
 		
 
-		
-
-		
 		
 		GroupLayout gl_InfoPanel = new GroupLayout(InfoPanel);
 		gl_InfoPanel.setHorizontalGroup(
