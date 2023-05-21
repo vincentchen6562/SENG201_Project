@@ -22,15 +22,15 @@ public class Market {
         			"src/items/ItemList.txt");
 	        Scanner items = new Scanner(itemList);
 	        items.useDelimiter(",");
-	        ArrayList<String> id_list = new ArrayList<>();
+	        ArrayList<String> idList = new ArrayList<>();
 	        while (items.hasNextLine()) {
-	        	id_list.add(items.nextLine());
+	        	idList.add(items.nextLine());
 	        }
 	        
 	        ArrayList<Item> allItems = new ArrayList<Item>();
 	        
-	        for (int i = 0; i < id_list.size(); i++) {
-	        	String info = id_list.get(i);
+	        for (int i = 0; i < idList.size(); i++) {
+	        	String info = idList.get(i);
 	        	String[] s2 = info.split(",");
 	        	
 	        	if (i != 0) {
@@ -42,9 +42,10 @@ public class Market {
 	        ArrayList<Item> itemsInShop = new ArrayList<Item>(); 	  
 	        
 	        while(itemsInShop.size() < 5) {
-	        	Randow rng = new Random();
-	        	int randInt = rng.
+	        	// Randow rng = new Random();
+	        	// int randInt = rng.
 	        }
+            
     	} catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -59,15 +60,15 @@ public class Market {
                     "src/team/AthleteList.txt");
             Scanner athletes = new Scanner(athleteList);
             athletes.useDelimiter(",");
-            ArrayList<String> id_list = new ArrayList<>();
+            ArrayList<String> idList = new ArrayList<>();
             while (athletes.hasNextLine()) {
-                id_list.add(athletes.nextLine());
+                idList.add(athletes.nextLine());
             }
 
             ArrayList<Athlete> allAthletes = new ArrayList<Athlete>();
 
-            for (int i = 0; i < id_list.size(); i++) {
-                String info = id_list.get(i);
+            for (int i = 0; i < idList.size(); i++) {
+                String info = idList.get(i);
                 String[] s2 = info.split(",");
 
                 if (i != 0) {

@@ -33,13 +33,13 @@ public class Game {
     public int getWeek() {
         return weekNumber;
     }
+    
 
     
 
 }
 
 // TODO:
-// - Need to determine how the player can win or lose a game
 // - Need to update the UML diagram (classes added: Item, Coach, Equipment)
 // - Need to implement behaviors in this class's run function when a certain
 // button (a GameEnvironment class is needed to store the logic of the game)

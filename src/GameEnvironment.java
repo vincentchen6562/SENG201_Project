@@ -74,6 +74,15 @@ public class GameEnvironment {
     	launchGamePage();
     }
     
+    public void launchMatchPage() {
+    	MatchPage newMatch = new MatchPage(this);
+    }
+    
+    public void closeMatchPage(MatchPage matchPage) {
+    	matchPage.closeWindow();
+    	launchGamePage();
+    }
+    
     public static void main(String [] args) {
     	GameEnvironment game = new GameEnvironment();
     	game.launchSetupPage();
