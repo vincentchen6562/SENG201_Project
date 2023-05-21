@@ -1,6 +1,7 @@
 package src.team;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Team {
     private String teamName;
@@ -30,10 +31,15 @@ public class Team {
     	}
     }
     
-    public void setAthlete(int index) {
-    	Athlete swappedAthlete = equippedAthletes.get(index);
-    	equippedAthletes.set(index, excessAthlete);
-    	excessAthlete = swappedAthlete;
+    public void setAthlete(int selectedIndex, int currentIndex) {
+    	if (currentIndex > 4) {
+        	Athlete swappedAthlete = equippedAthletes.get(selectedIndex);
+        	equippedAthletes.set(selectedIndex, excessAthlete);
+        	excessAthlete = swappedAthlete;
+    	} else {
+    		Collections.swap(equippedAthletes, selectedIndex, currentIndex);
+    	}
+
     }
 
     public ArrayList<Athlete> getEquippedAthletes(){
@@ -51,6 +57,14 @@ public class Team {
     	}
     	
     	return statTotal;
+    }
+    
+    public Boolean containsAthlete(Athlete athlete) {
+    	if (equippedAthletes.contains(athlete) || excessAthlete == athlete) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
     
 }   

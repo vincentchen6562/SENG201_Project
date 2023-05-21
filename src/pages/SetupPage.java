@@ -154,7 +154,7 @@ public class SetupPage {
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String teamName = teamInput.getText();
-				ArrayList<Athlete> startingTeam = new Market().getAthletes();			
+				ArrayList<Athlete> startingTeam = new Market().getAthletes(environment);			
 				Team team = new Team(teamName, startingTeam);
 				Bank bank = new Bank(1);
 				Game game = new Game(1, 1, team, bank, difficulty); // TODO implement difficulty

@@ -74,7 +74,7 @@ public class Market {
 
     }
 
-    public void generateAthleteShop(Difficulty difficulty, int seasonNumber) {
+    public void generateAthleteShop(Difficulty difficulty, int seasonNumber, GameEnvironment environment) {
         try {
 
             File athleteList = new File(
@@ -115,9 +115,7 @@ public class Market {
                 int randInt = rng.nextInt(1, 20);
                 Athlete athlete = allAthletes.get(randInt);
 
-                if (athletesInShop.contains(athlete)) {
-
-                } else {
+                if (!athletesInShop.contains(athlete)) {// && !environment.getGame().getTeam().containsAthlete(athlete)) {
                     athletesInShop.add(athlete);
                 }
 
@@ -138,9 +136,9 @@ public class Market {
 
     }
 
-    public ArrayList<Athlete> getAthletes() {
+    public ArrayList<Athlete> getAthletes(GameEnvironment environment) {
     	Difficulty difficulty = new Difficulty("Normal"); // TODO difficulty proper implementation
-    	generateAthleteShop(difficulty, 1); // TODO proper ability to get week/season
+    	generateAthleteShop(difficulty, 1, environment); // TODO proper ability to get week/season
         return athletesInMarket;
     }
     

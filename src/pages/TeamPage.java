@@ -96,61 +96,117 @@ public class TeamPage {
 		}
 		
 		JButton swapButton = new JButton("Swap");
+		
+		JLabel centerLabel = new JLabel("Center");
+		
+		JLabel smallForwardLabel = new JLabel("Small Forward");
+		
+		JLabel powerForwardLabel = new JLabel("Power Forward");
+		
+		JLabel pointGuardLabel = new JLabel("Point Guard");
+		
+		JLabel shootingGuardLabel = new JLabel("Shooting Guard");
+		
+		JLabel benchLabel = new JLabel("Bench");
 	
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(athlete1Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(athlete2Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+								.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+									.addGap(52)
+									.addComponent(centerLabel)
+									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+									.addComponent(smallForwardLabel)
+									.addGap(57)
+									.addComponent(powerForwardLabel)
+									.addGap(23))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addContainerGap()
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(1)
+											.addComponent(athlete1Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+											.addGap(16)
+											.addComponent(athlete2Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+											.addGap(18)
+											.addComponent(athlete5Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)))
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGap(18)
+											.addComponent(excessAthleteButton, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+											.addGap(6))
+										.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(athlete3Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
+											.addGap(6)))))
+							.addGap(6))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(athlete5Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)))
-					.addGap(18)
+							.addGap(37)
+							.addComponent(pointGuardLabel)
+							.addGap(65)
+							.addComponent(shootingGuardLabel)
+							.addPreferredGap(ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+							.addComponent(benchLabel)
+							.addGap(53)))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addComponent(athlete3Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
-						.addComponent(excessAthleteButton, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(12)
 							.addComponent(swapButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(4, Short.MAX_VALUE))
+							.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				.addComponent(titlePanel, Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 214, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(swapButton, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-								.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(swapButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+								.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(8)
+							.addGap(7)
+							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addComponent(powerForwardLabel)
+									.addComponent(smallForwardLabel))
+								.addComponent(centerLabel))
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(3)
+									.addComponent(athlete3Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(4)
+									.addComponent(athlete2Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(6)
+									.addComponent(athlete1Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)))
+							.addGap(16)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(athlete1Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
-								.addComponent(athlete2Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
-								.addComponent(athlete3Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
+								.addComponent(pointGuardLabel)
+								.addComponent(benchLabel)
+								.addComponent(shootingGuardLabel))
+							.addGap(9)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addComponent(excessAthleteButton, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
 								.addComponent(athlete5Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
-								.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
+							.addGap(26))))
 		);
 		
 		JLabel nameLabel = new JLabel("Name:");
@@ -162,24 +218,27 @@ public class TeamPage {
 		
 		JComboBox<String> comboBox = new JComboBox<String>();
 		JLabel swapLabel = new JLabel("Swap With:");
+		JLabel valueLabel = new JLabel("Sells For:");
 
 		
 		comboBox.setEnabled(false);
 		swapButton.setEnabled(false);
 		swapLabel.setEnabled(false);
-		
 		if (equippedAthletes.size() > 0) {
+
 			athlete1Button.setText(equippedAthletes.get(0).getFullName());
 			athlete1Button.addActionListener(new ActionListener() {
+
 				public void actionPerformed(ActionEvent e) {
-					comboBox.setEnabled(false);
-					swapButton.setEnabled(false);
-					swapLabel.setEnabled(false);
+					comboBox.setEnabled(true);
+					swapButton.setEnabled(true);
+					swapLabel.setEnabled(true);
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(0).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(0).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(0).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(0).getAgility()));
 					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(0).getStamina()));
+					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(0).getValue()/2));
 					if (equippedAthletes.get(0).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
 					} else {
@@ -188,8 +247,15 @@ public class TeamPage {
 					
 					sellButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getBank().alterMoney(equippedAthletes.get(0).getPrice()/2);
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(0).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(0);
+							finishedWindow();
+						}
+					});
+					
+					swapButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 0);
 							finishedWindow();
 						}
 					});
@@ -201,14 +267,20 @@ public class TeamPage {
 			athlete2Button.setText(equippedAthletes.get(1).getFullName());
 			athlete2Button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					comboBox.setEnabled(false);
-					swapButton.setEnabled(false);
-					swapLabel.setEnabled(false);
+					comboBox.setEnabled(true);
+					swapButton.setEnabled(true);
+					swapLabel.setEnabled(true);
+					comboBox.addItem(equippedAthletes.get(0).getFullName());
+					comboBox.addItem(equippedAthletes.get(1).getFullName());
+					comboBox.addItem(equippedAthletes.get(2).getFullName());
+					comboBox.addItem(equippedAthletes.get(3).getFullName());
+					comboBox.addItem(equippedAthletes.get(4).getFullName());
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(1).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(1).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(1).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(1).getAgility()));
 					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(1).getStamina()));
+					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(1).getValue()/2));
 					if (equippedAthletes.get(1).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
 					} else {
@@ -217,8 +289,15 @@ public class TeamPage {
 					
 					sellButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getBank().alterMoney(equippedAthletes.get(1).getPrice()/2);
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(1).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(1);
+							finishedWindow();
+						}
+					});
+					
+					swapButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 1);
 							finishedWindow();
 						}
 					});
@@ -230,14 +309,20 @@ public class TeamPage {
 			athlete3Button.setText(equippedAthletes.get(2).getFullName());
 			athlete3Button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					comboBox.setEnabled(false);
-					swapButton.setEnabled(false);
-					swapLabel.setEnabled(false);
+					comboBox.setEnabled(true);
+					swapButton.setEnabled(true);
+					swapLabel.setEnabled(true);
+					comboBox.addItem(equippedAthletes.get(0).getFullName());
+					comboBox.addItem(equippedAthletes.get(1).getFullName());
+					comboBox.addItem(equippedAthletes.get(2).getFullName());
+					comboBox.addItem(equippedAthletes.get(3).getFullName());
+					comboBox.addItem(equippedAthletes.get(4).getFullName());
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(2).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(2).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(2).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(2).getAgility()));
 					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(2).getStamina()));
+					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(2).getValue()/2));
 					if (equippedAthletes.get(2).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
 					} else {
@@ -246,8 +331,15 @@ public class TeamPage {
 					
 					sellButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getBank().alterMoney(equippedAthletes.get(2).getPrice()/2);
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(2).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(2);
+							finishedWindow();
+						}
+					});
+					
+					swapButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 2);
 							finishedWindow();
 						}
 					});
@@ -259,14 +351,20 @@ public class TeamPage {
 			athlete4Button.setText(equippedAthletes.get(3).getFullName());
 			athlete4Button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					comboBox.setEnabled(false);
-					swapButton.setEnabled(false);
-					swapLabel.setEnabled(false);
+					comboBox.setEnabled(true);
+					swapButton.setEnabled(true);
+					swapLabel.setEnabled(true);
+					comboBox.addItem(equippedAthletes.get(0).getFullName());
+					comboBox.addItem(equippedAthletes.get(1).getFullName());
+					comboBox.addItem(equippedAthletes.get(2).getFullName());
+					comboBox.addItem(equippedAthletes.get(3).getFullName());
+					comboBox.addItem(equippedAthletes.get(4).getFullName());
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(3).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(3).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(3).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(3).getAgility()));
 					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(3).getStamina()));
+					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(3).getValue()/2));
 					if (equippedAthletes.get(3).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
 					} else {
@@ -274,8 +372,15 @@ public class TeamPage {
 					}
 					sellButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getBank().alterMoney(equippedAthletes.get(3).getPrice()/2);
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(3).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(3);
+							finishedWindow();
+						}
+					});
+					
+					swapButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 3);
 							finishedWindow();
 						}
 					});
@@ -288,14 +393,20 @@ public class TeamPage {
 			athlete5Button.setText(equippedAthletes.get(4).getFullName());
 			athlete5Button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					comboBox.setEnabled(false);
-					swapButton.setEnabled(false);
-					swapLabel.setEnabled(false);
+					comboBox.setEnabled(true);
+					swapButton.setEnabled(true);
+					swapLabel.setEnabled(true);
+					comboBox.addItem(equippedAthletes.get(0).getFullName());
+					comboBox.addItem(equippedAthletes.get(1).getFullName());
+					comboBox.addItem(equippedAthletes.get(2).getFullName());
+					comboBox.addItem(equippedAthletes.get(3).getFullName());
+					comboBox.addItem(equippedAthletes.get(4).getFullName());
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(4).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(4).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(4).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(4).getAgility()));
 					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(4).getStamina()));
+					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(4).getValue()/2));
 					if (equippedAthletes.get(4).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
 					} else {
@@ -303,8 +414,15 @@ public class TeamPage {
 					}
 					sellButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getBank().alterMoney(equippedAthletes.get(4).getPrice()/2);
+							environment.getGame().getBank().alterMoney(equippedAthletes.get(4).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(4);
+							finishedWindow();
+						}
+					});
+					
+					swapButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 4);
 							finishedWindow();
 						}
 					});
@@ -334,18 +452,20 @@ public class TeamPage {
 					comboBox.addItem(equippedAthletes.get(2).getFullName());
 					comboBox.addItem(equippedAthletes.get(3).getFullName());
 					comboBox.addItem(equippedAthletes.get(4).getFullName());
-		
+					
+					swapButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 5);
+							finishedWindow();
+						}
+					});
 				}
 			});
 		};
 		
-		swapButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex());
-				finishedWindow();
-			}
-		});
-				
+		
+		JLabel ifdeleteeverythingbreaks = new JLabel("");
+						
 		
 		GroupLayout gl_infoPanel = new GroupLayout(infoPanel);
 		gl_infoPanel.setHorizontalGroup(
@@ -353,7 +473,10 @@ public class TeamPage {
 				.addGroup(gl_infoPanel.createSequentialGroup()
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_infoPanel.createSequentialGroup()
+							.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(ifdeleteeverythingbreaks))
 						.addComponent(offenceLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 						.addComponent(defenceLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 						.addComponent(agilityLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
@@ -368,13 +491,19 @@ public class TeamPage {
 					.addComponent(swapLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(26, Short.MAX_VALUE))
+					.addContainerGap(23, Short.MAX_VALUE))
+				.addGroup(gl_infoPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(valueLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(72, Short.MAX_VALUE))
 		);
 		gl_infoPanel.setVerticalGroup(
 			gl_infoPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_infoPanel.createSequentialGroup()
 					.addGap(1)
-					.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_infoPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(nameLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ifdeleteeverythingbreaks))
 					.addGap(5)
 					.addComponent(offenceLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 					.addGap(6)
@@ -389,6 +518,8 @@ public class TeamPage {
 					.addGroup(gl_infoPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(swapLabel)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(1)
+					.addComponent(valueLabel)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		infoPanel.setLayout(gl_infoPanel);
