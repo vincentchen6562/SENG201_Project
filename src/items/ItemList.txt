@@ -1,20 +1,20 @@
 id,type,name,itemBoost,boostType
-1,Coach,Kush,4,all
-2,Coach,Vincent,7,agi
-3,Coach,Yunu,6,atk
-4,Coach,Kevin,8,agi
-5,Coach,Johnathan,9,atk
-6,Coach,James,9,def
-7,Coach,Kelso,7,def
-8,Coach,Sarah,10,agi
-9,Equipment,shoes,5,agi
-10,Equipment,pants,6,def
-11,Equipment,more shoes,8,agi
-12,Equipment,more pants,8,def
-13,Equipment,towel,4,atk
-14,Equipment,gun,3,atk
-15,Equipment,big gun,5,atk
-16,Equipment,headband,8
-17,Equipment,weighted ball,3
-18,Equipment,Friends with Ref,10
-19,Equipment,even more shoes,6
+1,Coach,Kush,4,All
+2,Coach,Vincent,7,Agility
+3,Coach,Yunu,6,Attack
+4,Coach,Kevin,8,Agility
+5,Coach,Johnathan,9,Attack
+6,Coach,James,9,Defence
+7,Coach,Kelso,7,Defence
+8,Coach,Sarah,10,Agility
+9,Equipment,shoes,5,Agility
+10,Equipment,pants,6,Defence
+11,Equipment,more shoes,8,Agility
+12,Equipment,more pants,8,Defence
+13,Equipment,towel,4,Attack
+14,Equipment,gun,3,Attack
+15,Equipment,big gun,5,Attack
+16,Equipment,headband,8,Agility 
+17,Equipment,weighted bAll,3,Attack
+18,Equipment,Friends with Ref,10,All
+19,Equipment,even more shoes,6,Agility

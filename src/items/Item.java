@@ -1,32 +1,43 @@
 package src.items;
 
-public abstract class Item {
+public class Item { //abstract add back? removed bc couldnt construct in market
 	String itemType;
     protected String itemName;
     protected int itemBoost;
     String boostType;
     protected int itemPrice;
+//    public abstract int getPrice();
 
-    public abstract int getPrice();
-
-    public Item(String itemType,String name, int boost, String boostType, int price) {
+    public Item(String itemType, String name, int boost, String boostType, int price) {
         this.itemType = itemType;
-    	itemName = name;
-        itemBoost = boost;
+    	this.itemName = name;
+        this.itemBoost = boost;
         this.boostType = boostType;
-        itemPrice = price;
+        this.itemPrice = price;
     }
 
     public String getName() {
         return itemName;
     }
+    
+    public String getType() {
+    	return itemType;
+    }
 
     public int getBoost() {
         return itemBoost;
     }
+    
+    public String getBoostType() {
+    	return boostType;
+    }
+    
+    public int getCost() {
+    	return itemPrice;
+    }
 
-    public void info() {
-        System.out.println("This is " + itemName + " and it costs " + itemPrice + "." + "\n" + "This gives " + itemBoost
+    public String info() {
+        return new String ("This is " + itemName + " and it costs " + itemPrice + "." + "\n" + "This gives " + itemBoost
                 + " boost.");
     }
 

@@ -127,18 +127,33 @@ public class ItemMarketPage {
 		);
 		titlePanel.setLayout(gl_titlePanel);
 		
+		ArrayList<String> itemNames = new ArrayList<String>();
+		ArrayList<String> itemTypes = new ArrayList<String>();
+		ArrayList<Integer> itemBoosts = new ArrayList<Integer>();
+		ArrayList<String> itemBoostTypes = new ArrayList<String>();
+		ArrayList<Integer> itemCosts = new ArrayList<Integer>();
 		
-
+		ArrayList<Item> items = new Market().getItems();
+		for (int i = 0; i < items.size(); i ++) {
+			Item item = items.get(i);
+			itemNames.add(item.getName());
+			itemTypes.add(item.getType());
+			itemBoosts.add(item.getBoost());
+			itemBoostTypes.add(item.getBoostType());
+			itemCosts.add(item.getCost());
+		}
+		
 		
 		JPanel InfoPanel = new JPanel();
 		
-		JButton athlete1Button = new JButton();
+		JButton item1Button = new JButton(itemNames.get(0));
 
-		JButton athlete2Button = new JButton();
+
+		JButton item2Button = new JButton(itemNames.get(1));
 		
-		JButton athlete3Button = new JButton();
+		JButton item3Button = new JButton(itemNames.get(2));
 		
-		JButton athlete4Button = new JButton();
+		JButton item4Button = new JButton(itemNames.get(3));
 		
 		JButton buyButton = new JButton("Buy");
 		GroupLayout groupLayout = new GroupLayout(frmMarket.getContentPane());
@@ -153,12 +168,12 @@ public class ItemMarketPage {
 							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(athlete3Button, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-								.addComponent(athlete1Button, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+								.addComponent(item3Button, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
+								.addComponent(item1Button, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(athlete2Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-								.addComponent(athlete4Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+								.addComponent(item2Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+								.addComponent(item4Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
 							.addGap(4)))
 					.addGap(6)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -189,82 +204,67 @@ public class ItemMarketPage {
 							.addComponent(buyButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(athlete2Button, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-								.addComponent(athlete1Button, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
+								.addComponent(item2Button, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+								.addComponent(item1Button, GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(athlete4Button, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
-								.addComponent(athlete3Button, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))))
+								.addComponent(item4Button, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+								.addComponent(item3Button, GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))))
 					.addContainerGap())
 		);
 		
 		JLabel nameLabel = new JLabel("Name:");
-		JLabel typeLabel = new JLabel("Type: (coach/item)");
+		JLabel typeLabel = new JLabel("Type: ");
 		JLabel costLabel = new JLabel("Cost:");
-		int athleteToBuy = 10;
+		JLabel boostLabel = new JLabel("Boost: +2 atk, etc.");
+		JLabel lblNewLabel = new JLabel("Equip To:");
+		int itemToBuy = 10;
 		
-//		athlete1Button.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				nameLabel.setText(String.format("Name: %s"));
-//				typeLabel.setText(String.format("Offence: %s"));
-//				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(0).get(1)));
-//				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(0).get(2)));
-//				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(0).get(3)));	
-//				costLabel.setText(String.format("Cost: %s", athletesCosts.get(0)));
-//				int athleteToBuy = 0;
-//			}
-//		});
-//		
-//		athlete2Button.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				nameLabel.setText(String.format("Name: %s", athletesNames.get(1)));
-//				typeLabel.setText(String.format("Offence: %s", athletesStats.get(1).get(0)));
-//				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(1).get(1)));
-//				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(1).get(2)));
-//				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(1).get(3)));	
-//				costLabel.setText(String.format("Cost: %s", athletesCosts.get(1)));
-//				int athleteToBuy = 1;
-//			}
-//		});
+		item1Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", itemNames.get(0)));
+				typeLabel.setText(String.format("Type: %s", itemTypes.get(0)));
+				costLabel.setText(String.format("Cost: %d", itemCosts.get(0)));
+				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(0), itemBoostTypes.get(0)));
+			}
+		});
+
+		item2Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", itemNames.get(1)));
+				typeLabel.setText(String.format("Type: %s", itemTypes.get(1)));
+				costLabel.setText(String.format("Cost: %d", itemCosts.get(1)));
+				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(1), itemBoostTypes.get(1)));
+			}
+		});
 		
-//		athlete3Button.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				nameLabel.setText(String.format("Name: %s", athletesNames.get(2)));
-//				typeLabel.setText(String.format("Offence: %s", athletesStats.get(2).get(0)));
-//				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(2).get(1)));
-//				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(2).get(2)));
-//				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(2).get(3)));	
-//				costLabel.setText(String.format("Cost: %s", athletesCosts.get(2)));
-//				int athleteToBuy = 2;
-//			}
-//		});
-//		
-//		athlete4Button.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				nameLabel.setText(String.format("Name: %s", athletesNames.get(3)));
-//				typeLabel.setText(String.format("Offence: %s", athletesStats.get(3).get(0)));
-//				defenceLabel.setText(String.format("Defence: %s", athletesStats.get(3).get(1)));
-//				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(3).get(2)));
-//				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(3).get(3)));	
-//				costLabel.setText(String.format("Cost: %s", athletesCosts.get(3)));
-//				int athleteToBuy = 3;
-//			}
-//		});
+		item3Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", itemNames.get(2)));
+				typeLabel.setText(String.format("Type: %s", itemTypes.get(2)));
+				costLabel.setText(String.format("Cost: %d", itemCosts.get(2)));
+				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(2), itemBoostTypes.get(2)));
+			}
+		});
 		
+		item4Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				nameLabel.setText(String.format("Name: %s", itemNames.get(3)));
+				typeLabel.setText(String.format("Type: %s", itemTypes.get(3)));
+				costLabel.setText(String.format("Cost: %d", itemCosts.get(3)));
+				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(3), itemBoostTypes.get(3)));
+			}
+		});
 		buyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (athleteToBuy > 5) {
-					//Team.addAthlete(athletes.get(athleteToBuy)); TODO add universal team
-				}
+
 			}
 		});
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setToolTipText("Athlete");
 		
-		JLabel boostLabel = new JLabel("Boost: +2 atk, etc.");
-		
-		JLabel lblNewLabel = new JLabel("Equip To:");
+
 		
 
 		
