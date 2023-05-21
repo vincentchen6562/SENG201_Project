@@ -140,6 +140,24 @@ public class MatchPage {
 					.addComponent(btnFinishButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(22))
 		);
+		
+		JLabel teamNameLabel = new JLabel("<Player Team Name>");
+		teamNameLabel.setFont(new Font("Orbitron", Font.PLAIN, 16));
+		GroupLayout gl_teamNamespanel = new GroupLayout(teamNamespanel);
+		gl_teamNamespanel.setHorizontalGroup(
+			gl_teamNamespanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_teamNamespanel.createSequentialGroup()
+					.addContainerGap(116, Short.MAX_VALUE)
+					.addComponent(teamNameLabel)
+					.addGap(111))
+		);
+		gl_teamNamespanel.setVerticalGroup(
+			gl_teamNamespanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_teamNamespanel.createSequentialGroup()
+					.addComponent(teamNameLabel)
+					.addContainerGap(52, Short.MAX_VALUE))
+		);
+		teamNamespanel.setLayout(gl_teamNamespanel);
 		GroupLayout gl_scoreBoardPanel = new GroupLayout(scoreBoardPanel);
 		gl_scoreBoardPanel.setHorizontalGroup(
 			gl_scoreBoardPanel.createParallelGroup(Alignment.LEADING)
