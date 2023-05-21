@@ -8,6 +8,7 @@ public class Game {
     private Team team;
     private Bank bank;
     private Difficulty difficulty;
+    private Match match;
 
     public Game(int seasonNumber, int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.seasonNumber = seasonNumber;
@@ -47,6 +48,10 @@ public class Game {
     
     public Team getTeam() {
     	return team;
+    }
+    
+    public Match getMatch() {
+    	return match;
     }
     
 

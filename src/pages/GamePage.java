@@ -161,6 +161,7 @@ public class GamePage {
 					.addContainerGap())
 		);
 		
+		
 		JLabel GreetingMessage = new JLabel(String.format("Hello %s's Manager!", environment.getGame().getTeam().getTeamName()));
 		GreetingMessage.setFont(new Font("Orbitron", Font.BOLD, 26));
 		GreetingPanel.add(GreetingMessage);

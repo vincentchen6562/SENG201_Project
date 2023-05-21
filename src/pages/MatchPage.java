@@ -21,6 +21,7 @@ public class MatchPage {
 
 	private JFrame frmMatchPage;
 	private GameEnvironment environment;
+	private String opponentTeamName;
 	
 
 	/**
@@ -42,8 +43,9 @@ public class MatchPage {
 	/**
 	 * Create the application.
 	 */
-	public MatchPage(GameEnvironment incomingEnvironment) {
+	public MatchPage(GameEnvironment incomingEnvironment, String oppTeamName) {
 		environment = incomingEnvironment;
+		opponentTeamName = oppTeamName;
 		initialize();
 		frmMatchPage.setVisible(true);
 	}
@@ -100,37 +102,37 @@ public class MatchPage {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(centerPositionPanel_2, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+							.addComponent(centerPositionPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(teamNamespanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(142)
 							.addComponent(btnFinishButton, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(scoreBoardPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(centerPositionPanel_4, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(centerPositionPanel_3, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(centerPositionPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(centerPositionPanel_1, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(teamNamespanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)))
+							.addComponent(centerPositionPanel_2, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(centerPositionPanel_3, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(centerPositionPanel_4, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(scoreBoardPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(teamNamespanel, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+					.addComponent(teamNamespanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(centerPositionPanel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
+					.addComponent(centerPositionPanel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(centerPositionPanel_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -139,53 +141,55 @@ public class MatchPage {
 					.addComponent(centerPositionPanel_3, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(centerPositionPanel_4, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addComponent(scoreBoardPanel, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+					.addGap(18)
 					.addComponent(btnFinishButton, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
 					.addGap(22))
 		);
 		
-		JLabel teamNameLabel = new JLabel("<Player Team Name>");
-		teamNameLabel.setFont(new Font("Orbitron", Font.PLAIN, 16));
+		JLabel teamNameLabel = new JLabel(environment.getGame().getTeam().getTeamName());
+		teamNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		teamNameLabel.setFont(new Font("Orbitron", Font.BOLD, 18));
 		
 		JLabel lblNewLabel = new JLabel("VS");
-		lblNewLabel.setFont(new Font("Orbitron", Font.PLAIN, 14));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
-		JLabel opponentTeamNameLabel = new JLabel("<Opponent Team Name>");
-		opponentTeamNameLabel.setFont(new Font("Orbitron", Font.PLAIN, 16));
+		JLabel opponentTeamNameLabel = new JLabel(opponentTeamName);
+		opponentTeamNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		opponentTeamNameLabel.setFont(new Font("Orbitron", Font.BOLD, 18));
 		
 		JPanel weekNumberpanel = new JPanel();
 		GroupLayout gl_teamNamespanel = new GroupLayout(teamNamespanel);
 		gl_teamNamespanel.setHorizontalGroup(
 			gl_teamNamespanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_teamNamespanel.createSequentialGroup()
-					.addGroup(gl_teamNamespanel.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_teamNamespanel.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_teamNamespanel.createSequentialGroup()
-							.addGap(109)
-							.addComponent(teamNameLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addGap(57))
-						.addGroup(gl_teamNamespanel.createSequentialGroup()
-							.addGap(187)
+							.addContainerGap()
 							.addComponent(lblNewLabel)
 							.addGap(140))
 						.addGroup(gl_teamNamespanel.createSequentialGroup()
-							.addGap(97)
-							.addComponent(opponentTeamNameLabel)
-							.addGap(43)))
+							.addGap(124)
+							.addGroup(gl_teamNamespanel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(opponentTeamNameLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+								.addComponent(teamNameLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+							.addGap(77)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(weekNumberpanel, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_teamNamespanel.setVerticalGroup(
 			gl_teamNamespanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_teamNamespanel.createSequentialGroup()
+					.addGap(6)
 					.addComponent(teamNameLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblNewLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(opponentTeamNameLabel)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addComponent(weekNumberpanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+				.addComponent(weekNumberpanel, GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
 		);
 		
 		JLabel lblNewLabel_1 = new JLabel("Week");
@@ -195,21 +199,22 @@ public class MatchPage {
 		lblNewLabel_2.setFont(new Font("Orbitron", Font.PLAIN, 14));
 		GroupLayout gl_weekNumberpanel = new GroupLayout(weekNumberpanel);
 		gl_weekNumberpanel.setHorizontalGroup(
-			gl_weekNumberpanel.createParallelGroup(Alignment.LEADING)
+			gl_weekNumberpanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_weekNumberpanel.createSequentialGroup()
-					.addGap(13)
-					.addComponent(lblNewLabel_1)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_weekNumberpanel.createSequentialGroup()
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_2)
+					.addGroup(gl_weekNumberpanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_weekNumberpanel.createSequentialGroup()
+							.addGap(13)
+							.addComponent(lblNewLabel_1))
+						.addGroup(Alignment.TRAILING, gl_weekNumberpanel.createSequentialGroup()
+							.addGap(2)
+							.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_weekNumberpanel.setVerticalGroup(
 			gl_weekNumberpanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_weekNumberpanel.createSequentialGroup()
 					.addComponent(lblNewLabel_1)
-					.addPreferredGap(ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
 					.addComponent(lblNewLabel_2))
 		);
 		weekNumberpanel.setLayout(gl_weekNumberpanel);
@@ -369,34 +374,68 @@ public class MatchPage {
 		centerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		centerLabel.setFont(new Font("Orbitron", Font.PLAIN, 14));
 		
-		JPanel centerScorePanel = new JPanel();
+		JPanel centerVersusPanel = new JPanel();
+		
+		JLabel lblNewLabel_3 = new JLabel("<Score>");
+		lblNewLabel_3.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		GroupLayout gl_centerPositionPanel = new GroupLayout(centerPositionPanel);
 		gl_centerPositionPanel.setHorizontalGroup(
 			gl_centerPositionPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_centerPositionPanel.createSequentialGroup()
-					.addGap(146)
-					.addComponent(centerLabel)
-					.addPreferredGap(ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-					.addComponent(centerScorePanel, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_centerPositionPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_centerPositionPanel.createSequentialGroup()
+							.addGap(146)
+							.addComponent(centerLabel))
+						.addComponent(centerVersusPanel, GroupLayout.PREFERRED_SIZE, 346, GroupLayout.PREFERRED_SIZE))
+					.addGap(8)
+					.addComponent(lblNewLabel_3)
+					.addGap(6))
 		);
 		gl_centerPositionPanel.setVerticalGroup(
-			gl_centerPositionPanel.createParallelGroup(Alignment.LEADING)
+			gl_centerPositionPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_centerPositionPanel.createSequentialGroup()
-					.addGap(5)
-					.addComponent(centerLabel)
-					.addContainerGap(52, Short.MAX_VALUE))
-				.addComponent(centerScorePanel, GroupLayout.DEFAULT_SIZE, 72, Short.MAX_VALUE)
+					.addGroup(gl_centerPositionPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_centerPositionPanel.createSequentialGroup()
+							.addGap(5)
+							.addComponent(centerLabel)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(centerVersusPanel, GroupLayout.PREFERRED_SIZE, 38, Short.MAX_VALUE))
+						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
-		GroupLayout gl_centerScorePanel = new GroupLayout(centerScorePanel);
-		gl_centerScorePanel.setHorizontalGroup(
-			gl_centerScorePanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 60, Short.MAX_VALUE)
+		
+		JLabel playerCenterLabel = new JLabel("<Center Name>");
+		playerCenterLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		playerCenterLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JLabel oppCenterLabel = new JLabel("<Center Name>");
+		oppCenterLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		oppCenterLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JLabel centerVersusLabel = new JLabel("VS");
+		centerVersusLabel.setFont(new Font("Orbitron", Font.PLAIN, 11));
+		centerVersusLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		GroupLayout gl_centerVersusPanel = new GroupLayout(centerVersusPanel);
+		gl_centerVersusPanel.setHorizontalGroup(
+			gl_centerVersusPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_centerVersusPanel.createSequentialGroup()
+					.addComponent(playerCenterLabel, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(centerVersusLabel, GroupLayout.PREFERRED_SIZE, 38, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(oppCenterLabel, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
 		);
-		gl_centerScorePanel.setVerticalGroup(
-			gl_centerScorePanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 72, Short.MAX_VALUE)
+		gl_centerVersusPanel.setVerticalGroup(
+			gl_centerVersusPanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_centerVersusPanel.createSequentialGroup()
+					.addGap(1)
+					.addGroup(gl_centerVersusPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(playerCenterLabel, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
+						.addComponent(centerVersusLabel, GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+						.addComponent(oppCenterLabel, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)))
 		);
-		centerScorePanel.setLayout(gl_centerScorePanel);
+		centerVersusPanel.setLayout(gl_centerVersusPanel);
 		centerPositionPanel.setLayout(gl_centerPositionPanel);
 		frmMatchPage.getContentPane().setLayout(groupLayout);
 	}

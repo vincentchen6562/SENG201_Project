@@ -1,8 +1,10 @@
 package src;
+
 import src.pages.*;
 
 public class GameEnvironment {
 	private Game game;
+	private StadiumPage stadium;
 	
 	public void setGame(Game game) {
 		this.game = game;
@@ -67,6 +69,7 @@ public class GameEnvironment {
     
     public void launchStadiumPage() {
     	StadiumPage stadiumPage = new StadiumPage(this);
+    	stadium = stadiumPage; //maybe needs removing
     }
     
     public void closeStadiumPage(StadiumPage stadiumPage) {
@@ -83,8 +86,8 @@ public class GameEnvironment {
     	launchGamePage();
     }
     
-    public void launchMatchPage() {
-    	MatchPage newMatch = new MatchPage(this);
+    public void launchMatchPage(String oppTeamName) {
+    	MatchPage newMatch = new MatchPage(this, oppTeamName); // maybe pass a stadium object
     }
     
     public void closeMatchPage(MatchPage matchPage) {
