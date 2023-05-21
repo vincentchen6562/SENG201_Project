@@ -81,7 +81,7 @@ public class GamePage {
 		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		JLabel lblNewLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
+		JLabel lblNewLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank()));
 		
 		
 		JLabel lblNewLabel_1 = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
@@ -92,7 +92,6 @@ public class GamePage {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
 				intoMarket();
-				
 			}
 		});
 		

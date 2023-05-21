@@ -97,26 +97,30 @@ public class MatchPage {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(centerPositionPanel_2, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addGap(142)
 							.addComponent(btnFinishButton, GroupLayout.PREFERRED_SIZE, 145, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(scoreBoardPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(centerPositionPanel_4, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(centerPositionPanel_3, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(centerPositionPanel_2, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-								.addComponent(centerPositionPanel_1, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
 								.addComponent(teamNamespanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-								.addComponent(centerPositionPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))))
+								.addComponent(centerPositionPanel, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(centerPositionPanel_1, GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -125,11 +129,11 @@ public class MatchPage {
 					.addContainerGap()
 					.addComponent(teamNamespanel, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(centerPositionPanel, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE)
+					.addComponent(centerPositionPanel, GroupLayout.PREFERRED_SIZE, 70, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(centerPositionPanel_1, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(centerPositionPanel_2, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
+					.addComponent(centerPositionPanel_2, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(centerPositionPanel_3, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -177,18 +181,18 @@ public class MatchPage {
 		GroupLayout gl_centerPositionPanel_3 = new GroupLayout(centerPositionPanel_3);
 		gl_centerPositionPanel_3.setHorizontalGroup(
 			gl_centerPositionPanel_3.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_centerPositionPanel_3.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_centerPositionPanel_3.createSequentialGroup()
 					.addGap(131)
 					.addComponent(pointGuardLabel)
 					.addPreferredGap(ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-					.addComponent(centerScorePanel_3, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
+					.addComponent(centerScorePanel_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_centerPositionPanel_3.setVerticalGroup(
 			gl_centerPositionPanel_3.createParallelGroup(Alignment.LEADING)
-				.addComponent(centerScorePanel_3, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
 				.addGroup(gl_centerPositionPanel_3.createSequentialGroup()
 					.addComponent(pointGuardLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
+				.addComponent(centerScorePanel_3, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
 		);
 		GroupLayout gl_centerScorePanel_3 = new GroupLayout(centerScorePanel_3);
 		gl_centerScorePanel_3.setHorizontalGroup(
@@ -210,18 +214,18 @@ public class MatchPage {
 		GroupLayout gl_centerPositionPanel_4 = new GroupLayout(centerPositionPanel_4);
 		gl_centerPositionPanel_4.setHorizontalGroup(
 			gl_centerPositionPanel_4.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_centerPositionPanel_4.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_centerPositionPanel_4.createSequentialGroup()
 					.addGap(119)
 					.addComponent(shootingGuardLabel)
 					.addPreferredGap(ComponentPlacement.RELATED, 110, Short.MAX_VALUE)
-					.addComponent(centerScorePanel_4, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
+					.addComponent(centerScorePanel_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_centerPositionPanel_4.setVerticalGroup(
 			gl_centerPositionPanel_4.createParallelGroup(Alignment.LEADING)
-				.addComponent(centerScorePanel_4, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
 				.addGroup(gl_centerPositionPanel_4.createSequentialGroup()
 					.addComponent(shootingGuardLabel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
+				.addComponent(centerScorePanel_4, GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
 		);
 		GroupLayout gl_centerScorePanel_4 = new GroupLayout(centerScorePanel_4);
 		gl_centerScorePanel_4.setHorizontalGroup(
@@ -276,18 +280,18 @@ public class MatchPage {
 		GroupLayout gl_centerPositionPanel_1 = new GroupLayout(centerPositionPanel_1);
 		gl_centerPositionPanel_1.setHorizontalGroup(
 			gl_centerPositionPanel_1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_centerPositionPanel_1.createSequentialGroup()
+				.addGroup(Alignment.LEADING, gl_centerPositionPanel_1.createSequentialGroup()
 					.addGap(120)
 					.addComponent(smallForwardLabel)
 					.addPreferredGap(ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-					.addComponent(centerScorePanel_1, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE))
+					.addComponent(centerScorePanel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		gl_centerPositionPanel_1.setVerticalGroup(
 			gl_centerPositionPanel_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(centerScorePanel_1, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
 				.addGroup(gl_centerPositionPanel_1.createSequentialGroup()
 					.addComponent(smallForwardLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
+				.addComponent(centerScorePanel_1, GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
 		);
 		GroupLayout gl_centerScorePanel_1 = new GroupLayout(centerScorePanel_1);
 		gl_centerScorePanel_1.setHorizontalGroup(
