@@ -7,9 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.JButton;
+
 import java.awt.Font;
 import javax.swing.*;
 import src.team.*;
@@ -73,16 +72,16 @@ public class AthleteMarketPage {
 		JPanel statPanel = new JPanel();
 		statPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		
-		JLabel moneyLabel = new JLabel("Money: ");
+		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
 		moneyLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel weekLabel = new JLabel("Week:");
+		JLabel weekLabel = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
 		weekLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel pointsLabel = new JLabel("Points:");
+		JLabel pointsLabel = new JLabel(String.format("Points: %d", environment.getGame().getPoints()));
 		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel statsTotalLabel = new JLabel("StatTotal:");
+		JLabel statsTotalLabel = new JLabel(String.format("Stat Total: %d", environment.getGame().getTeam().getStatTotal()));
 		statsTotalLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(
@@ -145,7 +144,7 @@ public class AthleteMarketPage {
 //			athletesStats.add(statString);
 			athletesStats.add(statList);
 			
-			athletesCosts.add(String.valueOf(athletes.get(i).getPrice()));
+			athletesCosts.add(String.valueOf(athletes.get(i).getValue()));
 			
 		}
 
@@ -224,7 +223,6 @@ public class AthleteMarketPage {
 		JLabel agilityLabel = new JLabel("Agility:");
 		JLabel staminaLabel = new JLabel("Stamina:");
 		JLabel costLabel = new JLabel("Cost:");
-		int athleteToBuy = 10;
 		
 		athlete1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -234,7 +232,12 @@ public class AthleteMarketPage {
 				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(0).get(2)));
 				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(0).get(3)));	
 				costLabel.setText(String.format("Cost: %s", athletesCosts.get(0)));
-				int athleteToBuy = 0;
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						environment.getGame().getTeam().addAthlete(athletes.get(0));
+					}
+				});
 			}
 		});
 		
@@ -246,7 +249,12 @@ public class AthleteMarketPage {
 				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(1).get(2)));
 				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(1).get(3)));	
 				costLabel.setText(String.format("Cost: %s", athletesCosts.get(1)));
-				int athleteToBuy = 1;
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						environment.getGame().getTeam().addAthlete(athletes.get(1));
+					}
+				});
 			}
 		});
 		
@@ -258,7 +266,12 @@ public class AthleteMarketPage {
 				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(2).get(2)));
 				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(2).get(3)));	
 				costLabel.setText(String.format("Cost: %s", athletesCosts.get(2)));
-				int athleteToBuy = 2;
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						environment.getGame().getTeam().addAthlete(athletes.get(2));
+					}
+				});
 			}
 		});
 		
@@ -270,22 +283,14 @@ public class AthleteMarketPage {
 				agilityLabel.setText(String.format("Agility: %s", athletesStats.get(3).get(2)));
 				staminaLabel.setText(String.format("Stamina: %s", athletesStats.get(3).get(3)));	
 				costLabel.setText(String.format("Cost: %s", athletesCosts.get(3)));
-				int athleteToBuy = 3;
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						environment.getGame().getTeam().addAthlete(athletes.get(3));
+					}
+				});
 			}
 		});
-		
-		buyButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (athleteToBuy > 5) {
-					//Team.addAthlete(athletes.get(athleteToBuy)); TODO add universal team
-				}
-			}
-		});
-		
-
-		
-
-		
 		
 		GroupLayout gl_InfoPanel = new GroupLayout(InfoPanel);
 		gl_InfoPanel.setHorizontalGroup(

@@ -8,13 +8,12 @@ public class Inventory {
 
     public Inventory(Difficulty difficulty) { // the starting amount of money depends on the difficulty
         itemList = new ArrayList<Item>();
-    	Bank bank = new Bank();
 
-        if (difficulty.getDifficulty() == "Hard") {
-			bank.receive(1000);
-        } else {
-            bank.receive(5000);
-        }
+//        if (difficulty.getDifficulty() == "Hard") {
+//			bank.receive(1000);
+//        } else {
+//            bank.receive(5000);
+//        }
     }
 
 	public int getNumberOfItems() {

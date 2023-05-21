@@ -27,6 +27,10 @@ public class Statistics {
         return agility;
     }
     
+    public int getOverallStat() {
+    	return overallStat;
+    }
+    
     public ArrayList<Integer> getStatList(){
     	ArrayList<Integer> statList = new ArrayList<Integer>();
     	statList.add(getOffence());

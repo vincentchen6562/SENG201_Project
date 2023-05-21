@@ -1,4 +1,5 @@
 package src;
+
 import src.team.*;
 import src.items.*;
 
@@ -9,6 +10,7 @@ public class Game {
     private Bank bank;
     private Difficulty difficulty;
     private Match match;
+    private int points;
 
     public Game(int seasonNumber, int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.seasonNumber = seasonNumber;
@@ -16,9 +18,10 @@ public class Game {
         this.team = team;
         this.bank = bank;
         this.difficulty = difficulty;
+        this.points = 0;
     }
 
-    public void setSeason(int seasonNum) { 
+    public void setSeason(int seasonNum) {
         seasonNumber = seasonNum;
     }
 
@@ -41,22 +44,26 @@ public class Game {
     public int getWeek() {
         return weekNumber;
     }
-    
+
     public Bank getBank() {
-    	return bank;
+        return bank;
     }
-    
+
     public Team getTeam() {
-    	return team;
+        return team;
     }
-    
+
     public Match getMatch() {
-    	return match;
+        return match;
     }
-    
 
+    public void alterPoints(int amount) {
+        points += amount;
+    }
 
-    
+    public int getPoints() {
+        return points;
+    }
 
 }
 
