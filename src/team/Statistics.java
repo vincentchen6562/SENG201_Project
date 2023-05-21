@@ -49,22 +49,22 @@ public class Statistics {
     }
 
     public void alterStat(String stat, int amount) {
-        if (stat == "offence") {
+        if (stat == "Offence") {
             offence += amount;
-        } else if (stat == "defence") {
+        } else if (stat == "Defence") {
             defence += amount;
-        } else if (stat == "agility") {
+        } else if (stat == "Agility") {
             agility += amount;
         }
         updateOverallStat();
     }
 
     public void setStat(String stat, int value) {
-        if (stat == "offence") {
+        if (stat == "Offence") {
             offence = value;
-        } else if (stat == "defence") {
+        } else if (stat == "Defence") {
             defence = value;
-        } else if (stat == "agility") {
+        } else if (stat == "Agility") {
             agility = value;
         }
         updateOverallStat();

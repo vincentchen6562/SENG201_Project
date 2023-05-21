@@ -1,5 +1,9 @@
 package src.team;
 
+import java.util.ArrayList;
+
+import src.items.Item;
+
 public class Athlete extends Statistics {
     private String name;
     private String nickName = "";
@@ -8,6 +12,7 @@ public class Athlete extends Statistics {
     private boolean isInjured;
     private int athleteSalary; // this needs to be zero for the initial TODO remove?
     private int value;
+    private ArrayList<Item> equippedItems;
 
     public Athlete(String name, String position, int stamina, boolean isInjured, int offence, int defence,
             int agility, int price) {
@@ -17,6 +22,7 @@ public class Athlete extends Statistics {
         this.stamina = stamina;
         this.isInjured = isInjured;
         this.value = price;
+        this.equippedItems = new ArrayList<Item>();
 
     }
 
@@ -54,6 +60,15 @@ public class Athlete extends Statistics {
 
     public int getValue() {
         return value;
+    }
+    
+    public void equipItem(Item item) {
+    	equippedItems.add(item);
+    	Athlete.super.alterStat(item.getBoostType(), item.getBoost());
+    }
+    
+    public ArrayList<Item> getEquippedItems(){
+    	return equippedItems;
     }
 
     // public void train(Athlete athlete, String stat, int days) {
