@@ -88,6 +88,11 @@ public class MarketChoicePage {
 		
 		JButton backButton = new JButton("<");
 		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		backButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		
 		JPanel titlePanel = new JPanel();
 		GroupLayout gl_titlePanel = new GroupLayout(titlePanel);

@@ -47,7 +47,7 @@ public class Athlete extends Statistics {
         nickName = name;
     }
 
-    public boolean getIfInjured() {
+    public boolean getIsInjured() {
         return isInjured;
     }
     
