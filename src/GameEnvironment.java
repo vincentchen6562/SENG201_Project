@@ -2,6 +2,15 @@ package src;
 import src.pages.*;
 
 public class GameEnvironment {
+	private Game game;
+	
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	
+	public Game getGame() {
+		return this.game;
+	}
 	
     public void launchSetupPage() {
     	SetupPage setupPage = new SetupPage(this);

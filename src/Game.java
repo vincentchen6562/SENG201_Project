@@ -1,13 +1,20 @@
 package src;
+import src.team.*;
+import src.items.*;
 
 public class Game {
     private int seasonNumber;
     private int weekNumber;
+    private Team team;
+    private Bank bank;
+    private Difficulty difficulty;
 
-    public Game(int seasonNumber, int weekNumber) {
+    public Game(int seasonNumber, int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.seasonNumber = seasonNumber;
         this.weekNumber = weekNumber;
-       
+        this.team = team;
+        this.bank = bank;
+        this.difficulty = difficulty;
     }
 
     public void setSeason(int seasonNum) { 
@@ -34,6 +41,15 @@ public class Game {
         return weekNumber;
     }
     
+    public Bank getBank() {
+    	return bank;
+    }
+    
+    public Team getTeam() {
+    	return team;
+    }
+    
+
 
     
 

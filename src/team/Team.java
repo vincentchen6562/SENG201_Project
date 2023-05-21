@@ -1,6 +1,7 @@
 package src.team;
 
 import java.util.ArrayList;
+import src.*;
 
 public class Team {
     private String teamName;
@@ -23,8 +24,9 @@ public class Team {
         members.add(athlete);
         
     }
+    
 
-    public ArrayList<Athlete> viewTeam(){
+    public ArrayList<Athlete> getTeam(){
         return members;
     }
     

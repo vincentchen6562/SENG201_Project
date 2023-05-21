@@ -3,6 +3,7 @@ package src.pages;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
@@ -14,10 +15,13 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerListModel;
 import javax.swing.JSlider;
 import src.*;
+import src.items.*;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import src.team.*;
 
 public class SetupPage {
 
@@ -83,8 +87,8 @@ public class SetupPage {
 		
 		JSpinner difficultySpinner = new JSpinner();
 		difficultySpinner.setModel(new SpinnerListModel(new String[] {"Normal", "Hard"}));
-		String difficulty = (String) difficultySpinner.getValue();
-
+		String difficultyValue = (String) difficultySpinner.getValue();
+		Difficulty difficulty = new Difficulty(difficultyValue);
 		
 		JLabel weekLabel = new JLabel("Week No.");
 		weekLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
@@ -149,8 +153,15 @@ public class SetupPage {
 		
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				ArrayList<Athlete> startingTeam = new Market().getAthletes();			
 				finishedWindow();
+				Team team = new Team(teamName, startingTeam);
+				Bank bank = new Bank(1);
+				Game game = new Game(1, 1, team, bank, difficulty); // TODO implement difficulty
+				environment.setGame(game);
 				frmWelcome.setVisible(false);
+				finishedWindow();
 			}
 		});
 		

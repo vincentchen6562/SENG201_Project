@@ -19,8 +19,7 @@ import java.awt.Font;
 public class GamePage {
 
 	private JFrame frmMainPage;
-	private GameEnvironment environment;
-	
+	private GameEnvironment environment;	
 	/**
 	 * Launch the application.
 	 */
@@ -82,11 +81,10 @@ public class GamePage {
 		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 
-		Bank bank = new Bank();
-		JLabel lblNewLabel = new JLabel(String.format("Money: %d", bank.getBank()));
+		JLabel lblNewLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank()));
 		
-		Game game = new Game(0, 0);
-		JLabel lblNewLabel_1 = new JLabel(String.format("Week: %d",game.getSeason()));
+		
+		JLabel lblNewLabel_1 = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
 		
 		JButton marketButton = new JButton("Market");
 		marketButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
@@ -164,7 +162,7 @@ public class GamePage {
 					.addContainerGap())
 		);
 		
-		JLabel GreetingMessage = new JLabel("Hello <team name>'s Manager!");
+		JLabel GreetingMessage = new JLabel(String.format("Hello %s's Manager!", environment.getGame().getTeam().getTeamName()));
 		GreetingMessage.setFont(new Font("Orbitron", Font.BOLD, 26));
 		GreetingPanel.add(GreetingMessage);
 		frmMainPage.getContentPane().setLayout(groupLayout);

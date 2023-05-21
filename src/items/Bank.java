@@ -3,7 +3,8 @@ package src.items;
 public class Bank {
 	private int money;
 	
-	public Bank() {
+	public Bank(int startingMoney) {
+		this.money = startingMoney;
 	}
 	
     public int getBank() {
