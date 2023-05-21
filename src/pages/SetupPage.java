@@ -26,7 +26,7 @@ import src.team.*;
 public class SetupPage {
 
 	private JFrame frmWelcome;
-	private JTextField txtTeamName;
+	private JTextField teamInput;
 	private GameEnvironment environment;
 
 	/**
@@ -75,12 +75,12 @@ public class SetupPage {
 		JLabel setupLabel = new JLabel("Welcome to Basketball League!");
 		setupLabel.setFont(new Font("Orbitron", Font.BOLD, 20));
 		
-		JLabel teamInput = new JLabel("Team Name");
-		teamInput.setFont(new Font("Orbitron", Font.PLAIN, 12));
-		String teamName = teamInput.getText();
+		JLabel teamLabel = new JLabel("Team Name");
+		teamLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+
 		
-		txtTeamName = new JTextField();
-		txtTeamName.setColumns(10);
+		JTextField teamInput = new JTextField();
+		teamInput.setColumns(10);
 		
 		JLabel difficultyLabel = new JLabel("Difficulty");
 		difficultyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
@@ -106,7 +106,7 @@ public class SetupPage {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(109)
-							.addComponent(teamInput))
+							.addComponent(teamLabel))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(123)
 							.addComponent(difficultyLabel))
@@ -116,7 +116,7 @@ public class SetupPage {
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(difficultySpinner, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(teamInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addComponent(weekSlider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(28, Short.MAX_VALUE))
 				.addGroup(groupLayout.createSequentialGroup()
@@ -135,8 +135,8 @@ public class SetupPage {
 					.addComponent(setupLabel, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE, false)
-						.addComponent(txtTeamName, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(teamInput))
+						.addComponent(teamInput, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(teamLabel))
 					.addGap(4)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE, false)
 						.addComponent(difficultyLabel)
@@ -153,7 +153,7 @@ public class SetupPage {
 		
 		finishSetup.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				String teamName = teamInput.getText();
 				ArrayList<Athlete> startingTeam = new Market().getAthletes();			
 				Team team = new Team(teamName, startingTeam);
 				Bank bank = new Bank(1);
