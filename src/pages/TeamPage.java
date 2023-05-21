@@ -423,11 +423,6 @@ public class TeamPage {
 					.addGap(14))
 		);
 		titlePanel.setLayout(gl_titlePanel);
-		backButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
-			}
-		});
 		frame.getContentPane().setLayout(groupLayout);
 	}
 }
