@@ -4,7 +4,6 @@ import src.pages.*;
 
 public class GameEnvironment {
 	private Game game;
-	private StadiumPage stadium;
 	
 	public void setGame(Game game) {
 		this.game = game;
@@ -69,7 +68,6 @@ public class GameEnvironment {
     
     public void launchStadiumPage() {
     	StadiumPage stadiumPage = new StadiumPage(this);
-    	stadium = stadiumPage; //maybe needs removing
     }
     
     public void closeStadiumPage(StadiumPage stadiumPage) {
@@ -86,13 +84,24 @@ public class GameEnvironment {
     	launchGamePage();
     }
     
-    public void launchMatchPage(String oppTeamName) {
-    	MatchPage newMatch = new MatchPage(this, oppTeamName); // maybe pass a stadium object
+    public void launchMatchPage(String oppTeamName, int reward) {
+    	MatchPage newMatch = new MatchPage(this, oppTeamName, reward); // maybe pass a stadium object
     }
     
     public void closeMatchPage(MatchPage matchPage) {
     	matchPage.closeWindow();
-    	launchGamePage();
+    	int currentWeek = this.getGame().getCurrentWeek();
+    	int totalWeek = this.getGame().getWeek();
+    	if (currentWeek <= totalWeek) {
+    		launchGamePage();
+    	} else {
+    		launchGameOverPage();
+    	}
+    	
+    }
+    
+    public void launchGameOverPage() {
+    	GameOverPage gameOver = new GameOverPage(this);
     }
     
     public static void main(String [] args) {
