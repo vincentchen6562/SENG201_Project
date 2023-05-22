@@ -399,7 +399,7 @@ public class StadiumPage {
 		JLabel winsLabel = new JLabel(String.format("Wins: %d", environment.getGame().getWins()));
 		winsLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
-		JLabel lossLabel = new JLabel(String.format("Lossses: %d", environment.getGame().getLosses()));
+		JLabel lossLabel = new JLabel(String.format("Losses: %d", environment.getGame().getLosses()));
 		lossLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(
