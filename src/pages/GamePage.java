@@ -83,12 +83,6 @@ public class GamePage {
 		frmMainPage.setBounds(100, 100, 600, 400);
 		frmMainPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-
-		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
-		
-		
-		JLabel weekLabel = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
-		
 		JButton marketButton = new JButton("Market");
 		marketButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		marketButton.addActionListener(new ActionListener() {
@@ -122,53 +116,73 @@ public class GamePage {
 		
 		JPanel GreetingPanel = new JPanel();
 		
-		JLabel difficultyLabel = new JLabel("Difficulty:");
-		difficultyLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		difficultyLabel.setText(String.format("Difficulty: %s", environment.getGame().getDifficultyObject().getDifficulty()));
+		JPanel panel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(frmMainPage.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(7)
-							.addComponent(moneyLabel)
-							.addGap(316)
-							.addComponent(difficultyLabel, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addComponent(weekLabel))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+							.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(GreetingPanel, GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)))
+							.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
+						.addComponent(GreetingPanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 320, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 					.addGap(7)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(moneyLabel)
-						.addComponent(weekLabel)
-						.addComponent(difficultyLabel))
-					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(GreetingPanel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-						.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-						.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-						.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+						.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+						.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+						.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+						.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
 					.addContainerGap())
 		);
+		
+		JLabel difficultyLabel = new JLabel("Difficulty:");
+		difficultyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		difficultyLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		difficultyLabel.setText(String.format("Difficulty: %s", environment.getGame().getDifficultyObject().getDifficulty()));
+		
+
+		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
+		moneyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		
+		JLabel weekLabel = new JLabel(String.format("Week: %d/%d", environment.getGame().getCurrentWeek(), environment.getGame().getWeek())); //still needs to update the current week
+		weekLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addComponent(difficultyLabel)
+					.addGap(29)
+					.addComponent(moneyLabel)
+					.addGap(18)
+					.addComponent(weekLabel)
+					.addGap(12))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(5)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(difficultyLabel)
+						.addComponent(weekLabel)
+						.addComponent(moneyLabel)))
+		);
+		panel.setLayout(gl_panel);
 		
 		
 		JLabel GreetingMessage = new JLabel(String.format("Hello %s's Manager!", environment.getGame().getTeam().getTeamName()));

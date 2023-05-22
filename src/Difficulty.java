@@ -10,9 +10,4 @@ public class Difficulty {
     public String getDifficulty() {
         return difficulty;
     }
-
-    // public static void main(String[] args) {
-    //     Difficulty difficulty = new Difficulty("Hard");
-    //     System.out.println(difficulty.getDifficulty());
-    // }
 }
