@@ -50,15 +50,17 @@ public class Statistics {
 
     public void alterStat(String stat, int amount) {
         if (stat == "Offence") {
-            offence += amount;
+        	System.out.print("success");
+            this.offence += amount;
         } else if (stat == "Defence") {
-            defence += amount;
+        	this.defence += amount;
         } else if (stat == "Agility") {
-            agility += amount;
+            this.agility += amount;
         } else if (stat == "All") {
-        	offence += amount;
-        	defence += amount;
-        	agility += amount;
+        	this.offence += amount;
+        	this.defence += amount;
+        	this.agility += amount;
+        } else {
         }
         updateOverallStat();
     }

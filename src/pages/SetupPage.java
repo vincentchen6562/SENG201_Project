@@ -158,7 +158,7 @@ public class SetupPage {
 				String teamName = teamInput.getText();
 				ArrayList<Athlete> startingTeam = new Market().getAthletes(environment);			
 				Team team = new Team(teamName, startingTeam);
-				Bank bank = new Bank(1);
+				Bank bank = new Bank(999999); // set high for testing, TODO set back to 0
 				Game game = new Game(1, 1, team, bank, setDifficulty); // TODO implement difficulty
 				environment.setGame(game);
 				frmWelcome.setVisible(false);

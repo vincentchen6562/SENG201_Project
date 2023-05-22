@@ -135,17 +135,10 @@ public class AthleteMarketPage {
 		for (int i = 0; i < athletes.size(); i++)
 		{
 			athletesNames.add(athletes.get(i).getFullName());
-			
 			ArrayList<Integer> statList = athletes.get(i).getStatList();
 			statList.add(athletes.get(i).getStamina());
-//			String statString = statList.stream()
-//					.map(n -> String.valueOf(n))
-//					.collect(Collectors.joining(",", "", ""));
-//			athletesStats.add(statString);
 			athletesStats.add(statList);
-			
 			athletesCosts.add(String.valueOf(athletes.get(i).getValue()));
-			
 		}
 
 		

@@ -1,12 +1,12 @@
 package src.items;
+import src.team.*;
 
 public class Item { //abstract add back? removed bc couldnt construct in market
 	String itemType;
     protected String itemName;
     protected int itemBoost;
-    String boostType;
+    private String boostType;
     protected int itemPrice;
-//    public abstract int getPrice();
 
     public Item(String itemType, String name, int boost, String boostType, int price, Boolean isCoach) {
         this.itemType = itemType;
@@ -26,6 +26,10 @@ public class Item { //abstract add back? removed bc couldnt construct in market
 
     public int getBoost() {
         return itemBoost;
+    }
+    
+    public void setBoostType(String boostType) {
+    	this.boostType = boostType;
     }
     
     public String getBoostType() {

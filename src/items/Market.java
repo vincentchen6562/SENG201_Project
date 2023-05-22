@@ -39,7 +39,12 @@ public class Market {
 	        		String name = s2[2];
 	        		int itemBoost = Integer.parseInt(s2[3]);
 	        		String boostType = s2[4];
-	        		
+//	        		System.out.println(s2[4]);
+	        		if (s2[4] == "Offence" || s2[4] == "Defence" || s2[4] == "Agility" 
+	        				|| s2[4] == "All") {
+		        		System.out.println(s2[4] + "succ");
+
+	        		}
 	        		int typeMultiplier = 1;
 	        		if (boostType == "All");
 	        			typeMultiplier = 3;
@@ -48,7 +53,6 @@ public class Market {
 	        		allItems.add(newItem);
 	        	}
 	        }
-	        
 	        
 	        ArrayList<Item> itemsInShop = new ArrayList<Item>(); 	  
 	        
@@ -63,7 +67,6 @@ public class Market {
 	        }
 	        
 	        itemsInMarket = itemsInShop;
-	        
 	        items.close();
             
     	} catch (FileNotFoundException e) {
@@ -90,7 +93,6 @@ public class Market {
             for (int i = 0; i < idList.size(); i++) {
                 String info = idList.get(i);
                 String[] s2 = info.split(",");
-
                 if (i != 0) {
                     String name = s2[1];
                     int offence = Integer.parseInt(s2[2]);
