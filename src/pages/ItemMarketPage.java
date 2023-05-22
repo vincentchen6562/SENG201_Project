@@ -56,6 +56,9 @@ public class ItemMarketPage {
 		environment.closeItemMarketPage(this);
 	}
 	
+	private void buyItem() {
+		
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -140,7 +143,6 @@ public class ItemMarketPage {
 		
 		JButton item1Button = new JButton(itemNames.get(0));
 
-
 		JButton item2Button = new JButton(itemNames.get(1));
 		
 		JButton item3Button = new JButton(itemNames.get(2));
@@ -148,6 +150,7 @@ public class ItemMarketPage {
 		JButton item4Button = new JButton(itemNames.get(3));
 		
 		JButton buyButton = new JButton("Buy");
+
 		GroupLayout groupLayout = new GroupLayout(frmMarket.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -211,6 +214,12 @@ public class ItemMarketPage {
 		JLabel boostLabel = new JLabel("Boost: +2 atk, etc.");
 		JLabel lblNewLabel = new JLabel("Equip To:");
 		
+		buyButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();	
+			}
+		});
 		ArrayList<Athlete> equippedAthletes = environment
 				.getGame().getTeam().getEquippedAthletes();
 		
@@ -267,6 +276,22 @@ public class ItemMarketPage {
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(1)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(1)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(1), itemBoostTypes.get(1)));
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (items.get(1).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(1).getCost())) {
+							environment.getGame().setCoach(items.get(1));
+							comboBox.setEnabled(false);
+							warningLabel.setText("test");
+						} else if (environment.getGame().getBank().getMoney() >= items.get(1).getCost()) {
+							int athleteIndex = comboBox.getSelectedIndex();
+							environment.getGame().getBank().alterMoney(-itemCosts.get(1));
+							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(1));	
+						} else {
+							warningLabel.setText("Not Enough Money!");
+						}
+					}
+				});
 			}
 		});
 		
@@ -278,6 +303,22 @@ public class ItemMarketPage {
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(2)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(2)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(2), itemBoostTypes.get(2)));
+				
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (items.get(2).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(2).getCost())) {
+							environment.getGame().setCoach(items.get(2));
+							comboBox.setEnabled(false);
+							warningLabel.setText("test");
+						} else if (environment.getGame().getBank().getMoney() >= items.get(2).getCost()) {
+							int athleteIndex = comboBox.getSelectedIndex();
+							environment.getGame().getBank().alterMoney(-itemCosts.get(2));
+							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(2));	
+						} else {
+							warningLabel.setText("Not Enough Money!");
+						}
+					}
+				});
 			}
 		});
 		
@@ -289,6 +330,21 @@ public class ItemMarketPage {
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(3)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(3)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(3), itemBoostTypes.get(3)));
+				buyButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						if (items.get(3).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(3).getCost())) {
+							environment.getGame().setCoach(items.get(3));
+							comboBox.setEnabled(false);
+							warningLabel.setText("test");
+						} else if (environment.getGame().getBank().getMoney() >= items.get(3).getCost()) {
+							int athleteIndex = comboBox.getSelectedIndex();
+							environment.getGame().getBank().alterMoney(-itemCosts.get(3));
+							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(3));	
+						} else {
+							warningLabel.setText("Not Enough Money!");
+						}
+					}
+				});
 			}
 		});
 		
@@ -338,6 +394,7 @@ public class ItemMarketPage {
 			}
 		});
 	}
+	
 	public JFrame getFrame() {
 		return frmMarket;
 	}

@@ -141,4 +141,5 @@ public class Game {
 // JUnit testing
 // Javadoc
 // Difficulty/week scaling prices and difficulty of matches
+// do README
 // DONE

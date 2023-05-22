@@ -527,7 +527,7 @@ public class TeamPage {
 					.addComponent(swapLabel)
 					.addGap(6)
 					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(42, Short.MAX_VALUE))
+					.addContainerGap(32, Short.MAX_VALUE))
 				.addGroup(gl_infoPanel.createSequentialGroup()
 					.addGap(7)
 					.addComponent(valueLabel, GroupLayout.PREFERRED_SIZE, 119, GroupLayout.PREFERRED_SIZE)
@@ -558,10 +558,10 @@ public class TeamPage {
 							.addComponent(swapLabel))
 						.addGroup(gl_infoPanel.createSequentialGroup()
 							.addGap(5)
-							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
-					.addGap(4)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)))
+					.addGap(5)
 					.addComponent(valueLabel)
-					.addContainerGap(51, Short.MAX_VALUE))
+					.addContainerGap(15, Short.MAX_VALUE))
 		);
 		infoPanel.setLayout(gl_infoPanel);
 		

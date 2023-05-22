@@ -22,7 +22,7 @@ public class Athlete extends Statistics {
         this.isInjured = isInjured;
         this.value = price;
         this.equippedItems = new ArrayList<Item>();
-
+ 
     }
 
     public String getFullName() {
@@ -59,7 +59,16 @@ public class Athlete extends Statistics {
     
     public void equipItem(Item item) {
     	equippedItems.add(item);
-    	Athlete.super.alterStat(item.getBoostType(), item.getBoost());
+    	String boostType = item.getBoostType();
+    	if (boostType.equals("Offence")){
+        	alterStat("Offence", item.getBoost());
+    	} else if (boostType.equals("Defence")) {
+    		alterStat("Defence", item.getBoost());
+    	} else if (boostType.equals("Agility")) {
+    		alterStat("Agility", item.getBoost());
+    	} else if (boostType.equals("All")) {
+    		alterStat("All", item.getBoost());
+    	}
     }
     
     public ArrayList<Item> getEquippedItems(){
