@@ -124,7 +124,20 @@ public class GameEnvironment {
      */
     public void closeRestPage(RestPage restPage) {
         restPage.closeWindow();
-        launchGamePage();
+    	maybeLaunchGameOverPage();
+    }
+    
+    public void maybeLaunchGameOverPage() {
+    	int currentWeek = this.getGame().getCurrentWeek();
+    	int totalWeek = this.getGame().getWeek();
+    	if (currentWeek <= totalWeek) {
+        	launchGamePage();
+    	} else {
+    		int totalWins = this.getGame().getWins();
+    		int totalLosses = this.getGame().getLosses();
+    		int totalMoney = this.getGame().getBank().getMoney();
+    		launchGameOverPage(totalWins, totalLosses, totalMoney);
+    	}
     }
 
     /**
@@ -176,18 +189,13 @@ public class GameEnvironment {
 	 */
     public void closeMatchPage(MatchPage matchPage) {
     	matchPage.closeWindow();
-    	int currentWeek = this.getGame().getCurrentWeek();
-    	int totalWeek = this.getGame().getWeek();
-    	if (currentWeek <= totalWeek) {
-    		launchGamePage();
-    	} else {
-    		launchGameOverPage();
-    	}
-    	
+    	maybeLaunchGameOverPage();
     }
-    /**
-	 * launches the game over page
-	 */
+    
+    public void launchGameOverPage(int wins, int losses, int money) {
+    	GameOverPage gameOver = new GameOverPage(this, wins, losses, money);
+    }
+    
     public void launchGameOverPage() {
     	GameOverPage gameOver = new GameOverPage(this);
     }

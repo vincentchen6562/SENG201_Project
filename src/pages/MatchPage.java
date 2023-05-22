@@ -620,7 +620,7 @@ public class MatchPage {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(opponentTeamNameLabel)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-				.addComponent(weekNumberpanel, GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+				.addComponent(weekNumberpanel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 		);
 		
 		JLabel lblNewLabel_1 = new JLabel("Week");
@@ -640,23 +640,27 @@ public class MatchPage {
 			gl_weekNumberpanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_weekNumberpanel.createSequentialGroup()
 					.addGroup(gl_weekNumberpanel.createParallelGroup(Alignment.LEADING)
-						.addGroup(Alignment.TRAILING, gl_weekNumberpanel.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(weekNumberLabel, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, gl_weekNumberpanel.createSequentialGroup()
-							.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(gl_weekNumberpanel.createSequentialGroup()
+							.addGap(4)
 							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
-						.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+						.addGroup(gl_weekNumberpanel.createSequentialGroup()
+							.addGap(7)
+							.addComponent(weekNumberLabel, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_weekNumberpanel.createSequentialGroup()
+							.addGap(6)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 52, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_weekNumberpanel.setVerticalGroup(
 			gl_weekNumberpanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_weekNumberpanel.createSequentialGroup()
+					.addGap(4)
 					.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(2)
 					.addComponent(weekNumberLabel, GroupLayout.PREFERRED_SIZE, 15, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-					.addComponent(lblNewLabel_2))
+					.addPreferredGap(ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+					.addComponent(lblNewLabel_2)
+					.addGap(6))
 		);
 		weekNumberpanel.setLayout(gl_weekNumberpanel);
 		teamNamespanel.setLayout(gl_teamNamespanel);
