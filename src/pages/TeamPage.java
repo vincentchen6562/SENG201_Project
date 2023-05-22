@@ -268,7 +268,7 @@ public class TeamPage {
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(0).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(0).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(0).getAgility()));
-					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(0).getStamina()));
+					staminaLabel.setText(String.format("Stamina: %d/%d", equippedAthletes.get(0).getStamina(),equippedAthletes.get(0).getMaxStamina()));
 					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(0).getValue()/2));
 					ArrayList<String> athletesItems = new ArrayList<String>();
 					ArrayList<Item> itemList  = environment.getGame().getTeam().getEquippedAthletes().get(0).getEquippedItems();
@@ -312,7 +312,7 @@ public class TeamPage {
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(1).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(1).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(1).getAgility()));
-					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(1).getStamina()));
+					staminaLabel.setText(String.format("Stamina: %d/%d", equippedAthletes.get(1).getStamina(),equippedAthletes.get(1).getMaxStamina()));
 					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(1).getValue()/2));
 					if (equippedAthletes.get(1).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
@@ -349,7 +349,7 @@ public class TeamPage {
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(2).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(2).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(2).getAgility()));
-					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(2).getStamina()));
+					staminaLabel.setText(String.format("Stamina: %d/%d", equippedAthletes.get(2).getStamina(),equippedAthletes.get(2).getMaxStamina()));
 					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(2).getValue()/2));
 					if (equippedAthletes.get(2).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
@@ -386,7 +386,7 @@ public class TeamPage {
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(3).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(3).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(3).getAgility()));
-					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(3).getStamina()));
+					staminaLabel.setText(String.format("Stamina: %d/%d", equippedAthletes.get(3).getStamina(),equippedAthletes.get(3).getMaxStamina()));
 					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(3).getValue()/2));
 					if (equippedAthletes.get(3).getIsInjured()) {
 						healthLabel.setText("Health: Injured");
@@ -423,7 +423,7 @@ public class TeamPage {
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(4).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(4).getDefence()));
 					agilityLabel.setText(String.format("Agility: %d", equippedAthletes.get(4).getAgility()));
-					staminaLabel.setText(String.format("Stamina: %d", equippedAthletes.get(4).getStamina()));
+					staminaLabel.setText(String.format("Stamina: %d/%d", equippedAthletes.get(4).getStamina(),equippedAthletes.get(4).getMaxStamina()));
 					valueLabel.setText(String.format("Sells For: %d", equippedAthletes.get(4).getValue()/2));
 					if (equippedAthletes.get(4).getIsInjured()) {
 						healthLabel.setText("Health: Injured");

@@ -9,6 +9,7 @@ public class Athlete extends Statistics {
     private String nickName = "";
     private String position;
     private int stamina;
+    private int maxStamina;
     private boolean isInjured;
     private int value;
     private ArrayList<Item> equippedItems;
@@ -19,10 +20,10 @@ public class Athlete extends Statistics {
         this.name = name;
         this.position = position;
         this.stamina = stamina;
+        this.maxStamina = stamina;
         this.isInjured = isInjured;
         this.value = price;
         this.equippedItems = new ArrayList<Item>();
- 
     }
 
     public String getFullName() {
@@ -55,6 +56,10 @@ public class Athlete extends Statistics {
 
     public int getValue() {
         return value;
+    }
+    
+    public int getMaxStamina() {
+    	return maxStamina;
     }
     
     public void equipItem(Item item) {
