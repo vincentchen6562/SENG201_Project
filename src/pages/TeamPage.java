@@ -25,58 +25,63 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.JComboBox;
-
+/**
+ * The TeamPage class represents the graphical user interface (GUI) for managing the team in the game.
+ * It allows the player to view and interact with the team's athletes and make changes to their positions.
+ */
 public class TeamPage {
 
 	private JFrame frame;
 	private GameEnvironment environment;
 	private Boolean swapButtonExecuted = false;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					TeamPage window = new TeamPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
+  /**
+   * Constructs a TeamPage object.
+   *
+   * @param incomingEnvironment The GameEnvironment object representing the game environment.
+   */
 	public TeamPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frame.setVisible(true);
 	}
 	
+	/**
+	* Closes the team page window.
+	*/
 	public void closeWindow() {
 		frame.dispose();
 	}
 	
-	public void finishedWindow() {
-		environment.closeTeamPage(this);
+	/**
+	 * requests the game environment to close the team page
+	 * if isSwapped is set to true, opens team page again instead of game page
+	 */
+	public void finishedWindow(Boolean isSwapped) {
+		environment.closeTeamPage(this, isSwapped);
 	}
 	
+	/**
+	 * Sets the swapButtonExecuted flag to indicate that the swap button has been executed.
+	 */
 	public void setSwapButtonExecuted() {
 		this.swapButtonExecuted = true;
 	}
 	
-
+  /**
+   * Helper method to handle the swap button action.
+   *
+   * @param comboBox   The JComboBox component representing the athlete selection dropdown.
+   * @param index      The index of the athlete to swap.
+   * @param swapButton The JButton component representing the swap button.
+   */
 	public void swapButtonHelper(JComboBox<String> comboBox, int index, JButton swapButton) {
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!swapButtonExecuted) {
 				environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), index);
 				setSwapButtonExecuted();
-				finishedWindow();
+				finishedWindow(true);
 				}
 			}
 		});
@@ -133,7 +138,13 @@ public class TeamPage {
 		JLabel coachLabel = new JLabel("Coach:");
 		
 		JLabel coachBoostLabel = new JLabel("Coach Boost:");
-	
+		
+		if(environment.getGame().getCoach() != null) {
+			coachLabel.setText(String.format("Coach: %s", environment.getGame().getCoach().getName()));
+			coachBoostLabel.setText(String.format("Boost: +%d %s", environment.getGame().getCoach().getBoost(),
+					environment.getGame().getCoach().getBoostType()));
+		}
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -264,6 +275,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(0).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(0).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(0).getDefence()));
@@ -287,7 +304,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(0).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(0);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -303,11 +320,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(1).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(1).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(1).getDefence()));
@@ -324,7 +342,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(1).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(1);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -340,11 +358,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(2).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(2).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(2).getDefence()));
@@ -361,7 +380,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(2).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(2);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -377,11 +396,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(3).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(3).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(3).getDefence()));
@@ -397,7 +417,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(3).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(3);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -414,11 +434,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(4).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(4).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(4).getDefence()));
@@ -434,7 +455,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(4).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(4);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -460,13 +481,22 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					
 					swapButtonHelper(comboBox, 5, swapButton);
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(excessAthlete.getValue()/2);
+							environment.getGame().getTeam().removeExcessAthlete();
+							finishedWindow(true);
+						}
+					});
+					
 				}
 			});
 		};
@@ -557,7 +587,7 @@ public class TeamPage {
 		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				finishedWindow(false);
 			}
 		});
 		

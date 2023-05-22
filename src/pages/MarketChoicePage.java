@@ -15,56 +15,58 @@ import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * The MarketChoicePage class represents a page that allows the user
+ * to choose between the item market and athlete market. It provides buttons to navigate to the
+ * respective markets and displays the user's current stats, such as money, week, and points.
+ */
 public class MarketChoicePage {
 
 	private JFrame frame;
 	private GameEnvironment environment;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MarketChoicePage window = new MarketChoicePage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
+    /**
+     * Constructs a new instance of MarketChoicePage.
+     *
+     * @param incomingEnvironment the GameEnvironment object representing the game environment
+     */
 	public MarketChoicePage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frame.setVisible(true);
 	}
 	
+	/**
+     * Closes the window of the market choice page.
+     */
 	public void closeWindow() {
 		frame.dispose();
 	}
 	
+	/**
+     * Launches the item market page.
+     */
 	public void intoItemMarket() {
 		environment.launchItemMarketPage();
 	}
 	
+	/**
+     * Launches the athlete market page.
+     */
 	public void intoAthleteMarket() {
 		environment.launchAthleteMarketPage();
 	}
 	
+	/**
+ 	* Close this instance of MarketChoicePage through Game Environment
+	*/
 	public void finishedWindow() {
 		environment.closeMarketChoicePage(this);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
+    /**
+     * Initializes the contents of the frame and sets up the GUI components.
+     */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 400);

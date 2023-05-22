@@ -19,6 +19,10 @@ import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 
+/**
+ * The MatchPage class represents a GUI window for displaying a match page in a game.
+ * It allows interaction with the game environment and provides information about the opponent team and match rewards.
+ */
 public class MatchPage {
 
 	private JFrame frmMatchPage;
@@ -28,36 +32,30 @@ public class MatchPage {
 	
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MatchPage window = new MatchPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
+	 * Constructs a MatchPage object.
+	 *
+	 * @param incomingEnvironment The game environment.
+	 * @param oppTeamName         The name of the opponent team.
+	 * @param incomingReward      The reward for winning the match.
 	 */
 	public MatchPage(GameEnvironment incomingEnvironment, String oppTeamName, int incomingReward) {
 		environment = incomingEnvironment;
 		opponentTeamName = oppTeamName;
-		rewardMatch = incomingReward; // fix this: returns 0
+		rewardMatch = incomingReward; // TODO fix this: returns 0
 		initialize();
 		frmMatchPage.setVisible(true);
 	}
-	
+
+	/**
+	 * Closes the match page window.
+	 */
 	public void closeWindow() {
 		frmMatchPage.dispose();
 	}
 	
+	/**
+	 * closes the match page window through the game environment
+	 */
 	public void finishedWindow() {
 		environment.closeMatchPage(this);
 	}

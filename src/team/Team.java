@@ -53,7 +53,7 @@ public class Team {
         } else if (excessAthlete == null) {
             excessAthlete = athlete;
         } else {
-            // Team full warning
+            // TODO Team full warning
         }
     }
 
@@ -85,13 +85,20 @@ public class Team {
     }
 
     /**
-     * Gets the excess athlete stored separately, which is not part of the main
-     * equipped athletes list.
+     * Gets the excess athlete
+     * which is not part of the main equipped athletes list.
      *
      * @return the excess athlete
      */
     public Athlete getExcessAthlete() {
         return excessAthlete;
+    }
+
+    /**
+     * sets the excessAthlete to null
+     */
+    public void removeExcessAthlete() {
+        excessAthlete = null;
     }
 
     /**

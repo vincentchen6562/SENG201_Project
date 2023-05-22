@@ -17,30 +17,21 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * The ItemMarketPage class represents the user interface for the item market.
+ * It displays four items to the player, and provides them with the ability to buy and equip them to specified athletes in their team.
+ * The class also provides information about the selected item in the market, including: name, type, boost, and cost
+ * Money, week, and points are also displayed
+ */
 public class ItemMarketPage {
 
 	private JFrame frmMarket;
 	private GameEnvironment environment;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ItemMarketPage window = new ItemMarketPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
+	 * Creates a new instance of the ItemMarketPageClass
+	 * 
+	 * @param incomingEnvironment the GameEnvironment object representing the game environment
 	 */
 	public ItemMarketPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
@@ -48,17 +39,47 @@ public class ItemMarketPage {
 		frmMarket.setVisible(true);
 	}
 	
+	/**
+	* Closes the item market page window.
+	*/
 	public void closeWindow() {
 		frmMarket.dispose();
 	}
-	
+
+	/**
+ 	* Close this instance of ItemMarketPage through Game Environment
+	*/
 	public void finishedWindow() {
 		environment.closeItemMarketPage(this);
 	}
 	
-	private void buyItem() {
-		
+	/**
+	 * Helper function to handle the buy button action.
+	 * @param buyButton 	The JButton componenent responsible for triggering the buy action
+	 * @param items 		The ArrayList of items displayed in the shop
+	 * @param comboBox		The JComboBox from which the athlete to equip to can be selected
+	 * @param warningLabel	The JLabel that displays a warning if insufficient funds are available
+	 * @param index			The integer that represents the index of the item being bought
+	 */
+	public void buyHelper(JButton buyButton, ArrayList<Item> items, 
+			JComboBox<String> comboBox, JLabel warningLabel, Integer index) {
+		buyButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (items.get(index).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(index).getCost())) {
+					environment.getGame().setCoach(items.get(index));
+					comboBox.setEnabled(false);
+					
+				} else if (environment.getGame().getBank().getMoney() >= items.get(index).getCost()) {
+					int athleteIndex = comboBox.getSelectedIndex();
+					environment.getGame().getBank().alterMoney(-items.get(index).getCost());
+					environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(index));	
+				} else {
+					warningLabel.setText("Not Enough Money!");
+				}
+			}
+		});
 	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -243,108 +264,58 @@ public class ItemMarketPage {
 		
 		item1Button.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(true);
+				
+				comboBox.setEnabled(!items.get(0).getIsCoach());
 				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(0)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(0)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(0)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(0), itemBoostTypes.get(0)));
+				buyHelper(buyButton, items, comboBox, warningLabel, 0);
 				
-				buyButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (items.get(0).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(0).getCost())) {
-							environment.getGame().setCoach(items.get(0));
-							comboBox.setEnabled(false);
-							warningLabel.setText("test");
-						} else if (environment.getGame().getBank().getMoney() >= items.get(0).getCost()) {
-							int athleteIndex = comboBox.getSelectedIndex();
-							environment.getGame().getBank().alterMoney(-itemCosts.get(0));
-							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(0));	
-						} else {
-							warningLabel.setText("Not Enough Money!");
-						}
-					}
-				});
+
 			}
 		});
 
 		item2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(true);
+				comboBox.setEnabled(!items.get(1).getIsCoach());
 				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(1)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(1)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(1)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(1), itemBoostTypes.get(1)));
 				
-				buyButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (items.get(1).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(1).getCost())) {
-							environment.getGame().setCoach(items.get(1));
-							comboBox.setEnabled(false);
-							warningLabel.setText("test");
-						} else if (environment.getGame().getBank().getMoney() >= items.get(1).getCost()) {
-							int athleteIndex = comboBox.getSelectedIndex();
-							environment.getGame().getBank().alterMoney(-itemCosts.get(1));
-							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(1));	
-						} else {
-							warningLabel.setText("Not Enough Money!");
-						}
-					}
-				});
+				buyHelper(buyButton, items, comboBox, warningLabel, 1);
+
 			}
 		});
 		
 		item3Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(true);
+				comboBox.setEnabled(!items.get(2).getIsCoach());
 				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(2)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(2)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(2)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(2), itemBoostTypes.get(2)));
 				
-				buyButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (items.get(2).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(2).getCost())) {
-							environment.getGame().setCoach(items.get(2));
-							comboBox.setEnabled(false);
-							warningLabel.setText("test");
-						} else if (environment.getGame().getBank().getMoney() >= items.get(2).getCost()) {
-							int athleteIndex = comboBox.getSelectedIndex();
-							environment.getGame().getBank().alterMoney(-itemCosts.get(2));
-							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(2));	
-						} else {
-							warningLabel.setText("Not Enough Money!");
-						}
-					}
-				});
+				buyHelper(buyButton, items, comboBox, warningLabel, 2);
+
 			}
 		});
 		
 		item4Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				comboBox.setEnabled(true);
+				comboBox.setEnabled(!items.get(3).getIsCoach());
 				buyButton.setEnabled(true);
 				nameLabel.setText(String.format("Name: %s", itemNames.get(3)));
 				typeLabel.setText(String.format("Type: %s", itemTypes.get(3)));
 				costLabel.setText(String.format("Cost: %d", itemCosts.get(3)));
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(3), itemBoostTypes.get(3)));
-				buyButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (items.get(3).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(3).getCost())) {
-							environment.getGame().setCoach(items.get(3));
-							comboBox.setEnabled(false);
-							warningLabel.setText("test");
-						} else if (environment.getGame().getBank().getMoney() >= items.get(3).getCost()) {
-							int athleteIndex = comboBox.getSelectedIndex();
-							environment.getGame().getBank().alterMoney(-itemCosts.get(3));
-							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(3));	
-						} else {
-							warningLabel.setText("Not Enough Money!");
-						}
-					}
-				});
+				
+				buyHelper(buyButton, items, comboBox, warningLabel, 3);
+
 			}
 		});
 		

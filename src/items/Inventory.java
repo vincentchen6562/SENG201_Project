@@ -3,24 +3,36 @@ package src.items;
 import src.*;
 import java.util.ArrayList;
 
+/**
+ * The Inventory class represents a collection of items.
+ */
 public class Inventory {
     private ArrayList<Item> itemList;
 
-    public Inventory(Difficulty difficulty) { // the starting amount of money depends on the difficulty
+    /**
+     * Constructs an Inventory object.
+     *
+     * @param difficulty the difficulty level that determines the starting amount of money
+     */
+    public Inventory(Difficulty difficulty) {
         itemList = new ArrayList<Item>();
-
-//        if (difficulty.getDifficulty() == "Hard") {
-//			bank.receive(1000);
-//        } else {
-//            bank.receive(5000);
-//        }
     }
 
-	public int getNumberOfItems() {
+    /**
+     * Retrieves the number of items in the inventory.
+     *
+     * @return the number of items in the inventory
+     */
+    public int getNumberOfItems() {
         return itemList.size();
     }
 
-    public ArrayList<String> getAllItems() { // returns the given given parameter of all of the items in the list
+    /**
+     * Retrieves the names of all the items in the inventory.
+     *
+     * @return a list of names of all the items in the inventory
+     */
+    public ArrayList<String> getAllItems() {
         ArrayList<String> allItemNames = new ArrayList<String>();
         for (Item item : itemList) {
             allItemNames.add(item.getName());
@@ -28,22 +40,16 @@ public class Inventory {
         return allItemNames;
     }
 
-    public void addItem(Item item) { // need to add exception: cannot add the same item more than once
-        if(itemList.contains(item)) {
+    /**
+     * Adds an item to the inventory.
+     *
+     * @param item the item to be added
+     */
+    public void addItem(Item item) {  // TODO need to add exception: cannot add the same item more than once
+        if (itemList.contains(item)) {
             System.out.println("Item has already been added");
         } else {
             itemList.add(item);
         }
-       
     }
-
-//     public static void main(String[] args) {
-//         Difficulty diff = new Difficulty("Hard");
-//         Inventory inventory = new Inventory(diff);
-//         Item Steve = new Coach("Steve Johnson", 60, 4000);
-//         inventory.addItem(Steve);
-//         System.out.println("The inventory currently has items " + inventory.getAllItems() + 
-//         ". and inventory currently has " + inventory.getNumberOfItems() + " items");
-//     }
-
 }

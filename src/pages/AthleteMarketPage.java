@@ -17,41 +17,36 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * The AthleteMarketPage class represents the user interface for the athlete market in the game.
+ * It allows the user to view and purchase athletes from the market.
+ */
 public class AthleteMarketPage {
 
 	private JFrame frmMarket;
 	private GameEnvironment environment;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					MarketPage window = new MarketPage();
-//					window.getFrame().setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
+  /**
+   * Creates a new instance of AthleteMarketPage.
+   *
+   * @param incomingEnvironment the GameEnvironment object representing the game environment
+   */
 	public AthleteMarketPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frmMarket.setVisible(true);
 	}
 	
+	/**
+	 * Closes the market window.
+	 */
 	public void closeWindow() {
 		frmMarket.dispose();
 	}
 	
+	/**
+   * closes the athlete market page through Game Environment
+   */
 	public void finishedWindow() {
 		environment.closeAthleteMarketPage(this);
 	}
@@ -321,6 +316,11 @@ public class AthleteMarketPage {
 		
 	}
 
+  /**
+   * Returns the frame associated with this AthleteMarketPage.
+   *
+   * @return the JFrame object representing the market frame
+   */
 	public JFrame getFrame() {
 		return frmMarket;
 	}

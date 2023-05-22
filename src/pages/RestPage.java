@@ -31,18 +31,27 @@ public class RestPage {
 	private GameEnvironment environment;
 
 	/**
-	 * Create the application.
+	 * constructs a rest page object.
+	 * 
+	 * @param incomingEnvironment the game environment
 	 */
+
 	public RestPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frmTakeABye.setVisible(true);
 	}
 	
+	/**
+	 * Closes the match page window.
+	 */
 	public void closeWindow() {
 		frmTakeABye.dispose();
 	}
 	
+	/**
+	 * closes the rest page window through the game environment
+	 */
 	public void finishedWindow() {
 		environment.closeRestPage(this);
 	}

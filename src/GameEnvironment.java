@@ -168,9 +168,13 @@ public class GameEnvironment {
 	 * Closes the team page and launches the game page.
 	 * @param teamPage the team page to close
 	 */
-    public void closeTeamPage(TeamPage teamPage) {
+    public void closeTeamPage(TeamPage teamPage, Boolean isSwapped) {
     	teamPage.closeWindow();
-    	launchGamePage();
+    	if (isSwapped) {
+    		launchTeamPage();
+    	} else {
+        	launchGamePage();
+    	}
     }
     
 	/**
