@@ -291,12 +291,7 @@ public class TeamPage {
 						}
 					});
 					
-					swapButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 0);
-							finishedWindow();
-						}
-					});
+					swapButtonHelper(comboBox, 0, swapButton);
 				}
 			});
 		}
@@ -333,11 +328,7 @@ public class TeamPage {
 						}
 					});
 					
-					swapButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							swapButtonHelper(comboBox, 0, swapButton);
-						}
-					});
+					swapButtonHelper(comboBox, 1, swapButton);
 				}
 			});
 		}
@@ -374,7 +365,7 @@ public class TeamPage {
 						}
 					});
 					
-					swapButtonHelper(comboBox, 0, swapButton);
+					swapButtonHelper(comboBox, 2, swapButton);
 				}
 			});	
 		}	
@@ -410,11 +401,7 @@ public class TeamPage {
 						}
 					});
 					
-					swapButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							swapButtonHelper(comboBox, 3, swapButton);
-						}
-					});
+					swapButtonHelper(comboBox, 3, swapButton);
 				}
 			});
 			
@@ -451,11 +438,7 @@ public class TeamPage {
 						}
 					});
 					
-					swapButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							swapButtonHelper(comboBox, 4, swapButton);
-						}
-					});
+					swapButtonHelper(comboBox, 4, swapButton);
 				}
 			});
 		}
@@ -483,11 +466,7 @@ public class TeamPage {
 					comboBox.addItem(equippedAthletes.get(3).getFullName());
 					comboBox.addItem(equippedAthletes.get(4).getFullName());
 					
-					swapButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							swapButtonHelper(comboBox, 5, swapButton);
-						}
-					});
+					swapButtonHelper(comboBox, 5, swapButton);
 				}
 			});
 		};
