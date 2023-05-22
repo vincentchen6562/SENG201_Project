@@ -55,9 +55,10 @@ public class TeamPage {
 	
 	/**
 	 * requests the game environment to close the team page
+	 * if isSwapped is set to true, opens team page again instead of game page
 	 */
-	public void finishedWindow() {
-		environment.closeTeamPage(this);
+	public void finishedWindow(Boolean isSwapped) {
+		environment.closeTeamPage(this, isSwapped);
 	}
 	
 	/**
@@ -80,7 +81,7 @@ public class TeamPage {
 				if (!swapButtonExecuted) {
 				environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), index);
 				setSwapButtonExecuted();
-				finishedWindow();
+				finishedWindow(true);
 				}
 			}
 		});
@@ -268,6 +269,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(0).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(0).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(0).getDefence()));
@@ -291,7 +298,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(0).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(0);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -307,11 +314,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(1).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(1).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(1).getDefence()));
@@ -328,7 +336,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(1).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(1);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -344,11 +352,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(2).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(2).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(2).getDefence()));
@@ -365,7 +374,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(2).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(2);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -381,11 +390,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(3).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(3).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(3).getDefence()));
@@ -401,7 +411,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(3).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(3);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -418,11 +428,12 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					nameLabel.setText(String.format("Name: %s", equippedAthletes.get(4).getFullName()));
 					offenceLabel.setText(String.format("Offence: %d", equippedAthletes.get(4).getOffence()));
 					defenceLabel.setText(String.format("Defence: %d", equippedAthletes.get(4).getDefence()));
@@ -438,7 +449,7 @@ public class TeamPage {
 						public void actionPerformed(ActionEvent e) {
 							environment.getGame().getBank().alterMoney(equippedAthletes.get(4).getValue()/2);
 							environment.getGame().getTeam().getEquippedAthletes().remove(4);
-							finishedWindow();
+							finishedWindow(true);
 						}
 					});
 					
@@ -464,13 +475,22 @@ public class TeamPage {
 					comboBox.setEnabled(true);
 					swapButton.setEnabled(true);
 					swapLabel.setEnabled(true);
-					comboBox.addItem(equippedAthletes.get(0).getFullName());
-					comboBox.addItem(equippedAthletes.get(1).getFullName());
-					comboBox.addItem(equippedAthletes.get(2).getFullName());
-					comboBox.addItem(equippedAthletes.get(3).getFullName());
-					comboBox.addItem(equippedAthletes.get(4).getFullName());
+					for (Athlete athlete: equippedAthletes) {
+						comboBox.addItem(athlete.getFullName());
+					}
+					if (excessAthlete != null) {
+						comboBox.addItem(excessAthlete.getFullName());
+					}
 					
 					swapButtonHelper(comboBox, 5, swapButton);
+					sellButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							environment.getGame().getBank().alterMoney(excessAthlete.getValue()/2);
+							environment.getGame().getTeam().removeExcessAthlete();
+							finishedWindow(true);
+						}
+					});
+					
 				}
 			});
 		};
@@ -561,7 +581,7 @@ public class TeamPage {
 		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				finishedWindow();
+				finishedWindow(false);
 			}
 		});
 		
