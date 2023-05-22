@@ -104,7 +104,7 @@ public class Match {
         return names;
     }
 
-    /*
+    /**
      * A method that gets the athletes in a text file and put them in an array list
      */
     public void generateOpponentAthletes() {
