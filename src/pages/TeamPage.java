@@ -30,6 +30,7 @@ public class TeamPage {
 
 	private JFrame frame;
 	private GameEnvironment environment;
+	private Boolean swapButtonExecuted = false;
 
 	/**
 	 * Launch the application.
@@ -63,7 +64,23 @@ public class TeamPage {
 	public void finishedWindow() {
 		environment.closeTeamPage(this);
 	}
+	
+	public void setSwapButtonExecuted() {
+		this.swapButtonExecuted = true;
+	}
+	
 
+	public void swapButtonHelper(JComboBox<String> comboBox, int index, JButton swapButton) {
+		swapButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!swapButtonExecuted) {
+				environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), index);
+				setSwapButtonExecuted();
+				finishedWindow();
+				}
+			}
+		});
+	}
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -232,13 +249,14 @@ public class TeamPage {
 		JComboBox<String> comboBox = new JComboBox<String>();
 		JLabel swapLabel = new JLabel("Swap With:");
 		JLabel valueLabel = new JLabel("Sells For:");
-
+			
 		
 		comboBox.setEnabled(false);
 		swapButton.setEnabled(false);
 		swapLabel.setEnabled(false);
+		
+		
 		if (equippedAthletes.size() > 0) {
-
 			athlete1Button.setText(equippedAthletes.get(0).getFullName());
 			athlete1Button.addActionListener(new ActionListener() {
 
@@ -317,8 +335,7 @@ public class TeamPage {
 					
 					swapButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 1);
-							finishedWindow();
+							swapButtonHelper(comboBox, 0, swapButton);
 						}
 					});
 				}
@@ -357,12 +374,7 @@ public class TeamPage {
 						}
 					});
 					
-					swapButton.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 2);
-							finishedWindow();
-						}
-					});
+					swapButtonHelper(comboBox, 0, swapButton);
 				}
 			});	
 		}	
@@ -400,8 +412,7 @@ public class TeamPage {
 					
 					swapButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 3);
-							finishedWindow();
+							swapButtonHelper(comboBox, 3, swapButton);
 						}
 					});
 				}
@@ -442,8 +453,7 @@ public class TeamPage {
 					
 					swapButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 4);
-							finishedWindow();
+							swapButtonHelper(comboBox, 4, swapButton);
 						}
 					});
 				}
@@ -475,8 +485,7 @@ public class TeamPage {
 					
 					swapButton.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							environment.getGame().getTeam().setAthlete(comboBox.getSelectedIndex(), 5);
-							finishedWindow();
+							swapButtonHelper(comboBox, 5, swapButton);
 						}
 					});
 				}
