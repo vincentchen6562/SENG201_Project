@@ -55,6 +55,10 @@ public class Statistics {
             defence += amount;
         } else if (stat == "Agility") {
             agility += amount;
+        } else if (stat == "All") {
+        	offence += amount;
+        	defence += amount;
+        	agility += amount;
         }
         updateOverallStat();
     }

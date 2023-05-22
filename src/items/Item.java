@@ -8,7 +8,7 @@ public class Item { //abstract add back? removed bc couldnt construct in market
     protected int itemPrice;
 //    public abstract int getPrice();
 
-    public Item(String itemType, String name, int boost, String boostType, int price) {
+    public Item(String itemType, String name, int boost, String boostType, int price, Boolean isCoach) {
         this.itemType = itemType;
     	this.itemName = name;
         this.itemBoost = boost;
@@ -41,6 +41,14 @@ public class Item { //abstract add back? removed bc couldnt construct in market
                 + " boost.");
     }
 
+    public Boolean getIsCoach() {
+    	if (itemType == "Coach") {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
     // public static void main(String[] args) {
     // Item steve = new Coach("Steve Johnson", 60, 4000);
     // steve.info();

@@ -131,7 +131,7 @@ public class AthleteMarketPage {
 		ArrayList<ArrayList<Integer>> athletesStats = new ArrayList<ArrayList<Integer>>();
 		ArrayList<String> athletesCosts = new ArrayList<String>();
 		
-		ArrayList<Athlete> athletes = new Market().getAthletes();
+		ArrayList<Athlete> athletes = new Market().getAthletes(environment);
 		for (int i = 0; i < athletes.size(); i++)
 		{
 			athletesNames.add(athletes.get(i).getFullName());
@@ -235,7 +235,10 @@ public class AthleteMarketPage {
 				
 				buyButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						environment.getGame().getTeam().addAthlete(athletes.get(0));
+						if (environment.getGame().getBank().getMoney() >= athletes.get(0).getValue()) {
+							environment.getGame().getTeam().addAthlete(athletes.get(0));
+							environment.getGame().getBank().alterMoney(-athletes.get(0).getValue());
+						}
 					}
 				});
 			}
