@@ -12,10 +12,11 @@ public class Team {
     private Athlete excessAthlete;
 
     /**
-     * Creates a new instance of the Team class with the specified team name and list of athletes.
+     * Creates a new instance of the Team class with the specified team name and
+     * list of athletes.
      *
-     * @param teamName  the name of the team
-     * @param athletes  the list of athletes in the team
+     * @param teamName the name of the team
+     * @param athletes the list of athletes in the team
      */
     public Team(String teamName, ArrayList<Athlete> athletes) {
         this.teamName = teamName;
@@ -41,7 +42,8 @@ public class Team {
     }
 
     /**
-     * Adds an athlete to the team. If the team is already full, the excess athlete is stored separately.
+     * Adds an athlete to the team. If the team is already full, the excess athlete
+     * is stored separately.
      *
      * @param athlete the athlete to add
      */
@@ -56,7 +58,8 @@ public class Team {
     }
 
     /**
-     * Sets the athlete at the specified index with the athlete at the current index.
+     * Sets the athlete at the specified index with the athlete at the current
+     * index.
      * If the current index is greater than 4, the excess athlete is swapped.
      *
      * @param selectedIndex the index of the athlete to be set
@@ -82,7 +85,8 @@ public class Team {
     }
 
     /**
-     * Gets the excess athlete stored separately, which is not part of the main equipped athletes list.
+     * Gets the excess athlete stored separately, which is not part of the main
+     * equipped athletes list.
      *
      * @return the excess athlete
      */
@@ -91,7 +95,8 @@ public class Team {
     }
 
     /**
-     * Calculates and returns the total stat value of all equipped athletes in the team.
+     * Calculates and returns the total stat value of all equipped athletes in the
+     * team.
      *
      * @return the total stat value of the team
      */
@@ -104,17 +109,40 @@ public class Team {
     }
 
     /**
-     * Checks if the team contains the specified athlete, either in the equipped athletes list or as the excess athlete.
+     * Checks if the team contains the specified athlete, either in the equipped
+     * athletes list or as the excess athlete.
      *
      * @param athlete the athlete to check
      * @return true if the team contains the athlete, false otherwise
      */
     public Boolean containsAthlete(Athlete athlete) {
         if (equippedAthletes.contains(athlete) || excessAthlete == athlete) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+            return true;
+        } else {
+            return false;
+        }
     }
-    
-}   
+
+    public int getSFStat() {
+        int sfOffence = equippedAthletes.get(1).getOffence();
+        int sfDefence = equippedAthletes.get(1).getDefence();
+        int sfAgility = equippedAthletes.get(1).getAgility();
+        int sfStat = (sfOffence + sfDefence + sfAgility) / 3;
+        return sfStat;
+    }
+
+    public int getPFStat() {
+        return equippedAthletes.get(2).getOffence();
+    }
+
+    public int getPGStat() {
+        int pgOffence = equippedAthletes.get(3).getOffence();
+        int pgAgility = equippedAthletes.get(3).getAgility();
+        int pgStat = (pgOffence + pgAgility) / 2;
+        return pgStat;
+    }
+
+    public int getSGStat() {
+        return equippedAthletes.get(4).getOffence();
+    }
+}

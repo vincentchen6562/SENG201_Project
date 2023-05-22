@@ -143,3 +143,6 @@ public class Game {
 // Difficulty/week scaling prices and difficulty of matches
 // do README
 // DONE
+
+// - fix up the money below zero and still training problem in the rest page
+// - properly implement stamina

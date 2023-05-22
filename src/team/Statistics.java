@@ -1,9 +1,11 @@
 package src.team;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
- * Represents the statistics of an athlete, including offence, defence, agility, and overall stat.
+ * Represents the statistics of an athlete, including offence, defence, agility,
+ * and overall stat.
  */
 public class Statistics {
     private int offence;
@@ -12,11 +14,12 @@ public class Statistics {
     private int overallStat;
 
     /**
-     * Creates a new instance of the Statistics class with the specified offensive, defensive, and agility stats.
+     * Creates a new instance of the Statistics class with the specified offensive,
+     * defensive, and agility stats.
      *
-     * @param offence  the offensive stat of the athlete
-     * @param defence  the defensive stat of the athlete
-     * @param agility  the agility stat of the athlete
+     * @param offence the offensive stat of the athlete
+     * @param defence the defensive stat of the athlete
+     * @param agility the agility stat of the athlete
      */
     public Statistics(int offence, int defence, int agility) {
         this.offence = offence;
@@ -64,7 +67,8 @@ public class Statistics {
     /**
      * Gets a list of the athlete's offensive, defensive, and agility stats.
      *
-     * @return an ArrayList containing the offensive, defensive, and agility stats in that order
+     * @return an ArrayList containing the offensive, defensive, and agility stats
+     *         in that order
      */
     public ArrayList<Integer> getStatList() {
         ArrayList<Integer> statList = new ArrayList<Integer>();
@@ -84,7 +88,8 @@ public class Statistics {
     }
 
     /**
-     * Updates the overall stat of the athlete based on the current offensive, defensive, and agility stats.
+     * Updates the overall stat of the athlete based on the current offensive,
+     * defensive, and agility stats.
      */
     public void updateOverallStat() {
         overallStat = offence + defence + agility;
@@ -126,5 +131,11 @@ public class Statistics {
             agility = value;
         }
         updateOverallStat();
+    }
+
+    public void randomAlterStat(String stat) {
+        Random rng = new Random();
+        int randInt = rng.nextInt(0, 3);
+        alterStat(stat, randInt);
     }
 }
