@@ -27,7 +27,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.SwingConstants;
 
-
+/**
+ * The StadiumPage class represents a GUI window for the stadium page in the game.
+ * It allows the user to interact with the stadium and initiate matches against opponents.
+ */
 public class StadiumPage {
 
 	private JFrame frmStadium;
@@ -35,24 +38,11 @@ public class StadiumPage {
 	public String teamNameStadium;
 	public int rewardStadium;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					StadiumPage window = new StadiumPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
+	 *
+	 * @param incomingEnvironment The game environment.
 	 */
 	public StadiumPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
@@ -60,24 +50,46 @@ public class StadiumPage {
 		frmStadium.setVisible(true);
 	}
 	
+	/**
+	 * Closes the stadium page window.
+	 */
 	public void closeWindow() {
 		frmStadium.dispose();
 	}
 	
+	/**
+	 * requests the game environment to close the stadium page
+	 */
 	public void finishedWindow() {
 		environment.closeStadiumPage(this);
 	}
 	
+	/**
+	 * Launches the match page with the specified opponent team name and reward.
+	 *
+	 * @param oppTeamName The name of the opponent team.
+	 * @param reward      The reward for winning the match.
+	 */
 	public void intoMatch(String oppTeamName, int reward) {
 		setOppTName(oppTeamName);
 		rewardStadium = reward;
-		environment.launchMatchPage(teamNameStadium, rewardStadium); //need different instances of match page
+		environment.launchMatchPage(teamNameStadium, rewardStadium); // TODO need different instances of match page
 	}
 	
+	/**
+	 * Returns the opponent team name.
+	 *
+	 * @return The opponent team name.
+	 */
 	public String getOppTName() {
 		return teamNameStadium;
 	}
 	
+	/**
+	 * Sets the opponent team name.
+	 *
+	 * @param teamName The opponent team name to be set.
+	 */
 	public void setOppTName(String teamName) {
 		teamNameStadium = teamName;
 	}

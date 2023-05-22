@@ -25,51 +25,55 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.JComboBox;
-
+/**
+ * The TeamPage class represents the graphical user interface (GUI) for managing the team in the game.
+ * It allows the player to view and interact with the team's athletes and make changes to their positions.
+ */
 public class TeamPage {
 
 	private JFrame frame;
 	private GameEnvironment environment;
 	private Boolean swapButtonExecuted = false;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					TeamPage window = new TeamPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
-	 */
+  /**
+   * Constructs a TeamPage object.
+   *
+   * @param incomingEnvironment The GameEnvironment object representing the game environment.
+   */
 	public TeamPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frame.setVisible(true);
 	}
 	
+	/**
+	* Closes the team page window.
+	*/
 	public void closeWindow() {
 		frame.dispose();
 	}
 	
+	/**
+	 * requests the game environment to close the team page
+	 */
 	public void finishedWindow() {
 		environment.closeTeamPage(this);
 	}
 	
+	/**
+	 * Sets the swapButtonExecuted flag to indicate that the swap button has been executed.
+	 */
 	public void setSwapButtonExecuted() {
 		this.swapButtonExecuted = true;
 	}
 	
-
+  /**
+   * Helper method to handle the swap button action.
+   *
+   * @param comboBox   The JComboBox component representing the athlete selection dropdown.
+   * @param index      The index of the athlete to swap.
+   * @param swapButton The JButton component representing the swap button.
+   */
 	public void swapButtonHelper(JComboBox<String> comboBox, int index, JButton swapButton) {
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -17,30 +17,21 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
+/**
+ * The ItemMarketPage class represents the user interface for the item market.
+ * It displays four items to the player, and provides them with the ability to buy and equip them to specified athletes in their team.
+ * The class also provides information about the selected item in the market, including: name, type, boost, and cost
+ * Money, week, and points are also displayed
+ */
 public class ItemMarketPage {
 
 	private JFrame frmMarket;
 	private GameEnvironment environment;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					ItemMarketPage window = new ItemMarketPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
+	 * Creates a new instance of the ItemMarketPageClass
+	 * 
+	 * @param incomingEnvironment the GameEnvironment object representing the game environment
 	 */
 	public ItemMarketPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
@@ -48,17 +39,20 @@ public class ItemMarketPage {
 		frmMarket.setVisible(true);
 	}
 	
+	/**
+	* Closes the item market page window.
+	*/
 	public void closeWindow() {
 		frmMarket.dispose();
 	}
-	
+
+	/**
+ 	* Close this instance of ItemMarketPage through Game Environment
+	*/
 	public void finishedWindow() {
 		environment.closeItemMarketPage(this);
 	}
 	
-	private void buyItem() {
-		
-	}
 
 	/**
 	 * Initialize the contents of the frame.

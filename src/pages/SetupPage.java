@@ -24,7 +24,10 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import src.team.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
-
+/**
+ * The SetupPage class represents a GUI window for setting up the game.
+ * It allows the user to input the team name, select the difficulty level, and set the week number.
+ */
 public class SetupPage {
 
 	private JFrame frmWelcome;
@@ -34,23 +37,9 @@ public class SetupPage {
 	private int weekNum = 1;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					SetupPage window = new SetupPage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
-	 * Create the application.
+	 * Creates a SetupPage object.
+	 *
+	 * @param incomingEnvironment The game environment.
 	 */
 	public SetupPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
@@ -58,10 +47,16 @@ public class SetupPage {
 		frmWelcome.setVisible(true);
 	}
 	
+	/**
+	 * Closes the setup page window.
+	 */
 	public void closeWindow() {
 		frmWelcome.dispose();
 	}
 	
+	/**
+	 * requests the game environment to close the setup page
+	 */
 	public void finishedWindow() {
 		environment.closeSetupPage(this);
 	}

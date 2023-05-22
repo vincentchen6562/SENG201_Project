@@ -15,7 +15,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * The GameOverPage class represents the user interface for the game over screen.
+ * It displays the final game statistics, such as total wins, total losses, and total money.
+ * The class also provides a button to close the game over window.
+ */
 public class GameOverPage {
 
 	private JFrame frmGameOver;
@@ -25,7 +29,12 @@ public class GameOverPage {
 	private int totalMoney;
 
 	/**
-	 * Create the application.
+	 * Creates a new instance of the GameOverPage class.
+	 *
+	 * @param incomingEnvironment the GameEnvironment object representing the game environment
+	 * @param numWins             the total number of wins in the game
+	 * @param numLoss             the total number of losses in the game
+	 * @param moneyLeft           the total money remaining in the game
 	 */
 	public GameOverPage(GameEnvironment incomingEnvironment, int numWins, int numLoss, int moneyLeft) {
 		environment = incomingEnvironment;
@@ -35,11 +44,15 @@ public class GameOverPage {
 		initialize();
 		frmGameOver.setVisible(true);
 	}
-	
+	/**
+	 * Closes the game over window.
+	 */
 	public void closeWindow() {
 		frmGameOver.dispose();
 	}
-	
+	/**
+	 * closes the game over page through Game Environment
+	 */	
 	public void finishedWindow() {
 		environment.closeGameOverPage(this);
 	}

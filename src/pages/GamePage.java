@@ -17,58 +17,65 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPanel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
+/**
+ * The GamePage class represents the user interface for the main game page.
+ * It displays the main options available to the player, such as accessing the market, team, stadium, and rest.
+ * The class also provides information about the game's current state, such as difficulty, money, and current week.
+ */
 public class GamePage {
 
 	private JFrame frmMainPage;
 	private GameEnvironment environment;
-	
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-////		int week = Game.getWeek();
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					GamePage window = new GamePage();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
-	 * Create the application.
-	 */
+	* Creates a new instance of the GamePage class.
+	*
+	* @param incomingEnvironment the GameEnvironment object representing the game environment
+	*/
 	public GamePage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
 		frmMainPage.setVisible(true);
 	}
 	
+	/**
+	* Closes the game page window.
+	*/
 	public void closeWindow() {
 		frmMainPage.dispose();
 	}
 	
+	/**
+ 	* Launches the market choice page.
+	*/
 	public void intoMarket() {
 		environment.launchMarketChoicePage();
 	}
 	
+	/**
+ 	* Launches the rest page.
+	*/
 	public void intoRest() {
 		environment.launchRestPage();
 	}
 	
+	/**
+ 	* Launches the stadium page.
+	*/
 	public void intoStadium() {
 		environment.launchStadiumPage();
 	}
 	
+	/**
+ 	* Launches the team page.
+	*/
 	public void intoTeam() {
 		environment.launchTeamPage();
 	}
 	
+	/**
+ 	* Close this instance of GamePage through Game Environment
+	*/
 	public void finishedWindow() {
 		environment.closeGamePage(this);
 	}
