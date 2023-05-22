@@ -10,7 +10,6 @@ public class Athlete extends Statistics {
     private String position;
     private int stamina;
     private boolean isInjured;
-    private int athleteSalary; // this needs to be zero for the initial TODO remove?
     private int value;
     private ArrayList<Item> equippedItems;
 
@@ -44,10 +43,6 @@ public class Athlete extends Statistics {
 
     public void setIsInjured(boolean state) { // need to set a random chance of this occurring
         isInjured = state;
-    }
-
-    public int getPrice() {
-        return athleteSalary;
     }
 
     public void setNickName(String name) { // this allows the player to give an athlete a nickname

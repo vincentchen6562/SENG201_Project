@@ -224,6 +224,9 @@ public class ItemMarketPage {
 		
 		Athlete excessAthlete = environment
 				.getGame().getTeam().getExcessAthlete();
+		
+		JLabel warningLabel = new JLabel("");
+
 				
 		JComboBox<String> comboBox = new JComboBox<String>();
 		comboBox.addItem(equippedAthletes.get(0).getFullName());
@@ -237,7 +240,7 @@ public class ItemMarketPage {
 		comboBox.setEnabled(false);
 		buyButton.setEnabled(false);
 		
-		item1Button.addActionListener(new ActionListener() {
+		item1Button.addActionListener(new ActionListener() { 
 			public void actionPerformed(ActionEvent e) {
 				comboBox.setEnabled(true);
 				buyButton.setEnabled(true);
@@ -248,9 +251,17 @@ public class ItemMarketPage {
 				
 				buyButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						int athleteIndex = comboBox.getSelectedIndex();
-						environment.getGame().getBank().alterMoney(-itemCosts.get(0));
-						environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(0));
+						if (items.get(0).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(0).getCost())) {
+							environment.getGame().setCoach(items.get(0));
+							comboBox.setEnabled(false);
+							warningLabel.setText("test");
+						} else if (environment.getGame().getBank().getMoney() >= items.get(0).getCost()) {
+							int athleteIndex = comboBox.getSelectedIndex();
+							environment.getGame().getBank().alterMoney(-itemCosts.get(0));
+							environment.getGame().getTeam().getEquippedAthletes().get(athleteIndex).equipItem(items.get(0));	
+						} else {
+							warningLabel.setText("Not Enough Money!");
+						}
 					}
 				});
 			}
@@ -288,7 +299,7 @@ public class ItemMarketPage {
 				boostLabel.setText(String.format("Boost: +%d %s", itemBoosts.get(3), itemBoostTypes.get(3)));
 			}
 		});
-
+		
 		
 
 		
@@ -305,7 +316,8 @@ public class ItemMarketPage {
 						.addGroup(gl_InfoPanel.createSequentialGroup()
 							.addComponent(lblNewLabel)
 							.addGap(14)
-							.addComponent(comboBox, 0, 125, Short.MAX_VALUE)))
+							.addComponent(comboBox, 0, 126, Short.MAX_VALUE))
+						.addComponent(warningLabel))
 					.addContainerGap())
 		);
 		gl_InfoPanel.setVerticalGroup(
@@ -322,7 +334,9 @@ public class ItemMarketPage {
 					.addGroup(gl_InfoPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblNewLabel)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(138, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(warningLabel)
+					.addContainerGap(115, Short.MAX_VALUE))
 		);
 		InfoPanel.setLayout(gl_InfoPanel);
 		frmMarket.getContentPane().setLayout(groupLayout);

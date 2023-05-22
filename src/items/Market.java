@@ -44,8 +44,7 @@ public class Market {
 	        		if (boostType == "All");
 	        			typeMultiplier = 3;
 	        		int price = itemBoost * typeMultiplier * 150; //TODO * difficulty
-	        		
-	        		Item newItem = new Item(type, name, itemBoost, boostType, price);
+	        		Item newItem = new Item(type, name, itemBoost, boostType, price, null);
 	        		allItems.add(newItem);
 	        	}
 	        }

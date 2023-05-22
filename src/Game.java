@@ -11,6 +11,7 @@ public class Game {
     private Difficulty difficulty;
     private Match match;
     private int points;
+    private Item coach;
 
     public Game(int seasonNumber, int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.seasonNumber = seasonNumber;
@@ -63,6 +64,14 @@ public class Game {
 
     public int getPoints() {
         return points;
+    }
+    
+    public void setCoach(Item coach) {
+    	this.coach = coach;
+    }
+    
+    public Item getCoach() {
+    	return coach;
     }
 
     public Difficulty getDifficultyObject() {
