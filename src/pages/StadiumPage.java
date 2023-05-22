@@ -33,6 +33,7 @@ public class StadiumPage {
 	private JFrame frmStadium;
 	private GameEnvironment environment;
 	public String teamNameStadium;
+	public int rewardStadium;
 
 	/**
 	 * Launch the application.
@@ -67,9 +68,10 @@ public class StadiumPage {
 		environment.closeStadiumPage(this);
 	}
 	
-	public void intoMatch(String oppTeamName) {
+	public void intoMatch(String oppTeamName, int reward) {
 		setOppTName(oppTeamName);
-		environment.launchMatchPage(teamNameStadium); //need different instances of match page
+		rewardStadium = reward;
+		environment.launchMatchPage(teamNameStadium, rewardStadium); //need different instances of match page
 	}
 	
 	public String getOppTName() {
@@ -96,6 +98,8 @@ public class StadiumPage {
 		String oppTeam2Name = opponentTeamNames.get(1);
 		String oppTeam3Name = opponentTeamNames.get(2);
 		String oppTeam4Name = opponentTeamNames.get(3);
+		
+		ArrayList<Integer> rewardPoolStadium = environment.getGame().generateRewardPool(environment.getGame().getDifficultyObject());
 		
 		JButton backButton = new JButton("<");
 		backButton.setFont(new Font("Orbitron", Font.BOLD, 12));
@@ -125,22 +129,9 @@ public class StadiumPage {
 		JPanel match1Panel = new JPanel();
 		match1Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel team1Reward = new JLabel("<reward>");
-		team1Reward.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JLabel team1RewardTitle = new JLabel("Reward");
-		team1RewardTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		team1RewardTitle.setFont(new Font("Orbitron", Font.BOLD, 11));
-		
-		
-		JLabel team1NameTitle = new JLabel("Opponent");
-		team1NameTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		team1NameTitle.setFont(new Font("Orbitron", Font.BOLD, 11));
-		
-		JPanel match2Panel = new JPanel();
-		match2Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		
-		JLabel team2Reward = new JLabel("<reward>");
+		int reward2 = rewardPoolStadium.get(1);
+		JLabel team2Reward = new JLabel(String.format("$%d", reward2));
+		team2Reward.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team2Reward.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel team2RewardTitle = new JLabel("Reward");
@@ -150,7 +141,25 @@ public class StadiumPage {
 		
 		JLabel team2NameTitle = new JLabel("Opponent");
 		team2NameTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		team2NameTitle.setFont(new Font("Orbitron", Font.PLAIN, 11));
+		team2NameTitle.setFont(new Font("Orbitron", Font.BOLD, 11));
+		
+		JPanel match2Panel = new JPanel();
+		match2Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		
+		int reward1 = rewardPoolStadium.get(0);
+		JLabel team1Reward = new JLabel(String.format("$%d", reward1));
+		
+		team1Reward.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		team1Reward.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel team1RewardTitle = new JLabel("Reward");
+		team1RewardTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		team1RewardTitle.setFont(new Font("Orbitron", Font.BOLD, 11));
+		
+		
+		JLabel team1NameTitle = new JLabel("Opponent");
+		team1NameTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		team1NameTitle.setFont(new Font("Orbitron", Font.PLAIN, 11));
 		
 
 		
@@ -161,21 +170,21 @@ public class StadiumPage {
 		gl_match2Panel.setHorizontalGroup(
 			gl_match2Panel.createParallelGroup(Alignment.LEADING)
 				.addComponent(team1Name, GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-				.addComponent(team2NameTitle, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-				.addComponent(team2RewardTitle, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-				.addComponent(team2Reward, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+				.addComponent(team1NameTitle, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+				.addComponent(team1RewardTitle, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+				.addComponent(team1Reward, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
 		);
 		gl_match2Panel.setVerticalGroup(
 			gl_match2Panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_match2Panel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(team2NameTitle)
+					.addComponent(team1NameTitle)
 					.addGap(2)
 					.addComponent(team1Name)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(team2RewardTitle)
+					.addComponent(team1RewardTitle)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(team2Reward)
+					.addComponent(team1Reward)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		match2Panel.setLayout(gl_match2Panel);
@@ -183,7 +192,9 @@ public class StadiumPage {
 		JPanel match3Panel = new JPanel();
 		match3Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel team3Reward = new JLabel("<reward>");
+		int reward3 = rewardPoolStadium.get(2);
+		JLabel team3Reward = new JLabel(String.format("$%d", reward3));
+		team3Reward.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team3Reward.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel team3RewardTitle = new JLabel("Reward");
@@ -223,7 +234,9 @@ public class StadiumPage {
 		JPanel match4Panel = new JPanel();
 		match4Panel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel team4Reward = new JLabel("<reward>");
+		int reward4 = rewardPoolStadium.get(3);
+		JLabel team4Reward = new JLabel(String.format("$%d", reward4));
+		team4Reward.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team4Reward.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel team4RewardTitle = new JLabel("Reward");
@@ -264,7 +277,7 @@ public class StadiumPage {
 		team1StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow(); 
-				intoMatch(oppTeam1Name); // need to modify this so the right team name is displayed
+				intoMatch(oppTeam1Name, reward1); // need to modify this so the right team name is displayed
 			}
 		});
 		
@@ -272,7 +285,7 @@ public class StadiumPage {
 		team2StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow(); //need to keep the team name consistent with the one displayed in the match page
-				intoMatch(oppTeam2Name);
+				intoMatch(oppTeam2Name, reward2);
 			}
 			
 		});
@@ -281,7 +294,7 @@ public class StadiumPage {
 		team3StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
-				intoMatch(oppTeam3Name);
+				intoMatch(oppTeam3Name, reward3);
 			}
 		});
 		
@@ -289,7 +302,7 @@ public class StadiumPage {
 		team4StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				closeWindow();
-				intoMatch(oppTeam4Name);
+				intoMatch(oppTeam4Name, reward4);
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frmStadium.getContentPane());
@@ -355,44 +368,54 @@ public class StadiumPage {
 		gl_match1Panel.setHorizontalGroup(
 			gl_match1Panel.createParallelGroup(Alignment.TRAILING)
 				.addComponent(team2Name, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-				.addComponent(team1NameTitle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-				.addComponent(team1RewardTitle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-				.addComponent(team1Reward, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+				.addComponent(team2NameTitle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+				.addComponent(team2RewardTitle, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+				.addGroup(gl_match1Panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(team2Reward, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		gl_match1Panel.setVerticalGroup(
 			gl_match1Panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_match1Panel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(team1NameTitle, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
+					.addComponent(team2NameTitle, GroupLayout.PREFERRED_SIZE, 14, GroupLayout.PREFERRED_SIZE)
 					.addGap(4)
 					.addComponent(team2Name)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(team1RewardTitle)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(team1Reward)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(team2RewardTitle)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(team2Reward)
+					.addContainerGap())
 		);
 		match1Panel.setLayout(gl_match1Panel);
 		
-		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
+		JLabel moneyLabel = new JLabel(String.format("Money: $%d", environment.getGame().getBank().getMoney()));
 		moneyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JLabel weekLabel = new JLabel(String.format("Week: %d/%d", environment.getGame().getCurrentWeek(), environment.getGame().getWeek()));
 		weekLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
-		JLabel pointsLabel = new JLabel("Points:");
-		pointsLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		JLabel winsLabel = new JLabel(String.format("Wins: %d", environment.getGame().getWins()));
+		winsLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JLabel lossLabel = new JLabel(String.format("Lossses: %d", environment.getGame().getLosses()));
+		lossLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_statPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_statPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(weekLabel, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
-					.addGap(18)
-					.addComponent(pointsLabel)
-					.addContainerGap(60, Short.MAX_VALUE))
+						.addGroup(gl_statPanel.createSequentialGroup()
+							.addComponent(moneyLabel)
+							.addGap(18))
+						.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 89, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_statPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(winsLabel, GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+						.addComponent(lossLabel, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
 		);
 		gl_statPanel.setVerticalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
@@ -400,10 +423,11 @@ public class StadiumPage {
 					.addContainerGap()
 					.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+						.addComponent(winsLabel, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addGap(3))
+					.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lossLabel, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)))
 		);
 		statPanel.setLayout(gl_statPanel);
 		frmStadium.getContentPane().setLayout(groupLayout);
