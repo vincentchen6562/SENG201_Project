@@ -138,7 +138,13 @@ public class TeamPage {
 		JLabel coachLabel = new JLabel("Coach:");
 		
 		JLabel coachBoostLabel = new JLabel("Coach Boost:");
-	
+		
+		if(environment.getGame().getCoach() != null) {
+			coachLabel.setText(String.format("Coach: %s", environment.getGame().getCoach().getName()));
+			coachBoostLabel.setText(String.format("Boost: +%d %s", environment.getGame().getCoach().getBoost(),
+					environment.getGame().getCoach().getBoostType()));
+		}
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

@@ -119,9 +119,67 @@ public class Game {
      * @param coach The coach item to set.
      */
     public void setCoach(Item coach) {
+    	if (this.coach != null) {
+    		removeCoach();
+    	}
         this.coach = coach;
-    }
+    	String boostType = coach.getBoostType();
 
+        for (Athlete athlete: getTeam().getEquippedAthletes()) {
+        	if (boostType.equals("Offence")){
+            	athlete.alterStat("Offence", coach.getBoost());
+        	} else if (boostType.equals("Defence")) {
+        		athlete.alterStat("Defence", coach.getBoost());
+        	} else if (boostType.equals("Agility")) {
+        		athlete.alterStat("Agility", coach.getBoost());
+        	} else if (boostType.equals("All")) {
+        		athlete.alterStat("All", coach.getBoost());
+	        }
+	    }
+        
+        if (getTeam().getExcessAthlete() != null) {
+	    	if (boostType.equals("Offence")){
+	        	getTeam().getExcessAthlete().alterStat("Offence", coach.getBoost());
+	    	} else if (boostType.equals("Defence")) {
+	    		getTeam().getExcessAthlete().alterStat("Defence", coach.getBoost());
+	    	} else if (boostType.equals("Agility")) {
+	    		getTeam().getExcessAthlete().alterStat("Agility", coach.getBoost());
+	    	} else if (boostType.equals("All")) {
+	    		getTeam().getExcessAthlete().alterStat("All", coach.getBoost());
+	    	}
+        }
+    }
+    /**
+     * sets coach to null
+     * removes appropriate amount of points from each athlete
+     */
+    public void removeCoach() {
+    	String boostType = coach.getBoostType();
+
+        for (Athlete athlete: getTeam().getEquippedAthletes()) {
+        	if (boostType.equals("Offence")){
+            	athlete.alterStat("Offence", -coach.getBoost());
+        	} else if (boostType.equals("Defence")) {
+        		athlete.alterStat("Defence", -coach.getBoost());
+        	} else if (boostType.equals("Agility")) {
+        		athlete.alterStat("Agility", -coach.getBoost());
+        	} else if (boostType.equals("All")) {
+        		athlete.alterStat("All", -coach.getBoost());
+	        }
+	    }
+        
+        if (getTeam().getExcessAthlete() != null) {
+	    	if (boostType.equals("Offence")){
+	        	getTeam().getExcessAthlete().alterStat("Offence", -coach.getBoost());
+	    	} else if (boostType.equals("Defence")) {
+	    		getTeam().getExcessAthlete().alterStat("Defence", -coach.getBoost());
+	    	} else if (boostType.equals("Agility")) {
+	    		getTeam().getExcessAthlete().alterStat("Agility", -coach.getBoost());
+	    	} else if (boostType.equals("All")) {
+	    		getTeam().getExcessAthlete().alterStat("All", -coach.getBoost());
+	    	}
+        }
+    }
     /**
      * Returns the coach item.
      *
