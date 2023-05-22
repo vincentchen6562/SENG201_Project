@@ -4,8 +4,8 @@ import src.team.*;
 import src.items.*;
 
 public class Game {
-    private int seasonNumber;
     private int weekNumber;
+    private int currentWeek = 1;
     private Team team;
     private Bank bank;
     private Difficulty difficulty;
@@ -13,8 +13,7 @@ public class Game {
     private int points;
     private Item coach;
 
-    public Game(int seasonNumber, int weekNumber, Team team, Bank bank, Difficulty difficulty) {
-        this.seasonNumber = seasonNumber;
+    public Game(int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.weekNumber = weekNumber;
         this.team = team;
         this.bank = bank;
@@ -22,28 +21,20 @@ public class Game {
         this.points = 0;
     }
 
-    public void setSeason(int seasonNum) {
-        seasonNumber = seasonNum;
-    }
-
-    public void incrementSeason() {
-        seasonNumber += 1;
-    }
-
-    public int getSeason() {
-        return seasonNumber;
-    }
-
     public void setWeekN(int week) {
         weekNumber = week;
     }
 
     public void incrementWeek() {
-        weekNumber += 1;
+        currentWeek += 1;
     }
 
     public int getWeek() {
         return weekNumber;
+    }
+
+    public int getCurrentWeek() {
+        return currentWeek;
     }
 
     public Bank getBank() {
@@ -65,20 +56,18 @@ public class Game {
     public int getPoints() {
         return points;
     }
-    
+
     public void setCoach(Item coach) {
-    	this.coach = coach;
+        this.coach = coach;
     }
-    
+
     public Item getCoach() {
-    	return coach;
+        return coach;
     }
 
     public Difficulty getDifficultyObject() {
         return difficulty;
     }
-
-
 
 }
 

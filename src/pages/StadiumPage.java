@@ -374,30 +374,25 @@ public class StadiumPage {
 		);
 		match1Panel.setLayout(gl_match1Panel);
 		
-		JLabel moneyLabel = new JLabel("Money: ");
+		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
 		moneyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
-		JLabel weekLabel = new JLabel("Week:");
+		JLabel weekLabel = new JLabel(String.format("Week: %d/%d", environment.getGame().getCurrentWeek(), environment.getGame().getWeek()));
 		weekLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JLabel pointsLabel = new JLabel("Points:");
 		pointsLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
-		
-		JLabel statsTotalLabel = new JLabel("Stat Total:");
-		statsTotalLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_statPanel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_statPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-						.addComponent(moneyLabel))
-					.addGap(51)
-					.addGroup(gl_statPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(pointsLabel)
-						.addComponent(statsTotalLabel, GroupLayout.PREFERRED_SIZE, 74, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(30, Short.MAX_VALUE))
+					.addGroup(gl_statPanel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(weekLabel, GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE))
+					.addGap(18)
+					.addComponent(pointsLabel)
+					.addContainerGap(60, Short.MAX_VALUE))
 		);
 		gl_statPanel.setVerticalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
@@ -407,9 +402,7 @@ public class StadiumPage {
 						.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addComponent(statsTotalLabel, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 					.addGap(3))
 		);
 		statPanel.setLayout(gl_statPanel);

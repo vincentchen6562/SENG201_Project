@@ -81,31 +81,23 @@ public class ItemMarketPage {
 		JLabel pointsLabel = new JLabel(String.format("Points: %d", environment.getGame().getPoints()));
 		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
 		
-		JLabel statsTotalLabel = new JLabel(String.format("Stat Total: %d", environment.getGame().getTeam().getStatTotal()));
-		statsTotalLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 215, Short.MAX_VALUE)
 				.addGroup(gl_statPanel.createSequentialGroup()
 					.addComponent(moneyLabel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
 					.addGap(4)
-					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(statsTotalLabel, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-					.addGap(8))
+					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(64, Short.MAX_VALUE))
 		);
 		gl_statPanel.setVerticalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 26, Short.MAX_VALUE)
 				.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
 					.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
 					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE)
-					.addComponent(statsTotalLabel, GroupLayout.PREFERRED_SIZE, 18, GroupLayout.PREFERRED_SIZE))
+					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
 		);
 		statPanel.setLayout(gl_statPanel);
 		
