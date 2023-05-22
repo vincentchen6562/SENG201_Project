@@ -65,6 +65,12 @@ public class Game {
         return points;
     }
 
+    public Difficulty getDifficultyObject() {
+        return difficulty;
+    }
+
+
+
 }
 
 // TODO:

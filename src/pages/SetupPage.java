@@ -28,6 +28,7 @@ public class SetupPage {
 	private JFrame frmWelcome;
 	private JTextField teamInput;
 	private GameEnvironment environment;
+	private Difficulty setDifficulty;
 
 	/**
 	 * Launch the application.
@@ -62,7 +63,7 @@ public class SetupPage {
 		environment.closeSetupPage(this);
 	}
 	
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -88,7 +89,8 @@ public class SetupPage {
 		JSpinner difficultySpinner = new JSpinner();
 		difficultySpinner.setModel(new SpinnerListModel(new String[] {"Normal", "Hard"}));
 		String difficultyValue = (String) difficultySpinner.getValue();
-		Difficulty difficulty = new Difficulty(difficultyValue);
+		setDifficulty = new Difficulty(difficultyValue);
+		
 		
 		JLabel weekLabel = new JLabel("Week No.");
 		weekLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
@@ -157,7 +159,7 @@ public class SetupPage {
 				ArrayList<Athlete> startingTeam = new Market().getAthletes(environment);			
 				Team team = new Team(teamName, startingTeam);
 				Bank bank = new Bank(1);
-				Game game = new Game(1, 1, team, bank, difficulty); // TODO implement difficulty
+				Game game = new Game(1, 1, team, bank, setDifficulty); // TODO implement difficulty
 				environment.setGame(game);
 				frmWelcome.setVisible(false);
 				finishedWindow();

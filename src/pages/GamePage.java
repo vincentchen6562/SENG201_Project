@@ -1,5 +1,6 @@
 package src.pages;
 
+
 import java.awt.EventQueue;
 import src.items.*;
 import src.*;
@@ -15,11 +16,13 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JPanel;
 import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class GamePage {
 
 	private JFrame frmMainPage;
-	private GameEnvironment environment;	
+	private GameEnvironment environment;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -118,6 +121,10 @@ public class GamePage {
 		restButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JPanel GreetingPanel = new JPanel();
+		
+		JLabel difficultyLabel = new JLabel("Difficulty:");
+		difficultyLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		difficultyLabel.setText(String.format("Difficulty: %s", environment.getGame().getDifficultyObject().getDifficulty()));
 		GroupLayout groupLayout = new GroupLayout(frmMainPage.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -126,11 +133,13 @@ public class GamePage {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(7)
 							.addComponent(moneyLabel)
-							.addGap(477)
+							.addGap(316)
+							.addComponent(difficultyLabel, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
 							.addComponent(weekLabel))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+							.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -139,7 +148,7 @@ public class GamePage {
 							.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(GreetingPanel, GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)))
+							.addComponent(GreetingPanel, GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
@@ -148,15 +157,16 @@ public class GamePage {
 					.addGap(7)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(moneyLabel)
-						.addComponent(weekLabel))
+						.addComponent(weekLabel)
+						.addComponent(difficultyLabel))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(GreetingPanel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
 					.addGap(10)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-						.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-						.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
-						.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE))
+						.addComponent(restButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+						.addComponent(stadiumButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+						.addComponent(marketButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+						.addComponent(teamButton, GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		
