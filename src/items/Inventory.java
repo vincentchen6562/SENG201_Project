@@ -12,7 +12,8 @@ public class Inventory {
     /**
      * Constructs an Inventory object.
      *
-     * @param difficulty the difficulty level that determines the starting amount of money
+     * @param difficulty the difficulty level that determines the starting amount of
+     *                   money
      */
     public Inventory(Difficulty difficulty) {
         itemList = new ArrayList<Item>();
@@ -45,7 +46,7 @@ public class Inventory {
      *
      * @param item the item to be added
      */
-    public void addItem(Item item) {  // TODO need to add exception: cannot add the same item more than once
+    public void addItem(Item item) {
         if (itemList.contains(item)) {
             System.out.println("Item has already been added");
         } else {

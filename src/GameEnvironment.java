@@ -3,7 +3,8 @@ package src;
 import src.pages.*;
 
 /**
- * Represents the game environment for managing different pages and launching the game.
+ * Represents the game environment for managing different pages and launching
+ * the game.
  */
 public class GameEnvironment {
     private Game game;
@@ -124,20 +125,20 @@ public class GameEnvironment {
      */
     public void closeRestPage(RestPage restPage) {
         restPage.closeWindow();
-    	maybeLaunchGameOverPage();
+        maybeLaunchGameOverPage();
     }
-    
+
     public void maybeLaunchGameOverPage() {
-    	int currentWeek = this.getGame().getCurrentWeek();
-    	int totalWeek = this.getGame().getWeek();
-    	if (currentWeek <= totalWeek) {
-        	launchGamePage();
-    	} else {
-    		int totalWins = this.getGame().getWins();
-    		int totalLosses = this.getGame().getLosses();
-    		int totalMoney = this.getGame().getBank().getMoney();
-    		launchGameOverPage(totalWins, totalLosses, totalMoney);
-    	}
+        int currentWeek = this.getGame().getCurrentWeek();
+        int totalWeek = this.getGame().getWeek();
+        if (currentWeek <= totalWeek) {
+            launchGamePage();
+        } else {
+            int totalWins = this.getGame().getWins();
+            int totalLosses = this.getGame().getLosses();
+            int totalMoney = this.getGame().getBank().getMoney();
+            launchGameOverPage(totalWins, totalLosses, totalMoney);
+        }
     }
 
     /**
@@ -153,64 +154,68 @@ public class GameEnvironment {
      * @param stadiumPage the stadium page to close
      */
     public void closeStadiumPage(StadiumPage stadiumPage) {
-    	stadiumPage.closeWindow();
-    	launchGamePage();
+        stadiumPage.closeWindow();
+        launchGamePage();
     }
-    
-	/**
-	 * Launches the team page.
-	 */
-    public void launchTeamPage() {
-    	TeamPage teamPage = new TeamPage(this);
-    }
-    
-	/**
-	 * Closes the team page and launches the game page.
-	 * @param teamPage the team page to close
-	 */
-    public void closeTeamPage(TeamPage teamPage, Boolean isSwapped) {
-    	teamPage.closeWindow();
-    	if (isSwapped) {
-    		launchTeamPage();
-    	} else {
-        	launchGamePage();
-    	}
-    }
-    
-	/**
-	 * launches the match page
-	 * @param oppTeamName the opponent team name for the match
-	 * @param reward the reward for winning the match
-	 */
-    public void launchMatchPage(String oppTeamName, int reward) {
-    	MatchPage newMatch = new MatchPage(this, oppTeamName, reward); // TODO maybe pass a stadium object
-    }
-    
-	/**
-	 * Closes the match patch and launches the gamepage 
-	 * unless the current week is greater than the total weeks set by the user
-	 * @param matchPage the match page to be closed
-	 */
-    public void closeMatchPage(MatchPage matchPage) {
-    	matchPage.closeWindow();
-    	maybeLaunchGameOverPage();
-    }
-    
-    public void launchGameOverPage(int wins, int losses, int money) {
-    	GameOverPage gameOver = new GameOverPage(this, wins, losses, money);
-    }
-    
-    public void closeGameOverPage(GameOverPage gameOver) {
-    	gameOver.closeWindow();
-    }
-    
+
     /**
-	 * GameEnvironment's main method; runs the setupPage to initialize the game
-	 * @param args the command line arguments
-	 */
-    public static void main(String [] args) {
-    	GameEnvironment game = new GameEnvironment();
-    	game.launchSetupPage();
+     * Launches the team page.
+     */
+    public void launchTeamPage() {
+        TeamPage teamPage = new TeamPage(this);
     }
-    
+
+    /**
+     * Closes the team page and launches the game page.
+     * 
+     * @param teamPage the team page to close
+     */
+    public void closeTeamPage(TeamPage teamPage, Boolean isSwapped) {
+        teamPage.closeWindow();
+        if (isSwapped) {
+            launchTeamPage();
+        } else {
+            launchGamePage();
+        }
+    }
+
+    /**
+     * launches the match page
+     * 
+     * @param oppTeamName the opponent team name for the match
+     * @param reward      the reward for winning the match
+     */
+    public void launchMatchPage(String oppTeamName, int reward) {
+        MatchPage newMatch = new MatchPage(this, oppTeamName, reward);
+    }
+
+    /**
+     * Closes the match patch and launches the gamepage
+     * unless the current week is greater than the total weeks set by the user
+     * 
+     * @param matchPage the match page to be closed
+     */
+    public void closeMatchPage(MatchPage matchPage) {
+        matchPage.closeWindow();
+        maybeLaunchGameOverPage();
+    }
+
+    public void launchGameOverPage(int wins, int losses, int money) {
+        GameOverPage gameOver = new GameOverPage(this, wins, losses, money);
+    }
+
+    public void closeGameOverPage(GameOverPage gameOver) {
+        gameOver.closeWindow();
+    }
+
+    /**
+     * GameEnvironment's main method; runs the setupPage to initialize the game
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        GameEnvironment game = new GameEnvironment();
+        game.launchSetupPage();
+    }
+
 }
