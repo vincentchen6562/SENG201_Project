@@ -22,7 +22,7 @@ import java.awt.event.ActionListener;
  */
 public class MarketChoicePage {
 
-	private JFrame frame;
+	private JFrame frmMarketChoice;
 	private GameEnvironment environment;
 
     /**
@@ -33,14 +33,14 @@ public class MarketChoicePage {
 	public MarketChoicePage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmMarketChoice.setVisible(true);
 	}
 	
 	/**
      * Closes the window of the market choice page.
      */
 	public void closeWindow() {
-		frame.dispose();
+		frmMarketChoice.dispose();
 	}
 	
 	/**
@@ -65,12 +65,12 @@ public class MarketChoicePage {
 	}
 
     /**
-     * Initializes the contents of the frame and sets up the GUI components.
+     * Initializes the contents of the frmMarketChoice and sets up the GUI components.
      */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 455, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMarketChoice = new JFrame();
+		frmMarketChoice.setBounds(100, 100, 455, 400);
+		frmMarketChoice.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton itemButton = new JButton("Item Market");
 		itemButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
@@ -114,7 +114,7 @@ public class MarketChoicePage {
 		
 		JLabel welcomeLabel = new JLabel("Welcome to the Market!");
 		welcomeLabel.setFont(new Font("Orbitron", Font.PLAIN, 20));
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmMarketChoice.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -147,6 +147,6 @@ public class MarketChoicePage {
 						.addComponent(athleteButton, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
 					.addContainerGap())
 		);
-		frame.getContentPane().setLayout(groupLayout);
+		frmMarketChoice.getContentPane().setLayout(groupLayout);
 	}
 }

@@ -32,7 +32,7 @@ import javax.swing.SwingConstants;
  */
 public class TeamPage {
 
-	private JFrame frame;
+	private JFrame frmTeam;
 	private GameEnvironment environment;
 	private Boolean swapButtonExecuted = false;
 
@@ -44,14 +44,14 @@ public class TeamPage {
 	public TeamPage(GameEnvironment incomingEnvironment) {
 		environment = incomingEnvironment;
 		initialize();
-		frame.setVisible(true);
+		frmTeam.setVisible(true);
 	}
 	
 	/**
 	* Closes the team page window.
 	*/
 	public void closeWindow() {
-		frame.dispose();
+		frmTeam.dispose();
 	}
 	
 	/**
@@ -88,12 +88,12 @@ public class TeamPage {
 		});
 	}
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frmTeam.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 600, 400);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmTeam = new JFrame();
+		frmTeam.setBounds(100, 100, 600, 400);
+		frmTeam.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		ArrayList<Athlete> equippedAthletes = environment
 				.getGame().getTeam().getEquippedAthletes();
@@ -172,7 +172,7 @@ public class TeamPage {
 		
 		JLabel coachBoostLabel = new JLabel(String.format("Coach Boost: %d", coachBoost));
 		
-		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
+		GroupLayout groupLayout = new GroupLayout(frmTeam.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
@@ -677,6 +677,6 @@ public class TeamPage {
 					.addContainerGap(13, Short.MAX_VALUE))
 		);
 		titlePanel.setLayout(gl_titlePanel);
-		frame.getContentPane().setLayout(groupLayout);
+		frmTeam.getContentPane().setLayout(groupLayout);
 	}
 }
