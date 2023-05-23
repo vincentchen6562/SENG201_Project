@@ -163,7 +163,7 @@ public class GamePage {
 		difficultyLabel.setText(String.format("Difficulty: %s", environment.getGame().getDifficultyObject().getDifficulty()));
 		
 
-		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
+		JLabel moneyLabel = new JLabel(String.format("Money: $%d", environment.getGame().getBank().getMoney()));
 		moneyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		

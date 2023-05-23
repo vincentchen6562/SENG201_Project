@@ -200,9 +200,10 @@ public class GameEnvironment {
     	GameOverPage gameOver = new GameOverPage(this, wins, losses, money);
     }
     
-    public void launchGameOverPage() {
-    	GameOverPage gameOver = new GameOverPage(this);
+    public void closeGameOverPage(GameOverPage gameOver) {
+    	gameOver.closeWindow();
     }
+    
     /**
 	 * GameEnvironment's main method; runs the setupPage to initialize the game
 	 * @param args the command line arguments

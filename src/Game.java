@@ -293,3 +293,6 @@ public class Game {
 // do README
 // populate item and athlete lists more
 // DONE
+
+// - fix up the money below zero and still training problem in the rest page
+// - properly implement stamina

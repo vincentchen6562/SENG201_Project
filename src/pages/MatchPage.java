@@ -130,6 +130,7 @@ public class MatchPage {
 		JButton btnFinishButton = new JButton("FINISH");
 		btnFinishButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				environment.getGame().getTeam().decreaseAllStamina(); // decreases team stamina for every match they enter
 				if(Integer.valueOf(playerScore) > Integer.valueOf(opponentScore)) {
 					environment.getGame().incrementWins();
 					environment.getGame().getBank().alterMoney(rewardMatch);
