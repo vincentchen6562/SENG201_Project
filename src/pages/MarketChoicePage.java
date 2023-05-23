@@ -69,19 +69,23 @@ public class MarketChoicePage {
      */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 600, 400);
+		frame.setBounds(100, 100, 455, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton itemButton = new JButton("Item Market");
+		itemButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		itemButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				closeWindow();
 				environment.launchItemMarketPage();
 			}
 		});
 		
 		JButton athleteButton = new JButton("Athlete Market");
+		athleteButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		athleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				closeWindow();
 				environment.launchAthleteMarketPage();
 			}
 		});
@@ -89,7 +93,7 @@ public class MarketChoicePage {
 		
 		
 		JButton backButton = new JButton("<");
-		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		backButton.setFont(new Font("Orbitron", Font.BOLD, 12));
 		backButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				finishedWindow();
@@ -108,75 +112,40 @@ public class MarketChoicePage {
 		);
 		titlePanel.setLayout(gl_titlePanel);
 		
-		JPanel statPanel = new JPanel();
-		statPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
-		
-		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
-		moneyLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		
-		JLabel weekLabel = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
-		weekLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		
-		JLabel pointsLabel = new JLabel(String.format("Points: %d", environment.getGame().getPoints()));
-		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		GroupLayout gl_statPanel = new GroupLayout(statPanel);
-		gl_statPanel.setHorizontalGroup(
-			gl_statPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_statPanel.createSequentialGroup()
-					.addGap(2)
-					.addComponent(moneyLabel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(60, Short.MAX_VALUE))
-		);
-		gl_statPanel.setVerticalGroup(
-			gl_statPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
-					.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
-		);
-		statPanel.setLayout(gl_statPanel);
-		
 		JLabel welcomeLabel = new JLabel("Welcome to the Market!");
-		welcomeLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		welcomeLabel.setFont(new Font("Orbitron", Font.PLAIN, 20));
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+							.addComponent(itemButton, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(welcomeLabel, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE))
-						.addComponent(itemButton, GroupLayout.PREFERRED_SIZE, 208, GroupLayout.PREFERRED_SIZE))
-					.addGap(10)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+							.addComponent(athleteButton, GroupLayout.PREFERRED_SIZE, 207, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 215, GroupLayout.PREFERRED_SIZE)
-							.addGap(29)
-							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(137)
-							.addComponent(athleteButton, GroupLayout.PREFERRED_SIZE, 227, GroupLayout.PREFERRED_SIZE))))
+							.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+							.addGap(34)
+							.addComponent(welcomeLabel, GroupLayout.PREFERRED_SIZE, 296, GroupLayout.PREFERRED_SIZE)))
+					.addGap(59)
+					.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(backButton)
-								.addComponent(welcomeLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)))
 						.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
-					.addGap(53)
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(athleteButton, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-						.addComponent(itemButton, GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(backButton, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
+								.addComponent(welcomeLabel, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))))
+					.addGap(14, 14, Short.MAX_VALUE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(itemButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(athleteButton, GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		frame.getContentPane().setLayout(groupLayout);
 	}

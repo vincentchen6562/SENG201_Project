@@ -286,35 +286,59 @@ public class StadiumPage {
 		match4Panel.setLayout(gl_match4Panel);
 		
 		JButton team1StartButton = new JButton("Start Match\r\n");
+		team1StartButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team1StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				closeWindow(); 
-				intoMatch(oppTeam1Name, reward1); // need to modify this so the right team name is displayed
+				Boolean isReady = environment.getGame().getTeam().checkTeamStamina();
+				if (isReady) {
+					closeWindow(); 
+					intoMatch(oppTeam1Name, reward1);
+				} else {
+					team1StartButton.setText("Stamina Depleted!");
+				}
 			}
 		});
 		
 		JButton team2StartButton = new JButton("Start Match");
+		team2StartButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team2StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				closeWindow(); //need to keep the team name consistent with the one displayed in the match page
-				intoMatch(oppTeam2Name, reward2);
+				Boolean isReady = environment.getGame().getTeam().checkTeamStamina();
+				if (isReady) {
+					closeWindow(); 
+					intoMatch(oppTeam2Name, reward2);
+				} else {
+					team2StartButton.setText("Stamina Depleted!");
+				}
 			}
 			
 		});
 		
 		JButton team3StartButton = new JButton("Start Match");
+		team3StartButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team3StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				closeWindow();
-				intoMatch(oppTeam3Name, reward3);
+				Boolean isReady = environment.getGame().getTeam().checkTeamStamina();
+				if (isReady) {
+					closeWindow(); 
+					intoMatch(oppTeam3Name, reward3);
+				} else {
+					team3StartButton.setText("Stamina Depleted!");
+				}
 			}
 		});
 		
 		JButton team4StartButton = new JButton("Start Match");
+		team4StartButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		team4StartButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				closeWindow();
-				intoMatch(oppTeam4Name, reward4);
+				Boolean isReady = environment.getGame().getTeam().checkTeamStamina();
+				if (isReady) {
+					closeWindow(); 
+					intoMatch(oppTeam4Name, reward4);
+				} else {
+					team4StartButton.setText("Stamina Depleted!");
+				}
 			}
 		});
 		GroupLayout groupLayout = new GroupLayout(frmStadium.getContentPane());

@@ -152,4 +152,27 @@ public class Team {
     public int getSGStat() {
         return equippedAthletes.get(4).getOffence();
     }
+
+    public Boolean checkTeamStamina() {
+        int numAthletes = 0;
+
+        for (Athlete athlete : equippedAthletes) {
+            if (athlete.getStamina() > 0) {
+                numAthletes += 1;
+            }
+        }
+
+        if (numAthletes == 5) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void decreaseAllStamina() {
+
+        for (Athlete athlete : equippedAthletes) {
+            athlete.changeStamina(-1);
+        }
+    }
 }

@@ -17,6 +17,8 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.MatteBorder;
 import java.awt.Color;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 /**
  * The ItemMarketPage class represents the user interface for the item market.
  * It displays four items to the player, and provides them with the ability to buy and equip them to specified athletes in their team.
@@ -91,57 +93,25 @@ public class ItemMarketPage {
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton backButton = new JButton("<");
-		backButton.setFont(new Font("SimSun", Font.BOLD, 12));
+		backButton.setFont(new Font("Orbitron", Font.BOLD, 12));
 		
 		JPanel statPanel = new JPanel();
-		statPanel.setBorder(new MatteBorder(2, 2, 2, 2, (Color) new Color(0, 0, 0)));
 		
-		JLabel moneyLabel = new JLabel(String.format("Money: %d", environment.getGame().getBank().getMoney()));
-		moneyLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		
-		JLabel weekLabel = new JLabel(String.format("Week: %d",environment.getGame().getWeek()));
-		weekLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
-		
-		JLabel pointsLabel = new JLabel(String.format("Points: %d", environment.getGame().getPoints()));
-		pointsLabel.setFont(new Font("Tahoma", Font.PLAIN, 9));
+		JLabel moneyLabel = new JLabel(String.format("Money: $%d", environment.getGame().getBank().getMoney()));
+		moneyLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		GroupLayout gl_statPanel = new GroupLayout(statPanel);
 		gl_statPanel.setHorizontalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_statPanel.createSequentialGroup()
-					.addComponent(moneyLabel, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 43, GroupLayout.PREFERRED_SIZE)
-					.addGap(4)
-					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(64, Short.MAX_VALUE))
+					.addComponent(moneyLabel, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(66, Short.MAX_VALUE))
 		);
 		gl_statPanel.setVerticalGroup(
 			gl_statPanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_statPanel.createParallelGroup(Alignment.BASELINE)
-					.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
-					.addComponent(weekLabel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-					.addComponent(pointsLabel, GroupLayout.PREFERRED_SIZE, 21, GroupLayout.PREFERRED_SIZE))
+				.addComponent(moneyLabel, GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
 		);
 		statPanel.setLayout(gl_statPanel);
-		
-		JPanel titlePanel = new JPanel();
-		
-		JLabel lblWelcomeToThe = new JLabel("Welcome to the Item Market!");
-		lblWelcomeToThe.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		GroupLayout gl_titlePanel = new GroupLayout(titlePanel);
-		gl_titlePanel.setHorizontalGroup(
-			gl_titlePanel.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_titlePanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblWelcomeToThe, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-		);
-		gl_titlePanel.setVerticalGroup(
-			gl_titlePanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblWelcomeToThe, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-		);
-		titlePanel.setLayout(gl_titlePanel);
 		
 		ArrayList<String> itemNames = new ArrayList<String>();
 		ArrayList<String> itemTypes = new ArrayList<String>();
@@ -163,14 +133,27 @@ public class ItemMarketPage {
 		JPanel InfoPanel = new JPanel();
 		
 		JButton item1Button = new JButton(itemNames.get(0));
+		item1Button.setFont(new Font("Orbitron", Font.PLAIN, 12));
 
 		JButton item2Button = new JButton(itemNames.get(1));
+		item2Button.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JButton item3Button = new JButton(itemNames.get(2));
+		item3Button.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JButton item4Button = new JButton(itemNames.get(3));
+		item4Button.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JButton buyButton = new JButton("Buy");
+		buyButton.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				moneyLabel.setText(String.format("Money: $%d", environment.getGame().getBank().getMoney()));
+			}
+		});
+		buyButton.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JLabel lblWelcomeToThe = new JLabel("Welcome to the Item Market!");
+		lblWelcomeToThe.setFont(new Font("Orbitron", Font.PLAIN, 14));
 
 		GroupLayout groupLayout = new GroupLayout(frmMarket.getContentPane());
 		groupLayout.setHorizontalGroup(
@@ -180,16 +163,16 @@ public class ItemMarketPage {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(backButton)
-							.addGap(49)
-							.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 188, GroupLayout.PREFERRED_SIZE))
+							.addGap(35)
+							.addComponent(lblWelcomeToThe, GroupLayout.PREFERRED_SIZE, 235, GroupLayout.PREFERRED_SIZE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(item3Button, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-								.addComponent(item1Button, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE))
+								.addComponent(item3Button, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+								.addComponent(item1Button, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.UNRELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-								.addComponent(item2Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-								.addComponent(item4Button, GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE))
+								.addComponent(item2Button, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
+								.addComponent(item4Button, GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE))
 							.addGap(4)))
 					.addGap(6)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
@@ -205,13 +188,13 @@ public class ItemMarketPage {
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-							.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addGap(3)
-								.addComponent(backButton)))
-						.addComponent(titlePanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(statPanel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(3)
+							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+								.addComponent(backButton)
+								.addComponent(lblWelcomeToThe, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -230,17 +213,16 @@ public class ItemMarketPage {
 		);
 		
 		JLabel nameLabel = new JLabel("Name:");
+		nameLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		JLabel typeLabel = new JLabel("Type: ");
+		typeLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		JLabel costLabel = new JLabel("Cost:");
+		costLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		JLabel boostLabel = new JLabel("Boost: +2 atk, etc.");
+		boostLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		JLabel lblNewLabel = new JLabel("Equip To:");
+		lblNewLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
-		buyButton.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				finishedWindow();	
-			}
-		});
 		ArrayList<Athlete> equippedAthletes = environment
 				.getGame().getTeam().getEquippedAthletes();
 		
@@ -332,11 +314,11 @@ public class ItemMarketPage {
 						.addComponent(typeLabel, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 						.addComponent(boostLabel)
 						.addComponent(costLabel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel)
 						.addGroup(gl_InfoPanel.createSequentialGroup()
-							.addComponent(lblNewLabel)
-							.addGap(14)
-							.addComponent(comboBox, 0, 126, Short.MAX_VALUE))
-						.addComponent(warningLabel))
+							.addComponent(warningLabel)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(comboBox, 0, 117, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_InfoPanel.setVerticalGroup(
@@ -350,12 +332,12 @@ public class ItemMarketPage {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(costLabel, GroupLayout.PREFERRED_SIZE, 24, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_InfoPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblNewLabel)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_InfoPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(warningLabel)
 						.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(warningLabel)
-					.addContainerGap(115, Short.MAX_VALUE))
+					.addContainerGap(123, Short.MAX_VALUE))
 		);
 		InfoPanel.setLayout(gl_InfoPanel);
 		frmMarket.getContentPane().setLayout(groupLayout);

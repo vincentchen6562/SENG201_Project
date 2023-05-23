@@ -217,20 +217,32 @@ public class RestPage {
 		sfTrainBtn.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		sfTrainBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int money = environment.getGame().getBank().getMoney();
 				if(sfTrainBtn.isSelected()) {
 					sfTrainBtn.setText("Rest");
-					environment.getGame().getBank().decreaseMoney(500);
 					Team team = environment.getGame().getTeam();
 					if(team.getSFStat() < 10) {
 						Athlete smallForward = team.getEquippedAthletes().get(1);
-						if(team.getEquippedAthletes().get(1).getDefence() < 10) {
-							smallForward.randomAlterStat("Defence");
-						}
-						if(team.getEquippedAthletes().get(1).getAgility() < 10) {
-							smallForward.randomAlterStat("Agility");
-						}
-						if(team.getEquippedAthletes().get(1).getOffence() < 10) {
-							smallForward.randomAlterStat("Offence");
+						if(money >= 500) {
+							environment.getGame().getBank().decreaseMoney(500);
+							if(smallForward.getDefence() < 10) {
+								smallForward.randomAlterStat("Defence");
+								if(smallForward.getDefence() > 10) {
+									smallForward.setStat("Defence", 10);
+								}
+							}
+							if(smallForward.getAgility() < 10) {
+								smallForward.randomAlterStat("Agility");
+								if(smallForward.getAgility() > 10) {
+									smallForward.setStat("Agility", 10);
+								}
+							}
+							if(smallForward.getOffence() < 10) {
+								smallForward.randomAlterStat("Offence");
+								if(smallForward.getOffence() > 10) {
+									smallForward.setStat("Offence", 10);
+								}
+							}
 						}
 						
 					}
@@ -305,6 +317,7 @@ public class RestPage {
 				int updatedOffence = environment.getGame().getTeam().getEquippedAthletes().get(2).getOffence();
 				
 				if(updatedOffence > 10) {
+					
 					updatedOffence = 10;
 				}
 				pfStatsLabel.setText(String.format("OFF: %d", updatedOffence));
@@ -320,12 +333,17 @@ public class RestPage {
 			public void actionPerformed(ActionEvent e) {
 				if(pfToggleButton.isSelected()) {
 					pfToggleButton.setText("Rest");
-					environment.getGame().getBank().decreaseMoney(500);
+					int money = environment.getGame().getBank().getMoney();
 					Athlete powerForward = playerAthletes.get(2);
-					if(powerForward.getOffence() < 10) {
-						if(environment.getGame().getBank().getMoney() > 500) {
-							powerForward.randomAlterStat("Offence");
-							environment.getGame().getBank().decreaseMoney(500);
+					if(money >= 500) {
+						if(powerForward.getOffence() < 10) {
+							if(environment.getGame().getBank().getMoney() > 500) {
+								powerForward.randomAlterStat("Offence");
+								if(powerForward.getOffence() > 10) {
+									powerForward.setStat("Offence", 10);
+								}
+								environment.getGame().getBank().decreaseMoney(500);
+							}
 						}
 					}
 				} else {
@@ -397,18 +415,27 @@ public class RestPage {
 			public void actionPerformed(ActionEvent e) {
 				if(pgTrainBtn.isSelected()) {
 					pgTrainBtn.setText("Rest");
-					environment.getGame().getBank().decreaseMoney(500);
 					Team team = environment.getGame().getTeam();
-					if(team.getPGStat() < 10) {
-						Athlete pointGuard = team.getEquippedAthletes().get(3);
-						if(team.getEquippedAthletes().get(3).getAgility() < 10) {
-							pointGuard.randomAlterStat("Agility");
+					if(money >= 500) {
+						if(team.getPGStat() < 10) {
+							environment.getGame().getBank().decreaseMoney(500);
+							Athlete pointGuard = team.getEquippedAthletes().get(3);
+							if(pointGuard.getAgility() < 10) {
+								pointGuard.randomAlterStat("Agility");
+								if(pointGuard.getAgility() > 10) {
+									pointGuard.setStat("Agility", 10);
+								}
+							}
+							if(pointGuard.getOffence() < 10) {
+								pointGuard.randomAlterStat("Offence");
+								if(pointGuard.getOffence() > 10) {
+									pointGuard.setStat("Offence", 10);
+								}
+							}
+							
 						}
-						if(team.getEquippedAthletes().get(3).getOffence() < 10) {
-							pointGuard.randomAlterStat("Offence");
-						}
-						
 					}
+					
 				} else {
 					pgTrainBtn.setText("Train");
 				}
@@ -456,13 +483,14 @@ public class RestPage {
 		JPanel athlete1Panel_4 = new JPanel();
 		athlete1Panel_4.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		
-		JLabel sgStatsLabel = new JLabel(String.format("OFF: %d",playerCenterStats.get(4)));
+		JLabel sgStatsLabel = new JLabel(String.format("OFF: %d",playerSGStats.get(4)));
 		sgStatsLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		
 		JToggleButton sgTrainBtn = new JToggleButton("Train");
 		sgTrainBtn.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent e) {
-				int updatedOffence1 = environment.getGame().getTeam().getEquippedAthletes().get(4).getOffence();
+				Athlete shootingGuard = environment.getGame().getTeam().getEquippedAthletes().get(4);
+				int updatedOffence1 = shootingGuard.getOffence();
 				
 				if(updatedOffence1 > 10) {
 					updatedOffence1 = 10;
@@ -482,13 +510,15 @@ public class RestPage {
 			public void actionPerformed(ActionEvent e) { // there is a bug with this button
 				if(sgTrainBtn.isSelected()) {
 					sgTrainBtn.setText("Rest");
-					System.out.println(playerAthletes.get(4).getOffence()); // needs to be deleted
-					environment.getGame().getBank().decreaseMoney(500);
 					Athlete shootingGuard = playerAthletes.get(4);
 					if(shootingGuard.getOffence() < 10) {
-						if(environment.getGame().getBank().getMoney() > 500) {
-							shootingGuard.randomAlterStat("Offence");
+						int money = environment.getGame().getBank().getMoney();
+						if(money >= 500) {
 							environment.getGame().getBank().decreaseMoney(500);
+							shootingGuard.randomAlterStat("Offence");
+							if(shootingGuard.getOffence() > 10) {
+								shootingGuard.setStat("Offence", 10);
+							}
 						}
 					}
 				} else {
@@ -639,11 +669,13 @@ public class RestPage {
 			public void actionPerformed(ActionEvent e) {
 				if(centerToggleButton.isSelected()) {
 					centerToggleButton.setText("Rest");
-					environment.getGame().getBank().decreaseMoney(500);
 					Athlete center = playerAthletes.get(0);
 					if(center.getDefence() < 10) {
-						if(environment.getGame().getBank().getMoney() > 500) {
+						if(environment.getGame().getBank().getMoney() >= 500) {
 							center.randomAlterStat("Defence");
+							if(center.getDefence() > 10) {
+								center.setStat("Defence", 10);
+							}
 							environment.getGame().getBank().decreaseMoney(500);
 						}
 						
