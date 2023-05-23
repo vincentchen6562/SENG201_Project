@@ -22,7 +22,7 @@ public class Item {
      * @param price the price of the item
      * @param isCoach indicates if the item is a coach item
      */
-    public Item(String itemType, String name, int boost, String boostType, int price, Boolean isCoach) {
+    public Item(String itemType, String name, int boost, String boostType, int price) {
         this.itemType = itemType;
         this.itemName = name;
         this.itemBoost = boost;

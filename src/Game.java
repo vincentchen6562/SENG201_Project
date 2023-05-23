@@ -179,6 +179,8 @@ public class Game {
 	    		getTeam().getExcessAthlete().alterStat("All", -coach.getBoost());
 	    	}
         }
+        
+        coach = null;
     }
     /**
      * Returns the coach item.
@@ -283,7 +285,6 @@ public class Game {
 
 // TODO:
 // - Need to update the UML diagram (classes added: Item, Coach, Equipment)
-// - Need to restructure the packages since it is assessed
 // - Need to comment properly (for Javadoc and final assessment), this includes
 // the GUI classes, REMEMBER: no commented out code
 // JUnit testing
