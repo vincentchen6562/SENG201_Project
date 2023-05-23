@@ -4,11 +4,16 @@ import src.team.*;
 import java.util.ArrayList;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.util.Scanner;
 import java.util.Random;
 
 /**
- * The `Match` class represents a match between the player's team and an opponent team.
+ * The `Match` class represents a match between the player's team and an
+ * opponent team.
  * It tracks the scores, rewards, and opponent team information.
  */
 public class Match {
@@ -20,7 +25,8 @@ public class Match {
     private ArrayList<Athlete> opposingAthletes;
 
     /**
-     * Constructs a `Match` object with the given total score, reward, and points worth.
+     * Constructs a `Match` object with the given total score, reward, and points
+     * worth.
      *
      * @param totalScore the total score of the match
      * @param reward     the reward amount for winning the match
@@ -96,7 +102,8 @@ public class Match {
     }
 
     /**
-     * Generates and returns the result message based on the player's and opponent's scores.
+     * Generates and returns the result message based on the player's and opponent's
+     * scores.
      *
      * @return the result message of the match
      */
@@ -107,6 +114,7 @@ public class Match {
             return "Better luck next time!";
         }
     }
+
     /**
      * Generates a random opponent team name from a list of names.
      *
@@ -114,29 +122,37 @@ public class Match {
      */
     public String generateOpponentTeamName() {
         ArrayList<String> nameList = new ArrayList<>();
-
+        
+        InputStream in = getClass().getResourceAsStream("/src/OpponentTName.txt"); 
+        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+        
         try {
-            File OppTeamNamesList = new File("src/OpponentTName.txt");
-            Scanner OppTeamNames = new Scanner(OppTeamNamesList);
-
-            while (OppTeamNames.hasNextLine()) {
-                nameList.add(OppTeamNames.nextLine());
+        	
+        	String line;
+            while ((line = reader.readLine()) != null) {
+                // Process the line
+            	nameList.add(line);
+            	
+            	
             }
-
-            OppTeamNames.close();
-
-            Random rng = new Random();
-            int randInt = rng.nextInt(1, 20);
-            return nameList.get(randInt);
-
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            
+            reader.close();
+            
+        } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
+        
+        
         Random rng = new Random();
         int randInt = rng.nextInt(1, 20);
         return nameList.get(randInt);
+        
+        
+   
+
+
+
     }
 
     /**
@@ -159,17 +175,23 @@ public class Match {
     }
 
     /**
-     * Reads the opponent athletes' information from a text file and generates the opponent athletes.
+     * Reads the opponent athletes' information from a text file and generates the
+     * opponent athletes.
      */
     public void generateOpponentAthletes() {
         try {
-            File athleteList = new File("src/OpponentAthletes.txt");
-            Scanner athletes = new Scanner(athleteList);
-            athletes.useDelimiter(",");
+        	
+        	InputStream in = getClass().getResourceAsStream("/src/OpponentAthletes.txt"); 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            
+            Scanner scanner = new Scanner(reader);
+            scanner.useDelimiter(",");
             ArrayList<String> idList = new ArrayList<>();
-
-            while (athletes.hasNextLine()) {
-                idList.add(athletes.nextLine());
+            
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Process the line
+            	idList.add(line);
             }
 
             ArrayList<Athlete> allAthletes = new ArrayList<Athlete>();
@@ -202,10 +224,11 @@ public class Match {
                 }
             }
 
-            athletes.close();
+            reader.close();
+            scanner.close();
             opposingAthletes = generatedAthletes;
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }

@@ -5,8 +5,12 @@ import src.team.*;
 import src.items.*;
 
 import java.util.ArrayList;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.Random;
 
@@ -33,14 +37,21 @@ public class Market {
      */
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
         try {
-            File itemList = new File("src/items/ItemList.txt");
-            Scanner items = new Scanner(itemList);
-            items.useDelimiter(",");
+        	
+        	InputStream in = getClass().getResourceAsStream("/src/items/ItemList.txt"); 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            
+            Scanner scanner = new Scanner(reader);
+            scanner.useDelimiter(",");
             ArrayList<String> idList = new ArrayList<>();
-            while (items.hasNextLine()) {
-                idList.add(items.nextLine());
+            
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Process the line
+            	idList.add(line);
             }
-
+            
+ 
             ArrayList<Item> allItems = new ArrayList<Item>();
 
             for (int i = 0; i < idList.size(); i++) {
@@ -48,8 +59,10 @@ public class Market {
                 String[] s2 = info.split(",");
 
                 if (i != 0) {
+           
                     String type = s2[1];
                     String name = s2[2];
+                  
                     int itemBoost = Integer.parseInt(s2[3]);
                     String boostType = s2[4];
                     int typeMultiplier = 1;
@@ -75,9 +88,10 @@ public class Market {
             }
 
             itemsInMarket = itemsInShop;
-            items.close();
+            reader.close();
+            scanner.close();
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -92,14 +106,20 @@ public class Market {
      */
     public void generateAthleteShop(Difficulty difficulty, int seasonNumber, GameEnvironment environment) {
         try {
-            File athleteList = new File("src/team/AthleteList.txt");
-            Scanner athletes = new Scanner(athleteList);
-            athletes.useDelimiter(",");
+        	
+        	InputStream in = getClass().getResourceAsStream("/src/team/AthleteList.txt"); 
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            
+            Scanner scanner = new Scanner(reader);
+            scanner.useDelimiter(",");
             ArrayList<String> idList = new ArrayList<>();
-            while (athletes.hasNextLine()) {
-                idList.add(athletes.nextLine());
+            
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Process the line
+            	idList.add(line);
             }
-
+            
             ArrayList<Athlete> allAthletes = new ArrayList<Athlete>();
 
             for (int i = 0; i < idList.size(); i++) {
@@ -128,16 +148,16 @@ public class Market {
                 int randInt = rng.nextInt(1, 20);
                 Athlete athlete = allAthletes.get(randInt);
 
-                if (!athletesInShop.contains(athlete)) {// && !environment.getGame().getTeam().containsAthlete(athlete))
-                                                        // {
+                if (!athletesInShop.contains(athlete)) {
                     athletesInShop.add(athlete);
                 }
             }
 
             athletesInMarket = athletesInShop;
-            athletes.close();
+            reader.close();
+            scanner.close();
 
-        } catch (FileNotFoundException e) {
+        } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
@@ -166,18 +186,4 @@ public class Market {
         return itemsInMarket;
     }
 
-    /**
-     * The main method to test the Market class.
-     *
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        Difficulty difficulty = new Difficulty("Normal");
-        Market market = new Market();
-        market.generateItemShop(difficulty, 1);
-        ArrayList<Item> items = market.getItems();
-        for (Item item : items) {
-            System.out.println(item.info());
-        }
-    }
 }
