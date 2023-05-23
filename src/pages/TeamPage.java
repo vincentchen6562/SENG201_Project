@@ -155,12 +155,29 @@ public class TeamPage {
 		benchLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
 		benchLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
+		String coachName = new String();
+		int coachBoost = 0;
+		if(environment.getGame().getCoach() == null) {
+			coachName = "Name";
+		} else {
+			coachName = environment.getGame().getCoach().getName();
+			coachBoost = environment.getGame().getCoach().getBoost();
+		}
+		
+		JLabel coachLabel = new JLabel(String.format("Coach: %s", coachName));
+		coachLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setFont(new Font("Orbitron", Font.PLAIN, 12));
+		
+		JLabel coachBoostLabel = new JLabel(String.format("Coach Boost: %d", coachBoost));
+		
 		GroupLayout groupLayout = new GroupLayout(frame.getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(pointGuardLabel, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
 							.addGap(18)
@@ -170,11 +187,11 @@ public class TeamPage {
 							.addComponent(centerLabel, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
 							.addGap(18)
 							.addComponent(smallForwardLabel, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(athlete1Button, GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
 							.addComponent(athlete2Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(athlete5Button, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
@@ -187,13 +204,22 @@ public class TeamPage {
 						.addComponent(powerForwardLabel, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addComponent(swapButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))
-						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(13)
-							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 185, Short.MAX_VALUE)))
+							.addComponent(coachLabel, GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 185, Short.MAX_VALUE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(swapButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 85, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(18)
+							.addComponent(coachBoostLabel)))
 					.addContainerGap())
 				.addComponent(titlePanel, Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
 		);
@@ -206,7 +232,9 @@ public class TeamPage {
 						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 							.addComponent(smallForwardLabel)
 							.addComponent(centerLabel))
-						.addComponent(powerForwardLabel))
+						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+							.addComponent(powerForwardLabel)
+							.addComponent(coachLabel)))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
@@ -231,9 +259,13 @@ public class TeamPage {
 								.addComponent(athlete4Button, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)
 								.addComponent(excessAthleteButton, GroupLayout.PREFERRED_SIZE, 109, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(3)
-							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 199, GroupLayout.PREFERRED_SIZE)
-							.addGap(4)
+							.addGap(6)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel)
+								.addComponent(coachBoostLabel))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(infoPanel, GroupLayout.PREFERRED_SIZE, 161, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(sellButton, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE)
 								.addComponent(swapButton, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))))

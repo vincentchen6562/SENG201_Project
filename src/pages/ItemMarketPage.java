@@ -68,6 +68,7 @@ public class ItemMarketPage {
 		buyButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (items.get(index).getIsCoach() && (environment.getGame().getBank().getMoney() >= items.get(index).getCost())) {
+					environment.getGame().getBank().alterMoney(-items.get(index).getCost());
 					environment.getGame().setCoach(items.get(index));
 					comboBox.setEnabled(false);
 					
