@@ -86,13 +86,13 @@ public class TeamTest {
         Athlete excessAthlete = team.getExcessAthlete();
         Assertions.assertNull(excessAthlete);
     }
-    
+
     @Test
     public void testRemoveExcessAthlete() {
-    	team.addAthlete(excessAthlete);
-    	team.removeExcessAthlete();
-    	Athlete excessAthlete = team.getExcessAthlete();
-    	Assertions.assertNull(excessAthlete);
+        team.addAthlete(excessAthlete);
+        team.removeExcessAthlete();
+        Athlete excessAthlete = team.getExcessAthlete();
+        Assertions.assertNull(excessAthlete);
     }
 
     @Test

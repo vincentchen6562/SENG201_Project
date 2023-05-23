@@ -17,14 +17,13 @@ public class Game {
     private int numWins;
     private int numLoss;
 
-    
     /**
      * Constructs a Game object.
      *
-     * @param weekNumber  The total number of weeks in the game.
-     * @param team        The team object representing the player's team.
-     * @param bank        The bank object representing the player's financial status.
-     * @param difficulty  The difficulty level of the game.
+     * @param weekNumber The total number of weeks in the game.
+     * @param team       The team object representing the player's team.
+     * @param bank       The bank object representing the player's financial status.
+     * @param difficulty The difficulty level of the game.
      */
     public Game(int weekNumber, Team team, Bank bank, Difficulty difficulty) {
         this.weekNumber = weekNumber;
@@ -119,69 +118,71 @@ public class Game {
      * @param coach The coach item to set.
      */
     public void setCoach(Item coach) {
-    	if (this.coach != null) {
-    		removeCoach();
-    	}
+        if (this.coach != null) {
+            removeCoach();
+        }
         this.coach = coach;
-    	String boostType = coach.getBoostType();
+        String boostType = coach.getBoostType();
 
-        for (Athlete athlete: getTeam().getEquippedAthletes()) {
-        	if (boostType.equals("Offence")){
-            	athlete.alterStat("Offence", coach.getBoost());
-        	} else if (boostType.equals("Defence")) {
-        		athlete.alterStat("Defence", coach.getBoost());
-        	} else if (boostType.equals("Agility")) {
-        		athlete.alterStat("Agility", coach.getBoost());
-        	} else if (boostType.equals("All")) {
-        		athlete.alterStat("All", coach.getBoost());
-	        }
-	    }
-        
+        for (Athlete athlete : getTeam().getEquippedAthletes()) {
+            if (boostType.equals("Offence")) {
+                athlete.alterStat("Offence", coach.getBoost());
+            } else if (boostType.equals("Defence")) {
+                athlete.alterStat("Defence", coach.getBoost());
+            } else if (boostType.equals("Agility")) {
+                athlete.alterStat("Agility", coach.getBoost());
+            } else if (boostType.equals("All")) {
+                athlete.alterStat("All", coach.getBoost());
+            }
+        }
+
         if (getTeam().getExcessAthlete() != null) {
-	    	if (boostType.equals("Offence")){
-	        	getTeam().getExcessAthlete().alterStat("Offence", coach.getBoost());
-	    	} else if (boostType.equals("Defence")) {
-	    		getTeam().getExcessAthlete().alterStat("Defence", coach.getBoost());
-	    	} else if (boostType.equals("Agility")) {
-	    		getTeam().getExcessAthlete().alterStat("Agility", coach.getBoost());
-	    	} else if (boostType.equals("All")) {
-	    		getTeam().getExcessAthlete().alterStat("All", coach.getBoost());
-	    	}
+            if (boostType.equals("Offence")) {
+                getTeam().getExcessAthlete().alterStat("Offence", coach.getBoost());
+            } else if (boostType.equals("Defence")) {
+                getTeam().getExcessAthlete().alterStat("Defence", coach.getBoost());
+            } else if (boostType.equals("Agility")) {
+                getTeam().getExcessAthlete().alterStat("Agility", coach.getBoost());
+            } else if (boostType.equals("All")) {
+                getTeam().getExcessAthlete().alterStat("All", coach.getBoost());
+            }
         }
     }
+
     /**
      * sets coach to null
      * removes appropriate amount of points from each athlete
      */
     public void removeCoach() {
-    	String boostType = coach.getBoostType();
+        String boostType = coach.getBoostType();
 
-        for (Athlete athlete: getTeam().getEquippedAthletes()) {
-        	if (boostType.equals("Offence")){
-            	athlete.alterStat("Offence", -coach.getBoost());
-        	} else if (boostType.equals("Defence")) {
-        		athlete.alterStat("Defence", -coach.getBoost());
-        	} else if (boostType.equals("Agility")) {
-        		athlete.alterStat("Agility", -coach.getBoost());
-        	} else if (boostType.equals("All")) {
-        		athlete.alterStat("All", -coach.getBoost());
-	        }
-	    }
-        
-        if (getTeam().getExcessAthlete() != null) {
-	    	if (boostType.equals("Offence")){
-	        	getTeam().getExcessAthlete().alterStat("Offence", -coach.getBoost());
-	    	} else if (boostType.equals("Defence")) {
-	    		getTeam().getExcessAthlete().alterStat("Defence", -coach.getBoost());
-	    	} else if (boostType.equals("Agility")) {
-	    		getTeam().getExcessAthlete().alterStat("Agility", -coach.getBoost());
-	    	} else if (boostType.equals("All")) {
-	    		getTeam().getExcessAthlete().alterStat("All", -coach.getBoost());
-	    	}
+        for (Athlete athlete : getTeam().getEquippedAthletes()) {
+            if (boostType.equals("Offence")) {
+                athlete.alterStat("Offence", -coach.getBoost());
+            } else if (boostType.equals("Defence")) {
+                athlete.alterStat("Defence", -coach.getBoost());
+            } else if (boostType.equals("Agility")) {
+                athlete.alterStat("Agility", -coach.getBoost());
+            } else if (boostType.equals("All")) {
+                athlete.alterStat("All", -coach.getBoost());
+            }
         }
-        
+
+        if (getTeam().getExcessAthlete() != null) {
+            if (boostType.equals("Offence")) {
+                getTeam().getExcessAthlete().alterStat("Offence", -coach.getBoost());
+            } else if (boostType.equals("Defence")) {
+                getTeam().getExcessAthlete().alterStat("Defence", -coach.getBoost());
+            } else if (boostType.equals("Agility")) {
+                getTeam().getExcessAthlete().alterStat("Agility", -coach.getBoost());
+            } else if (boostType.equals("All")) {
+                getTeam().getExcessAthlete().alterStat("All", -coach.getBoost());
+            }
+        }
+
         coach = null;
     }
+
     /**
      * Returns the coach item.
      *
@@ -227,7 +228,8 @@ public class Game {
     }
 
     /**
-     * Prints the result of a match based on the player's score and the opponent's score.
+     * Prints the result of a match based on the player's score and the opponent's
+     * score.
      *
      * @param playerScore   The player's score.
      * @param opponentScore The opponent's score.
@@ -282,17 +284,3 @@ public class Game {
     }
 
 }
-
-// TODO:
-// - Need to update the UML diagram (classes added: Item, Coach, Equipment)
-// - Need to comment properly (for Javadoc and final assessment), this includes
-// the GUI classes, REMEMBER: no commented out code
-// JUnit testing
-// Javadoc
-// Difficulty/week scaling prices and difficulty of matches
-// do README
-// populate item and athlete lists more
-// DONE
-
-// - fix up the money below zero and still training problem in the rest page
-// - properly implement stamina

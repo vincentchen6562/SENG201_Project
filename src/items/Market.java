@@ -11,7 +11,8 @@ import java.util.Scanner;
 import java.util.Random;
 
 /**
- * The Market class represents a market where items and athletes can be generated and obtained.
+ * The Market class represents a market where items and athletes can be
+ * generated and obtained.
  */
 public class Market {
     private ArrayList<Item> itemsInMarket;
@@ -27,8 +28,8 @@ public class Market {
     /**
      * Generates the item shop in the market.
      *
-     * @param difficulty    the difficulty level of the game
-     * @param seasonNumber  the current season number
+     * @param difficulty   the difficulty level of the game
+     * @param seasonNumber the current season number
      */
     public void generateItemShop(Difficulty difficulty, int seasonNumber) {
         try {
@@ -55,7 +56,7 @@ public class Market {
                     if (boostType.equals("All")) {
                         typeMultiplier = 3;
                     }
-                    int price = itemBoost * typeMultiplier * 150; //TODO * difficulty
+                    int price = itemBoost * typeMultiplier * 150;
                     Item newItem = new Item(type, name, itemBoost, boostType, price);
                     allItems.add(newItem);
                 }
@@ -85,9 +86,9 @@ public class Market {
     /**
      * Generates the athlete shop in the market.
      *
-     * @param difficulty    the difficulty level of the game
-     * @param seasonNumber  the current season number
-     * @param environment   the game environment
+     * @param difficulty   the difficulty level of the game
+     * @param seasonNumber the current season number
+     * @param environment  the game environment
      */
     public void generateAthleteShop(Difficulty difficulty, int seasonNumber, GameEnvironment environment) {
         try {
@@ -127,7 +128,8 @@ public class Market {
                 int randInt = rng.nextInt(1, 20);
                 Athlete athlete = allAthletes.get(randInt);
 
-                if (!athletesInShop.contains(athlete)) {// && !environment.getGame().getTeam().containsAthlete(athlete)) {
+                if (!athletesInShop.contains(athlete)) {// && !environment.getGame().getTeam().containsAthlete(athlete))
+                                                        // {
                     athletesInShop.add(athlete);
                 }
             }
@@ -144,21 +146,21 @@ public class Market {
     /**
      * Gets the athletes available in the market.
      *
-     * @param environment  the game environment
-     * @return             the list of athletes in the market
+     * @param environment the game environment
+     * @return the list of athletes in the market
      */
     public ArrayList<Athlete> getAthletes(GameEnvironment environment) {
-        Difficulty difficulty = new Difficulty("Normal"); // TODO difficulty proper implementation
-        generateAthleteShop(difficulty, 1, environment); // TODO proper ability to get week/season
+        Difficulty difficulty = new Difficulty("Normal");
+        generateAthleteShop(difficulty, 1, environment);
         return athletesInMarket;
     }
-    
+
     /**
      * Gets the items available in the market.
      *
-     * @return  the list of items in the market
+     * @return the list of items in the market
      */
-    public ArrayList<Item> getItems(){
+    public ArrayList<Item> getItems() {
         Difficulty difficulty = new Difficulty("normal");
         generateItemShop(difficulty, 1);
         return itemsInMarket;
@@ -167,7 +169,7 @@ public class Market {
     /**
      * The main method to test the Market class.
      *
-     * @param args  the command line arguments
+     * @param args the command line arguments
      */
     public static void main(String[] args) {
         Difficulty difficulty = new Difficulty("Normal");

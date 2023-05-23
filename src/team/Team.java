@@ -52,8 +52,6 @@ public class Team {
             equippedAthletes.add(athlete);
         } else if (excessAthlete == null) {
             excessAthlete = athlete;
-        } else {
-            // TODO Team full warning
         }
     }
 
